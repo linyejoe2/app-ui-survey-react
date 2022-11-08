@@ -1,7 +1,8 @@
+import './App.css'
 import { useState } from 'react'
 import reactLogo from '../../assets/react.svg'
 import Button from "@mui/material/Button"
-import './App.css'
+import Survey from '../Survey/Survey'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,9 +19,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <Button variant="contained" onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -28,7 +29,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Button variant="outlined" href={`hello-world`}>Hello World</Button>
+      <div className="mb-4">
+        <Button variant="outlined" href={`hello-world`}>Hello World</Button>
+      </div>
+      <div>
+        <Button variant="outlined" href={`survey`}>選擇你最愛的社群介面！</Button>
+      </div>
     </div>
   )
 }
