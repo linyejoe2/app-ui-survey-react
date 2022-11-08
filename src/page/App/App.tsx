@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from '../../assets/react.svg'
+import Button from "@mui/material/Button"
 import './App.css'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Button variant="outlined" href={`hello-world`}>Hello World</Button>
     </div>
   )
 }
