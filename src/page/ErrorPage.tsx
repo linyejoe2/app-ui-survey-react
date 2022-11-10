@@ -20,7 +20,7 @@ export default function ErrorPage() {
         <i>{error?.statusText || error?.message || 'undefined error '}</i>
         <i>{' 😭😭😭'}</i>
       </p>
-      <Button variant="outlined" href="/">Maybe back to home page 🤔🤔🤔</Button>
+      <Button variant="outlined" href="/" >Maybe back to home page 🤔🤔🤔</Button>
     </div>
   );
 }

@@ -4,7 +4,14 @@ import reactLogo from '../../assets/react.svg'
 import Button from "@mui/material/Button"
 import Survey from '../Survey/Survey'
 
+
+import { RootState, AppDispatch } from '../../store/configurestore'
+import { useDispatch, useSelector } from 'react-redux';
+import { addOne, delOne } from '../../reducers/themeReducer'
+
 function App() {
+  const dispatch = useDispatch();
+  const count2 = useSelector((state: RootState) => state.num);
   const [count, setCount] = useState(0)
 
   return (
@@ -19,8 +26,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Button variant="contained" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <Button variant="contained" onClick={() =>dispatch(addOne())}>
+          count2 is {count2}
+        </Button>
+        <Button variant="contained" onClick={() =>dispatch(delOne())}>
+          delOne
         </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
