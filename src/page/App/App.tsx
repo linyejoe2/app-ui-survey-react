@@ -5,6 +5,10 @@ import Button from "@mui/material/Button"
 import Survey from '../Survey/Survey'
 import { useTranslation } from 'react-i18next'
 
+import React from 'react'
+
+
+
 function App() {
   const { t, i18n } = useTranslation();
   const [count, setCount] = useState(0)

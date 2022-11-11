@@ -13,6 +13,7 @@ import Card from '@mui/material/Card';
 import Skeleton from "@mui/material/Skeleton";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { Calculate } from "@mui/icons-material";
 
 
 export default function Survey() {
@@ -22,6 +23,7 @@ export default function Survey() {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    // boxShadow: "7px 5px rgba(0, 0, 0, 0.4)"
   }));
 
   return (
@@ -35,11 +37,19 @@ export default function Survey() {
       <Grid container rowSpacing={1}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
+        {/* <Grid md={1}/> */}
         <Grid xs={12} sm={6} md={9}>
           {/* <Skeleton variant="rectangular" height='40px' /> */}
-          <Item>
+          <Paper elevation={5}
+            sx={{
+              // padding: theme.spacing(1),
+              textAlign: 'center',
+            }}>
             <MainStepper></MainStepper>
-          </Item>
+          </Paper>
+          {/* <Item>
+            <MainStepper></MainStepper>
+          </Item> */}
         </Grid>
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
           <Skeleton variant="rounded" height='660px' width="340px" />
@@ -49,6 +59,7 @@ export default function Survey() {
             </div>
           </svg> */}
         </Grid>
+        {/* <Grid md={3}/> */}
       </Grid>
     </Box>
     // </Box>
@@ -57,12 +68,14 @@ export default function Survey() {
 
 interface IsurveyData {
   gender: "male" | "female" | "other" | '' | string,
-  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string
+  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string,
+  defaultUI: string
 }
 
 const surveyDate: IsurveyData = {
   gender: '',
-  age: ''
+  age: '',
+  defaultUI: ""
 }
 
 const MainStepper = (props: React.PropsWithChildren) => {
@@ -130,6 +143,7 @@ const MainStepper = (props: React.PropsWithChildren) => {
           <FormControl sx={{ mt: 4, mb: 1, }}>
             <FormLabel sx={{ fontSize: '24px' }} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
+              sx={{ mt: 4 }}
               name="gender-button-group"
               // value={value}
               // defaultValue='male'
@@ -148,8 +162,9 @@ const MainStepper = (props: React.PropsWithChildren) => {
       case 1: {
         return <>
           <FormControl sx={{ mt: 4, mb: 1, }}>
-            <FormLabel sx={{ fontSize: '24px' }} >{t('p1.q2')}</FormLabel>
+            <FormLabel sx={{ fontSize: '24px' }} >{t('p2.q1')}</FormLabel>
             <RadioGroup
+              sx={{ mt: 4 }}
               name="age-button-group"
               // value={surveyDate.age}
               onChange={(ev, val) => {
@@ -157,19 +172,36 @@ const MainStepper = (props: React.PropsWithChildren) => {
                 console.log(surveyDate)
               }}
             >
-              <FormControlLabel value="20" control={<Radio />} label={t('p1.a1')} />
-              <FormControlLabel value="40" control={<Radio />} label={t('p1.a2')} />
-              <FormControlLabel value="50" control={<Radio />} label={t('p1.a3')} />
-              <FormControlLabel value="60" control={<Radio />} label={t('p1.a4')} />
-              <FormControlLabel value="70" control={<Radio />} label={t('p1.a5')} />
-              <FormControlLabel value="80" control={<Radio />} label={t('p1.a6')} />
+              <FormControlLabel value="20" control={<Radio />} label={t('p2.a1')} />
+              <FormControlLabel value="40" control={<Radio />} label={t('p2.a2')} />
+              <FormControlLabel value="50" control={<Radio />} label={t('p2.a3')} />
+              <FormControlLabel value="60" control={<Radio />} label={t('p2.a4')} />
+              <FormControlLabel value="70" control={<Radio />} label={t('p2.a5')} />
+              <FormControlLabel value="80" control={<Radio />} label={t('p2.a6')} />
             </RadioGroup>
           </FormControl>
         </>
       }
       case 2: {
         return <>
-          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+          <FormControl sx={{ mt: 4, mb: 1, }}>
+            <FormLabel sx={{ fontSize: '24px' }} >{t('p3.q1')}</FormLabel>
+            <FormLabel sx={{ fontSize: '20px' }} >{t('p3.q2')}</FormLabel>
+            <RadioGroup
+              sx={{ mt: 4 }}
+              name="age-button-group"
+              // value={surveyDate.age}
+              onChange={(ev, val) => {
+                surveyDate.defaultUI = val
+                console.log(surveyDate)
+              }}
+            >
+              <FormControlLabel value={t('p3.a1')} control={<Radio />} label={t('p3.a1')} />
+              <FormControlLabel value={t('p3.a2')} control={<Radio />} label={t('p3.a2')} />
+              <FormControlLabel value={t('p3.a3')} control={<Radio />} label={t('p3.a3')} />
+              <FormControlLabel value={t('p3.a4')} control={<Radio />} label={t('p3.a4')} />
+            </RadioGroup>
+          </FormControl>
         </>
       }
       default: {
@@ -182,54 +214,70 @@ const MainStepper = (props: React.PropsWithChildren) => {
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{
+      width: '100%',
+      height: '630px',
+    }}>
       {/* top stepper */}
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps: { completed?: boolean } = {};
-          const labelProps: {
-            optional?: React.ReactNode;
-          } = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
+      <Box sx={{ pt: 2, px: 2 }}>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps: { completed?: boolean } = {};
+            const labelProps: {
+              optional?: React.ReactNode;
+            } = {};
+            if (isStepOptional(index)) {
+              labelProps.optional = (
+                <Typography variant="caption">Optional</Typography>
+              );
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
             );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+          })}
+        </Stepper></Box>
       {/* tab */}
-      {subTab()}
+      <Box sx={{ height: 'calc(100% - 115px)' }}>
+        {subTab()}
+      </Box>
       {/* bottom button group */}
       {activeStep === steps.length ? (
-        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2, px: 2 }}>
           <Box sx={{ flex: '1 1 auto' }} />
-          <Button onClick={handleReset}>Reset</Button>
+          <Button
+            variant="outlined"
+            size="large"
+            onClick={handleReset}>Reset</Button>
         </Box>
       ) : (
-        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2, px: 2 }}>
           <Button
-            color="inherit"
+            // color="inherit"
+            variant="outlined"
             disabled={activeStep === 0}
             onClick={handleBack}
             sx={{ mr: 1 }}
+            size="large"
           >
             Back
           </Button>
           <Box sx={{ flex: '1 1 auto' }} />
           {isStepOptional(activeStep) && (
-            <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+            <Button
+              variant="text"
+              size="large" onClick={handleSkip} sx={{ mr: 1 }}>
               Skip
             </Button>
           )}
-          <Button onClick={handleNext}>
+          <Button
+            variant="contained"
+            onClick={handleNext}
+            size="large">
             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
           </Button>
         </Box>

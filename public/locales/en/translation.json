@@ -21,10 +21,22 @@
     "a7": "70+"
   },
   "p3": {
-    "t": "components position",
-    "q1": "To which gender identity do you most identify?",
-    "a1": "Male",
-    "a2": "Female",
-    "a3": "Not Listed"
+    "t": "Default UI Style",
+    "q1": "To which Social media UI Style do you prefer to use?",
+    "q2": "You can always change UI style after this step.",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
+  },
+  "p4": {
+    "t": "Components Position",
+    "q1": "Drag and Drop to Change All Components position?",
+    "q2": "Real-Time Change will show at the right side.",
+    "a1": "Search Bar",
+    "a2": "Post Bar",
+    "a3": "Short",
+    "a4": "Content",
+    "a5": "Navigation Bar"
   }
 }
