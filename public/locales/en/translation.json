@@ -1,5 +1,30 @@
 {
   "main": {
-    "title" : "logo"
+    "title": "logo"
+  },
+  "p1": {
+    "t": "gender",
+    "q1": "What is your gender?",
+    "a1": "Male",
+    "a2": "Female",
+    "a3": "Not Listed"
+  },
+  "p2": {
+    "t": "age",
+    "q1": "What is your age?",
+    "a1": "0 to 20",
+    "a2": "21 to 30",
+    "a3": "31 to 40",
+    "a4": "41 to 50",
+    "a5": "51 to 60",
+    "a6": "61 to 70",
+    "a7": "70+"
+  },
+  "p3": {
+    "t": "components position",
+    "q1": "To which gender identity do you most identify?",
+    "a1": "Male",
+    "a2": "Female",
+    "a3": "Not Listed"
   }
 }

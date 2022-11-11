@@ -12,12 +12,10 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Card from '@mui/material/Card';
 import Skeleton from "@mui/material/Skeleton";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
-// const Grid = Grid2
+import { useTranslation } from "react-i18next";
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 
 export default function Survey() {
-
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -57,18 +55,31 @@ export default function Survey() {
   );
 }
 
+interface IsurveyData {
+  gender: "male" | "female" | "other" | '' | string,
+  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string
+}
+
+const surveyDate: IsurveyData = {
+  gender: '',
+  age: ''
+}
+
 const MainStepper = (props: React.PropsWithChildren) => {
+  const { t } = useTranslation();
+  const steps = [t('p1.t'), t('p2.t'), t('p3.t')];
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
 
   const isStepOptional = (step: number) => {
-    return step === 1;
+    return step === -1;
   };
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
+
 
   const handleNext = () => {
     let newSkipped = skipped;
@@ -108,29 +119,52 @@ const MainStepper = (props: React.PropsWithChildren) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
+    console.log(value)
   };
 
   const subTab = () => {
+
     switch (activeStep) {
       case 0: {
         return <>
-          <FormControl sx={{ mt: 2, mb: 1,  }}>
-            <FormLabel id="demo-controlled-radio-buttons-group">To which gender identity do you</FormLabel>
+          <FormControl sx={{ mt: 4, mb: 1, }}>
+            <FormLabel sx={{ fontSize: '24px' }} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={value}
-              onChange={handleChange}
+              name="gender-button-group"
+              // value={value}
+              // defaultValue='male'
+              onChange={(ev, val) => {
+                surveyDate.gender = val
+                console.log(surveyDate)
+              }}
             >
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel value="male" control={<Radio />} label={t('p1.a1')} />
+              <FormControlLabel value="female" control={<Radio />} label={t('p1.a2')} />
+              <FormControlLabel value="other" control={<Radio />} label={t('p1.a3')} />
             </RadioGroup>
           </FormControl>
         </>
       }
       case 1: {
         return <>
-          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+          <FormControl sx={{ mt: 4, mb: 1, }}>
+            <FormLabel sx={{ fontSize: '24px' }} >{t('p1.q2')}</FormLabel>
+            <RadioGroup
+              name="age-button-group"
+              // value={surveyDate.age}
+              onChange={(ev, val) => {
+                surveyDate.age = val
+                console.log(surveyDate)
+              }}
+            >
+              <FormControlLabel value="20" control={<Radio />} label={t('p1.a1')} />
+              <FormControlLabel value="40" control={<Radio />} label={t('p1.a2')} />
+              <FormControlLabel value="50" control={<Radio />} label={t('p1.a3')} />
+              <FormControlLabel value="60" control={<Radio />} label={t('p1.a4')} />
+              <FormControlLabel value="70" control={<Radio />} label={t('p1.a5')} />
+              <FormControlLabel value="80" control={<Radio />} label={t('p1.a6')} />
+            </RadioGroup>
+          </FormControl>
         </>
       }
       case 2: {
