@@ -14,6 +14,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Calculate } from "@mui/icons-material";
+import { TableDnD } from "../../components/dnd/table";
 
 
 export default function Survey() {
@@ -72,15 +73,30 @@ interface IsurveyData {
   defaultUI: string
 }
 
+export interface IpositionData {
+  uid: string,
+  name: string,
+  position: string
+}
+
+const positionDatas: IpositionData[] = [
+  { uid: '1', name: 'searchBar', position: '1' },
+  { uid: '2', name: 'postBar', position: '2' },
+  { uid: '3', name: 'Short', position: '3' },
+  { uid: '4', name: 'Content', position: '4' },
+  { uid: '5', name: 'NavigationBar', position: '5' },
+]
+
 const surveyDate: IsurveyData = {
   gender: '',
   age: '',
   defaultUI: ""
 }
 
+
 const MainStepper = (props: React.PropsWithChildren) => {
   const { t } = useTranslation();
-  const steps = [t('p1.t'), t('p2.t'), t('p3.t')];
+  const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
@@ -200,6 +216,34 @@ const MainStepper = (props: React.PropsWithChildren) => {
               <FormControlLabel value={t('p3.a2')} control={<Radio />} label={t('p3.a2')} />
               <FormControlLabel value={t('p3.a3')} control={<Radio />} label={t('p3.a3')} />
               <FormControlLabel value={t('p3.a4')} control={<Radio />} label={t('p3.a4')} />
+            </RadioGroup>
+          </FormControl>
+        </>
+      }
+      case 3: {
+        return <>
+          <FormControl sx={{ mt: 4, mb: 1, }}>
+            <FormLabel sx={{ fontSize: '24px' }} >{t('p4.q1')}</FormLabel>
+            <FormLabel sx={{ fontSize: '20px' }} >{t('p4.q2')}</FormLabel>
+            <RadioGroup
+              sx={{ mt: 4 }}
+              name="age-button-group"
+              // value={surveyDate.age}
+              onChange={(ev, val) => {
+                surveyDate.defaultUI = val
+                console.log(surveyDate)
+              }}
+            >
+              <Box sx={{
+                display: "flex",
+                justifyContent: "center"
+              }}>
+                <TableDnD positionDatas={positionDatas}></TableDnD>
+              </Box>
+              {/* <FormControlLabel value={t('p4.a1')} control={<Radio />} label={t('p4.a1')} />
+              <FormControlLabel value={t('p4.a2')} control={<Radio />} label={t('p4.a2')} />
+              <FormControlLabel value={t('p4.a3')} control={<Radio />} label={t('p4.a3')} />
+              <FormControlLabel value={t('p4.a4')} control={<Radio />} label={t('p4.a4')} /> */}
             </RadioGroup>
           </FormControl>
         </>

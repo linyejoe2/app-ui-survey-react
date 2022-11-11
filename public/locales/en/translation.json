@@ -31,12 +31,12 @@
   },
   "p4": {
     "t": "Components Position",
-    "q1": "Drag and Drop to Change All Components position?",
+    "q1": "Drag and Drop to Chose the perfect position of all Components.",
     "q2": "Real-Time Change will show at the right side.",
-    "a1": "Search Bar",
-    "a2": "Post Bar",
+    "a1": "Search bar",
+    "a2": "Post bar",
     "a3": "Short",
     "a4": "Content",
-    "a5": "Navigation Bar"
+    "a5": "Navigation bar"
   }
 }
