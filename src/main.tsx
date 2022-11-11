@@ -1,3 +1,4 @@
+import "./style/main.css"
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { store } from './service/store'
@@ -14,6 +15,7 @@ import TopNavigationBar from './components/TopNavigationBar'
 import { useDispatch, useSelector, RootState } from './service/store'
 import { toggleTheme } from "./service/services"
 import { Dashboard } from '@mui/icons-material';
+import './i18n';
 
 const ThemeProvid = (props: React.PropsWithChildren) => {
   const dispatch = useDispatch()

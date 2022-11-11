@@ -1,3 +1,9 @@
+.top-bar {
+  width: 95%;
+  max-width: 1500px;
+  margin: 0 auto !important;
+}
+
 /* :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;

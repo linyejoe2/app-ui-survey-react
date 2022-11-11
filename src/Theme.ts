@@ -7,23 +7,23 @@ export default class {
   public static lightMode = createTheme({
     palette: {
       mode: "light",
-      primary: {
-        main: '#80deea',
-      },
-      secondary: {
-        main: '#18ffff',
-      },
+      // primary: {
+      //   main: '#80deea',
+      // },
+      // secondary: {
+      //   main: '#18ffff',
+      // },
     },
   })
   public static darkMode = createTheme({
     palette: {
       mode: "dark",
-      primary: {
-        main: '#80deea',
-      },
-      secondary: {
-        main: '#18ffff',
-      },
+      // primary: {
+      //   main: '#80deea',
+      // },
+      // secondary: {
+      //   main: '#18ffff',
+      // },
     },
   })
 }

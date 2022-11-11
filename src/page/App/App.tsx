@@ -3,8 +3,10 @@ import { useState } from 'react'
 import reactLogo from '../../assets/react.svg'
 import Button from "@mui/material/Button"
 import Survey from '../Survey/Survey'
+import { useTranslation } from 'react-i18next'
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [count, setCount] = useState(0)
 
   return (
@@ -29,10 +31,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <div className="mb-4">
+      <div className="card">
         <Button variant="outlined" href={`hello-world`}>Hello World</Button>
       </div>
-      <div>
+      <div className="card">
         <Button variant="outlined" href={`survey`}>選擇你最愛的社群介面！</Button>
       </div>
     </div>
