@@ -15,6 +15,9 @@ import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mu
 import { useTranslation } from "react-i18next";
 import { Calculate } from "@mui/icons-material";
 import { TableDnD } from "../../components/dnd/table";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { UiStyle } from "../../interface";
+import { SurveyStep } from "./SurveyStep";
 
 
 export default function Survey() {
@@ -70,33 +73,41 @@ export default function Survey() {
 interface IsurveyData {
   gender: "male" | "female" | "other" | '' | string,
   age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string,
-  defaultUI: string
+  defaultUI: string,
+  positionDatas: IpositionData[]
 }
 
 export interface IpositionData {
   uid: string,
   name: string,
-  position: string
+  position: string,
+  enable: boolean,
+  style: UiStyle,
 }
 
 const positionDatas: IpositionData[] = [
-  { uid: '1', name: 'searchBar', position: '1' },
-  { uid: '2', name: 'postBar', position: '2' },
-  { uid: '3', name: 'Short', position: '3' },
-  { uid: '4', name: 'Content', position: '4' },
-  { uid: '5', name: 'NavigationBar', position: '5' },
+  { uid: '1', name: 'searchBar', position: '1', enable: true, style: 'YouTube' },
+  { uid: '2', name: 'postBar', position: '2', enable: true, style: 'YouTube' },
+  { uid: '3', name: 'Short', position: '3', enable: true, style: 'YouTube' },
+  { uid: '4', name: 'Content', position: '4', enable: true, style: 'YouTube' },
+  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: 'YouTube' },
 ]
 
 const surveyDate: IsurveyData = {
   gender: '',
   age: '',
-  defaultUI: ""
+  defaultUI: "",
+  positionDatas
 }
 
 
 const MainStepper = (props: React.PropsWithChildren) => {
   const { t } = useTranslation();
-  const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
+  // const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
+  const steps: string[] = [];
+  for (let i = 1; i < 10; i++) {
+    steps.push(t('p' + i + '.t'))
+  }
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
@@ -111,6 +122,16 @@ const MainStepper = (props: React.PropsWithChildren) => {
 
 
   const handleNext = () => {
+    switch (activeStep) {
+      case 0:
+        if (!surveyDate.gender) {
+          
+        }
+        break;
+    
+      default:
+        break;
+    }
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -144,6 +165,9 @@ const MainStepper = (props: React.PropsWithChildren) => {
     setActiveStep(0);
   };
 
+  const matches = useMediaQuery('(min-width:1200px)');
+
+
   const [value, setValue] = React.useState('female');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -152,14 +176,13 @@ const MainStepper = (props: React.PropsWithChildren) => {
   };
 
   const subTab = () => {
-
     switch (activeStep) {
       case 0: {
         return <>
           <FormControl sx={{ mt: 4, mb: 1, }}>
             <FormLabel sx={{ fontSize: '24px' }} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
-              sx={{ mt: 4 }}
+              sx={{ mt: 2 }}
               name="gender-button-group"
               // value={value}
               // defaultValue='male'
@@ -180,7 +203,7 @@ const MainStepper = (props: React.PropsWithChildren) => {
           <FormControl sx={{ mt: 4, mb: 1, }}>
             <FormLabel sx={{ fontSize: '24px' }} >{t('p2.q1')}</FormLabel>
             <RadioGroup
-              sx={{ mt: 4 }}
+              sx={{ mt: 2 }}
               name="age-button-group"
               // value={surveyDate.age}
               onChange={(ev, val) => {
@@ -189,11 +212,12 @@ const MainStepper = (props: React.PropsWithChildren) => {
               }}
             >
               <FormControlLabel value="20" control={<Radio />} label={t('p2.a1')} />
-              <FormControlLabel value="40" control={<Radio />} label={t('p2.a2')} />
-              <FormControlLabel value="50" control={<Radio />} label={t('p2.a3')} />
-              <FormControlLabel value="60" control={<Radio />} label={t('p2.a4')} />
-              <FormControlLabel value="70" control={<Radio />} label={t('p2.a5')} />
-              <FormControlLabel value="80" control={<Radio />} label={t('p2.a6')} />
+              <FormControlLabel value="30" control={<Radio />} label={t('p2.a2')} />
+              <FormControlLabel value="40" control={<Radio />} label={t('p2.a3')} />
+              <FormControlLabel value="50" control={<Radio />} label={t('p2.a4')} />
+              <FormControlLabel value="60" control={<Radio />} label={t('p2.a5')} />
+              <FormControlLabel value="70" control={<Radio />} label={t('p2.a6')} />
+              <FormControlLabel value="80" control={<Radio />} label={t('p2.a7')} />
             </RadioGroup>
           </FormControl>
         </>
@@ -204,8 +228,8 @@ const MainStepper = (props: React.PropsWithChildren) => {
             <FormLabel sx={{ fontSize: '24px' }} >{t('p3.q1')}</FormLabel>
             <FormLabel sx={{ fontSize: '20px' }} >{t('p3.q2')}</FormLabel>
             <RadioGroup
-              sx={{ mt: 4 }}
-              name="age-button-group"
+              sx={{ mt: 2 }}
+              name="dafault-ui-button-group"
               // value={surveyDate.age}
               onChange={(ev, val) => {
                 surveyDate.defaultUI = val
@@ -225,27 +249,39 @@ const MainStepper = (props: React.PropsWithChildren) => {
           <FormControl sx={{ mt: 4, mb: 1, }}>
             <FormLabel sx={{ fontSize: '24px' }} >{t('p4.q1')}</FormLabel>
             <FormLabel sx={{ fontSize: '20px' }} >{t('p4.q2')}</FormLabel>
-            <RadioGroup
-              sx={{ mt: 4 }}
-              name="age-button-group"
-              // value={surveyDate.age}
-              onChange={(ev, val) => {
-                surveyDate.defaultUI = val
-                console.log(surveyDate)
-              }}
-            >
-              <Box sx={{
-                display: "flex",
-                justifyContent: "center"
-              }}>
-                <TableDnD positionDatas={positionDatas}></TableDnD>
-              </Box>
-              {/* <FormControlLabel value={t('p4.a1')} control={<Radio />} label={t('p4.a1')} />
-              <FormControlLabel value={t('p4.a2')} control={<Radio />} label={t('p4.a2')} />
-              <FormControlLabel value={t('p4.a3')} control={<Radio />} label={t('p4.a3')} />
-              <FormControlLabel value={t('p4.a4')} control={<Radio />} label={t('p4.a4')} /> */}
-            </RadioGroup>
+            <Box sx={{
+              display: "flex",
+              justifyContent: "center"
+            }}>
+              <TableDnD positionDatas={positionDatas}></TableDnD>
+            </Box>
           </FormControl>
+        </>
+      }
+      case 4: {
+        console.log(positionDatas)
+        return <>
+          <SurveyStep stepId="5" positionData={positionDatas[0]} />
+        </>
+      }
+      case 5: {
+        return <>
+          <SurveyStep stepId="6" positionData={positionDatas[1]} />
+        </>
+      }
+      case 6: {
+        return <>
+          <SurveyStep stepId="7" positionData={positionDatas[2]} />
+        </>
+      }
+      case 7: {
+        return <>
+          <SurveyStep stepId="8" positionData={positionDatas[3]} />
+        </>
+      }
+      case 8: {
+        return <>
+          <SurveyStep stepId="9" positionData={positionDatas[4]} />
         </>
       }
       default: {
@@ -260,8 +296,10 @@ const MainStepper = (props: React.PropsWithChildren) => {
   return (
     <Box sx={{
       width: '100%',
-      height: '630px',
-    }}>
+      height: '650px'
+    }}
+      className='center-child'
+    >
       {/* top stepper */}
       <Box sx={{ pt: 2, px: 2 }}>
         <Stepper activeStep={activeStep}>
@@ -280,13 +318,16 @@ const MainStepper = (props: React.PropsWithChildren) => {
             }
             return (
               <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
+                {matches ?
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                  : <StepLabel {...labelProps}></StepLabel>
+                }
               </Step>
             );
           })}
         </Stepper></Box>
       {/* tab */}
-      <Box sx={{ height: 'calc(100% - 115px)' }}>
+      <Box sx={{ height: 'calc(100% - 140px)', pt: 4 }}>
         {subTab()}
       </Box>
       {/* bottom button group */}

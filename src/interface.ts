@@ -1,0 +1,1 @@
+export type UiStyle = "Facebook" | "Instagram" | "TikTok" | 'YouTube'

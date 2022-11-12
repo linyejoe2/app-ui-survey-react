@@ -23,14 +23,15 @@
   "p3": {
     "t": "Default UI Style",
     "q1": "To which Social media UI Style do you prefer to use?",
-    "q2": "You can always change UI style after this step.",
+    "q2": "You can change style after this step.",
     "a1": "Facebook",
     "a2": "Instagram",
     "a3": "TikTok",
     "a4": "YouTube"
   },
   "p4": {
-    "t": "Components Position",
+    "t": "Position",
+    "t2": "Components Position",
     "q1": "Drag and Drop to Chose the perfect position of all Components.",
     "q2": "Real-Time Change will show at the right side.",
     "a1": "Search bar",
@@ -38,5 +39,55 @@
     "a3": "Short",
     "a4": "Content",
     "a5": "Navigation bar"
+  },
+  "p5": {
+    "t": "Search bar Style",
+    "s1": "You don't chose the Search bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Search bar?",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
+  },
+  "p6": {
+    "t": "Post bar Style",
+    "s1": "You don't chose the Post bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Post bar?",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
+  },
+  "p7": {
+    "t": "Short Style",
+    "s1": "You don't chose the Short on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Short?",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
+  },
+  "p8": {
+    "t": "Content Style",
+    "s1": "You don't chose the Short on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Content?",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
+  },
+  "p9": {
+    "t": "Navigation bar Style",
+    "s1": "You don't chose the Short on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Navigation bar?",
+    "a1": "Facebook",
+    "a2": "Instagram",
+    "a3": "TikTok",
+    "a4": "YouTube"
   }
 }

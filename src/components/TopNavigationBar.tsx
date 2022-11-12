@@ -12,7 +12,6 @@ import LanguageIcon from '@mui/icons-material/Language';
 import Theme from '../Theme';
 import { useDispatch, useSelector, RootState } from '../service/store'
 import { toggleTheme } from "../service/services"
-import { TITLE } from '../const';
 import Link from '@mui/material/Link'
 import { useTranslation, withTranslation, Trans } from 'react-i18next';;
 import Tooltip from '@mui/material/Tooltip';

@@ -10,3 +10,12 @@ body {
   max-width: 1500px;
   margin: 0 auto !important;
 }
+
+
+.MuiFormGroup-root {
+  margin-left: 25px;
+}
+
+.center-child .MuiFormControlLabel-root {
+  /* display: inline-block; */
+}
