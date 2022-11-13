@@ -42,7 +42,7 @@ export default function TopNavigationBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar className='top-bar'>
           {/* <IconButton
             size="large"
@@ -102,6 +102,7 @@ export default function TopNavigationBar() {
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
+      <Toolbar />
     </Box>
   );
 }

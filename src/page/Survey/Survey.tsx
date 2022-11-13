@@ -18,7 +18,39 @@ import { TableDnD } from "../../components/dnd/table";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { UiStyle } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
+import { Phone } from "../../components/phone/phone";
+import TopNavigationBar from "../../components/TopNavigationBar";
+import BottomAppBar from "../../components/phone/BottomAppbar";
 
+export interface IsurveyData {
+  gender: "male" | "female" | "other" | '' | string,
+  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string,
+  defaultUI: string,
+  positionDatas: IpositionData[]
+}
+
+export interface IpositionData {
+  uid: string,
+  name: string,
+  position: string,
+  enable: boolean,
+  style: UiStyle,
+}
+
+const positionDatas: IpositionData[] = [
+  { uid: '1', name: 'searchBar', position: '1', enable: true, style: 'YouTube' },
+  { uid: '2', name: 'postBar', position: '2', enable: true, style: 'YouTube' },
+  { uid: '3', name: 'Short', position: '3', enable: true, style: 'YouTube' },
+  { uid: '4', name: 'Content', position: '4', enable: true, style: 'YouTube' },
+  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: 'YouTube' },
+]
+
+const surveyDate: IsurveyData = {
+  gender: '',
+  age: '',
+  defaultUI: "",
+  positionDatas
+}
 
 export default function Survey() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -56,12 +88,36 @@ export default function Survey() {
           </Item> */}
         </Grid>
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
-          <Skeleton variant="rounded" height='660px' width="340px" />
-          {/* <svg className="outline" width="340" height="660" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#030a1d" d="M 44,0 C 19.71051,0 0,19.71051 0,44 v 572 c 0,24.28949 19.71051,44 44,44 h 252 c 24.28949,0 44,-19.71051 44,-44 V 44 C 340,19.71051 320.28949,0 296,0 Z m 0,10 h 252 c 18.92247,0 34,15.077533 34,34 v 572 c 0,18.92247 -15.07753,34 -34,34 H 44 C 25.077533,650 10,634.92247 10,616 V 44 C 10,25.077533 25.077533,10 44,10 Z"></path>
-            <div>
+          {/* <Skeleton variant="rounded" height='660px' width="340px" /> */}
+          {/* <Box sx={{
+            height: "660px",
+            width: "340px",
+            backgroundColor: "darkblue",
+            borderStyle: "solid",
+            borderRadius: "40px",
+            borderWidth: '10px',
+            borderColor: "#272323"
+          }}>
 
-            </div>
+        </Box> */}
+        <Phone suveyData={surveyDate} />
+          {/* <svg href="/phone.svg">
+           
           </svg> */}
+
+          {/* <svg className="outline" width="340" height="660" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#030a1d" d="M 44,0 C 19.71051,0 0,19.71051 0,44 v 572 c 0,24.28949 19.71051,44 44,44 h 252 c 24.28949,0 44,-19.71051 44,-44 V 44 C 340,19.71051 320.28949,0 296,0 Z m 0,10 h 252 c 18.92247,0 34,15.077533 34,34 v 572 c 0,18.92247 -15.07753,34 -34,34 H 44 C 25.077533,650 10,634.92247 10,616 V 44 C 10,25.077533 25.077533,10 44,10 Z"></path>
+            <foreignObject width="340" height="660">
+              <body >
+                <Phone suveyData={surveyDate} />
+              </body>
+            </foreignObject>
+          </svg> */}
+          <div>
+            {/* <Phone suveyData={surveyDate} /> */}
+            {/* sdfsf */}
+            {/* <BottomAppBar /> */}
+            {/* <Calculate/> */}
+          </div>
         </Grid>
         {/* <Grid md={3}/> */}
       </Grid>
@@ -69,37 +125,6 @@ export default function Survey() {
     // </Box>
   );
 }
-
-interface IsurveyData {
-  gender: "male" | "female" | "other" | '' | string,
-  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string,
-  defaultUI: string,
-  positionDatas: IpositionData[]
-}
-
-export interface IpositionData {
-  uid: string,
-  name: string,
-  position: string,
-  enable: boolean,
-  style: UiStyle,
-}
-
-const positionDatas: IpositionData[] = [
-  { uid: '1', name: 'searchBar', position: '1', enable: true, style: 'YouTube' },
-  { uid: '2', name: 'postBar', position: '2', enable: true, style: 'YouTube' },
-  { uid: '3', name: 'Short', position: '3', enable: true, style: 'YouTube' },
-  { uid: '4', name: 'Content', position: '4', enable: true, style: 'YouTube' },
-  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: 'YouTube' },
-]
-
-const surveyDate: IsurveyData = {
-  gender: '',
-  age: '',
-  defaultUI: "",
-  positionDatas
-}
-
 
 const MainStepper = (props: React.PropsWithChildren) => {
   const { t } = useTranslation();
@@ -125,10 +150,10 @@ const MainStepper = (props: React.PropsWithChildren) => {
     switch (activeStep) {
       case 0:
         if (!surveyDate.gender) {
-          
+
         }
         break;
-    
+
       default:
         break;
     }
@@ -174,6 +199,7 @@ const MainStepper = (props: React.PropsWithChildren) => {
     setValue((event.target as HTMLInputElement).value);
     console.log(value)
   };
+
 
   const subTab = () => {
     switch (activeStep) {
