@@ -1,6 +1,7 @@
 {
   "main": {
-    "title": "logo"
+    "title": "logo",
+    "un": "Amber"
   },
   "p1": {
     "t": "gender",
@@ -89,5 +90,13 @@
     "a2": "Instagram",
     "a3": "TikTok",
     "a4": "YouTube"
+  },
+  "fb": {
+    "t1" : "What's on your mind, Amber?",
+    "p1" : {
+      "name" : "Amber",
+      "sub-title" : "28 min . Taipei .",
+      "text" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+    }
   }
 }

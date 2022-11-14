@@ -1,13 +1,19 @@
 import { FC } from "react"
+import "./Phone.css"
 
-export const PhonePadding: FC = () => {
+export interface LayoutProps {
+  children: React.ReactNode
+  color: string
+}
+
+export const PhonePadding: FC<LayoutProps> = (props: LayoutProps) => {
   return (
     <>
       <svg width="340" height="660" viewBox="0 0 340 660" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_322_1559)">
-          <path d="M10 621H330V621C330 637.016 317.016 650 301 650H39C22.9837 650 10 637.016 10 621V621Z" fill="white" />
-          <path d="M0 50C0 27.9086 17.9086 10 40 10H300C322.091 10 340 27.9086 340 50V54H0V50Z" fill="white" />
+          <path style={{ fill: props.color }} d="M10 621H330V621C330 637.016 317.016 650 301 650H39C22.9837 650 10 637.016 10 621V621Z" fill="white" />
+          <path style={{ fill: props.color }} d="M0 50C0 27.9086 17.9086 10 40 10H300C322.091 10 340 27.9086 340 50V54H0V50Z" fill="white" />
           <g clip-path="url(#clip1_322_1559)">
             <path d="M85 8H249V8C247.396 8.63337 246.327 10.1651 246.286 11.889L246.242 13.7472V13.7472C246.242 27.6939 234.936 39 220.989 39H113.011C99.0644 39 87.7584 27.6939 87.7584 13.7472V13.7472L87.714 11.889C87.6728 10.1651 86.6038 8.63337 85 8V8Z" fill="black" />
             <path opacity="0.35" d="M299.667 27.8333H316.334C317.53 27.8333 318.5 28.8033 318.5 29.9999V35.9999C318.5 37.1965 317.53 38.1666 316.334 38.1666H299.667C298.47 38.1666 297.5 37.1965 297.5 35.9999V29.9999C297.5 28.8033 298.47 27.8333 299.667 27.8333Z" stroke="black" />
@@ -27,6 +33,11 @@ export const PhonePadding: FC = () => {
             <rect width="334" height="44" fill="white" transform="translate(0 10)" />
           </clipPath>
         </defs>
+        <foreignObject width="340" height="620">
+          <body id="PhoneBody" >
+            {props.children}
+          </body>
+        </foreignObject>
       </svg>
     </>
   )

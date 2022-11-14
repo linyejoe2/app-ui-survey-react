@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem, Avatar, Card, CardActionArea, CardContent, CardMedia, Grid, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import { FC } from "react";
 // import { Search } from "react-router-dom";
@@ -10,9 +10,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import AddIcon from '@mui/icons-material/Add';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import CloseIcon from '@mui/icons-material/Close';
+import RecommendIcon from '@mui/icons-material/Recommend';
+import CollectionsIcon from '@mui/icons-material/Collections';
 import React from "react";
 import { PhonePadding } from "./PhonePadding";
+import "./Phone.css"
+import { useTranslation } from "react-i18next";
+import { Height } from "@mui/icons-material";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -59,6 +67,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Phone: FC<PostsProps> = ({ suveyData }) => {
+  const { t } = useTranslation();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -158,83 +167,236 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
     </Menu>
   );
 
+  const Content: FC = () => {
+    return (
+      <>
+        <Grid container rowSpacing={1} className="fb-content" >
+          <Grid xs={12} md={12} className="card">
+            <Grid xs={12} md={12} className="row-1">
+              <Box className="col">
+                <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
+              </Box>
+              <Box className="col title">
+                <Typography
+                  className="sub-name"
+                  noWrap
+                  component="div"
+                >
+                  {t("fb.p1.name")}
+                </Typography>
+                <Typography
+                  className="sub-title"
+                  noWrap
+                  component="div"
+                >
+                  {t("fb.p1.sub-title")}
+                </Typography>
+              </Box>
+              <Box className="col-tool">
+                <IconButton size="small" className="col-tool-moreicon" aria-label="show 4 new mails" color="inherit">
+                  <MoreHorizIcon />
+                </IconButton>
+                <IconButton size="small" className="col-tool-closeicon" aria-label="show 4 new mails" color="inherit">
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={12} className="row-1">
+              <Typography
+                className="sub-text"
+                component="div">
+                {t("fb.p1.text")}
+              </Typography>
+            </Grid>
+          </Grid>
+          <img width="320px" src="/S__162758683.jpg" alt="picture" />
+          <Grid xs={12} md={12} className="card">
+            <Grid xs={12} md={12} className="row-like">
+              <Box className="col content-like">
+                <RecommendIcon sx={{ fill: "#1976d2", verticalAlign: "middle" }} />
+                <Typography
+                  className="content-like-text"
+                  component="div">
+                  299
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+
+          <Grid sx={{ marginTop: "10px" }} xs={12} md={12} className="card">
+            <Grid xs={12} md={12} className="row-1">
+              <Box className="col">
+                {/* <Avatar alt={t("main.un")} src="/S__162758683.jpg" /> */}
+                <Skeleton variant="circular" width={40} height={40} />
+              </Box>
+              <Box className="col title">
+                <Typography
+                  className="sub-name"
+                  noWrap
+                  component="div"
+                >
+                  {t("fb.p1.name")}
+                </Typography>
+                <Typography
+                  className="sub-title"
+                  noWrap
+                  component="div"
+                >
+                  {t("fb.p1.sub-title")}
+                </Typography>
+              </Box>
+              <Box className="col-tool">
+                <IconButton size="small" className="col-tool-moreicon" aria-label="show 4 new mails" color="inherit">
+                  <MoreHorizIcon />
+                </IconButton>
+                <IconButton size="small" className="col-tool-closeicon" aria-label="show 4 new mails" color="inherit">
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={12} className="row-1">
+              <Typography
+                className="sub-text"
+                component="div">
+                {t("fb.p1.text")}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Skeleton variant="rectangular" width={340} height={150} />
+          <Grid xs={12} md={12} className="card">
+            <Grid xs={12} md={12} className="row-1">
+            </Grid>
+          </Grid>
+
+
+        </Grid>
+        {/* <Card className="fb-content-card">
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image="/S__162758683.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over 6,000
+                species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card className="fb-content-card">
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image="/S__162758683.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over 6,000
+                species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card> */}
+
+      </>)
+  }
 
   // FB
   return (
     <>
-      <PhonePadding />
-      {/* <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
+      <PhonePadding color={
+        suveyData.positionDatas[
+          suveyData.positionDatas.findIndex(val => { return val.position == '1' })
+        ].color}>
+        <AppBar position="fixed" className="fb-first-bar" >
+          <Toolbar className="CToolbar" sx={{
+            backgroundColor: suveyData.positionDatas[
+              suveyData.positionDatas.findIndex(val => { return val.position == '1' })
+            ].color,
+            m: '0',
+            p: "0",
+            px: "0"
+          }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              className="fb-tb-t"
             >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+              facebook
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: 'flex' }}>
+              <IconButton className="fb-tb-b" size="small" aria-label="show 4 new mails" color="inherit">
+                <AddIcon />
+              </IconButton>
+              <IconButton className="fb-tb-b" size="small" aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="error">
+                  <SearchIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                className="fb-tb-b"
+                size="small"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <AppBar position="static" className="fb-secend-bar">
+          <Toolbar className="CToolbar" sx={{
+            backgroundColor: suveyData.positionDatas[
+              suveyData.positionDatas.findIndex(val => { return val.position == '1' })
+            ].color,
+            m: '0',
+            p: "0",
+            px: "0"
+          }}>
+            <Box sx={{ display: 'flex' }}>
+              <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
+            </Box>
+            <Typography
+              // variant="h8"
+              noWrap
+              component="div"
+              color="black"
+              sx={{
+                marginLeft: "6px",
+                fontSize: "13px",
+                fontWeight: "500",
+                cursor: "text"
+              }}
             >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
+              {t("fb.t1")}
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: 'flex' }}>
+              <IconButton className="fb-sb-b" size="small" aria-label="show 4 new mails" color="inherit">
+                <CollectionsIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Content />
+      </PhonePadding>
       {renderMobileMenu}
-      {renderMenu} */}
+      {renderMenu}
     </>
   )
 }

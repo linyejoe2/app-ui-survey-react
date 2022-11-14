@@ -18,7 +18,7 @@ import { TableDnD } from "../../components/dnd/table";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { UiStyle } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
-import { Phone } from "../../components/phone/phone";
+import { Phone } from "../../components/phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
 import BottomAppBar from "../../components/phone/BottomAppbar";
 
@@ -35,14 +35,19 @@ export interface IpositionData {
   position: string,
   enable: boolean,
   style: UiStyle,
+  color: string
 }
 
 const positionDatas: IpositionData[] = [
-  { uid: '1', name: 'searchBar', position: '1', enable: true, style: 'YouTube' },
-  { uid: '2', name: 'postBar', position: '2', enable: true, style: 'YouTube' },
-  { uid: '3', name: 'Short', position: '3', enable: true, style: 'YouTube' },
-  { uid: '4', name: 'Content', position: '4', enable: true, style: 'YouTube' },
-  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: 'YouTube' },
+  {
+    uid: '1', name: 'searchBar', position: '1', enable: true, style: "Facebook",
+    color: "#ffffff"
+    // color: "#1976d2"
+  },
+  { uid: '2', name: 'postBar', position: '2', enable: true, style: "Facebook", color: "inherit" },
+  { uid: '3', name: 'Short', position: '3', enable: true, style: "Facebook", color: "inherit" },
+  { uid: '4', name: 'Content', position: '4', enable: true, style: "Facebook", color: "inherit" },
+  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: "Facebook", color: "inherit" },
 ]
 
 const surveyDate: IsurveyData = {
@@ -97,14 +102,8 @@ export default function Survey() {
             borderRadius: "40px",
             borderWidth: '10px',
             borderColor: "#272323"
-          }}>
-
-        </Box> */}
-        <Phone suveyData={surveyDate} />
-          {/* <svg href="/phone.svg">
-           
-          </svg> */}
-
+          }}> </Box> */}
+          <Phone suveyData={surveyDate} />
           {/* <svg className="outline" width="340" height="660" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#030a1d" d="M 44,0 C 19.71051,0 0,19.71051 0,44 v 572 c 0,24.28949 19.71051,44 44,44 h 252 c 24.28949,0 44,-19.71051 44,-44 V 44 C 340,19.71051 320.28949,0 296,0 Z m 0,10 h 252 c 18.92247,0 34,15.077533 34,34 v 572 c 0,18.92247 -15.07753,34 -34,34 H 44 C 25.077533,650 10,634.92247 10,616 V 44 C 10,25.077533 25.077533,10 44,10 Z"></path>
             <foreignObject width="340" height="660">
               <body >
