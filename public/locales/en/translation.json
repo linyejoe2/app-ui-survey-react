@@ -92,11 +92,19 @@
     "a4": "YouTube"
   },
   "fb": {
-    "t1" : "What's on your mind, Amber?",
-    "p1" : {
-      "name" : "Amber",
-      "sub-title" : "28 min . Taipei .",
-      "text" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+    "t1": "What's on your mind, Amber?",
+    "p1": {
+      "name": "Amber",
+      "sub-title": "28 min ‧ Taipei ‧",
+      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "like-text": "88 comments ‧ 4 shares",
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share"
+    },
+    "s" : {
+      "create": "Create story",
+      "s1": "Randy Lin"
     }
   }
 }

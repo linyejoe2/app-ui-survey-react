@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem, Avatar, Card, CardActionArea, CardContent, CardMedia, Grid, Skeleton } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem, Avatar, Card, CardActionArea, CardContent, CardMedia, Grid, Skeleton, BottomNavigationAction, BottomNavigation } from "@mui/material";
 import { Box } from "@mui/system";
 import { FC } from "react";
 // import { Search } from "react-router-dom";
@@ -10,17 +10,32 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import DensityMediumOutlinedIcon from '@mui/icons-material/DensityMediumOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CloseIcon from '@mui/icons-material/Close';
 import RecommendIcon from '@mui/icons-material/Recommend';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import ReplyIcon from '@mui/icons-material/Reply';
+import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
 import CollectionsIcon from '@mui/icons-material/Collections';
+import HomeIcon from '@mui/icons-material/Home';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
+import TourOutlinedIcon from '@mui/icons-material/TourOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import React from "react";
 import { PhonePadding } from "./PhonePadding";
 import "./Phone.css"
 import { useTranslation } from "react-i18next";
 import { Height } from "@mui/icons-material";
+import { FbCreateShort } from "./FbShort/FbCreateShort";
+import { FbShort1 } from "./FbShort/FbShort1";
+import { FbShort2 } from "./FbShort/FbShort2";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -68,6 +83,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const Phone: FC<PostsProps> = ({ suveyData }) => {
   const { t } = useTranslation();
+  const [fbNavVal, setFbNavVal] = React.useState(0);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -167,12 +183,33 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
     </Menu>
   );
 
+  const Short: FC = () => {
+    return (
+      <Box className="fb-short">
+        <Box className="fb-short-row">
+          <FbCreateShort />
+          <FbShort1 />
+          <FbShort2 />
+          {/* <Box className="fb-short-col fb-short-col-1">
+            <img width="320px" src="
+        https://placekitten.com/200/300" alt="picture" />
+            <Avatar alt={t("fb.s.s1")} src="/S__162758683.jpg" />
+            <Typography
+              component="div">
+              {t("fb.s.s1")}
+            </Typography>
+          </Box> */}
+        </Box >
+      </Box>
+    )
+  }
+
   const Content: FC = () => {
     return (
       <>
-        <Grid container rowSpacing={1} className="fb-content" >
-          <Grid xs={12} md={12} className="card">
-            <Grid xs={12} md={12} className="row-1">
+        <Box className="fb-content" >
+          <Box className="content-1">
+            <Box className="row-1">
               <Box className="col">
                 <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
               </Box>
@@ -200,34 +237,72 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
                   <CloseIcon />
                 </IconButton>
               </Box>
-            </Grid>
-            <Grid xs={12} md={12} className="row-1">
+            </Box>
+            <Box className="row-2">
               <Typography
                 className="sub-text"
                 component="div">
                 {t("fb.p1.text")}
               </Typography>
-            </Grid>
-          </Grid>
-          <img width="320px" src="/S__162758683.jpg" alt="picture" />
-          <Grid xs={12} md={12} className="card">
-            <Grid xs={12} md={12} className="row-like">
+            </Box>
+            <img width="320px" src="/S__162758683.jpg" alt="picture" />
+            <Box className="row-like">
               <Box className="col content-like">
                 <RecommendIcon sx={{ fill: "#1976d2", verticalAlign: "middle" }} />
                 <Typography
-                  className="content-like-text"
+                  className="content-like-count"
                   component="div">
                   299
                 </Typography>
               </Box>
-            </Grid>
-          </Grid>
-
-          <Grid sx={{ marginTop: "10px" }} xs={12} md={12} className="card">
-            <Grid xs={12} md={12} className="row-1">
+              <Box className="col content-like-right">
+                <Typography
+                  className="content-like-text"
+                  component="div">
+                  {t("fb.p1.like-text")}
+                </Typography>
+              </Box>
+            </Box>
+            <Box className="row-share">
+              <Toolbar className="row-share-bar">
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ThumbUpOutlinedIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.like")}
+                  </Typography>
+                </Box>
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ChatBubbleOutlineIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.comment")}
+                  </Typography>
+                </Box>
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ReplyOutlinedIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.share")}
+                  </Typography>
+                </Box>
+              </Toolbar>
+            </Box>
+          </Box>
+          <Box className="content-1">
+            <Box className="row-1">
               <Box className="col">
-                {/* <Avatar alt={t("main.un")} src="/S__162758683.jpg" /> */}
                 <Skeleton variant="circular" width={40} height={40} />
+                {/* <Avatar alt={t("main.un")} src="/S__162758683.jpg" /> */}
               </Box>
               <Box className="col title">
                 <Typography
@@ -253,62 +328,52 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
                   <CloseIcon />
                 </IconButton>
               </Box>
-            </Grid>
-            <Grid xs={12} md={12} className="row-1">
+            </Box>
+            <Box className="row-2">
               <Typography
                 className="sub-text"
                 component="div">
                 {t("fb.p1.text")}
               </Typography>
-            </Grid>
-          </Grid>
-          <Skeleton variant="rectangular" width={340} height={150} />
-          <Grid xs={12} md={12} className="card">
-            <Grid xs={12} md={12} className="row-1">
-            </Grid>
-          </Grid>
-
-
-        </Grid>
-        {/* <Card className="fb-content-card">
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/S__162758683.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-        <Card className="fb-content-card">
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/S__162758683.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card> */}
-
+            </Box>
+            {/* <img width="320px" src="/S__162758683.jpg" alt="picture" /> */}
+            <Skeleton variant="rectangular" width={340} height={150} />
+            <Box className="row-share">
+              <Toolbar className="row-share-bar">
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ThumbUpOutlinedIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.like")}
+                  </Typography>
+                </Box>
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ChatBubbleOutlineIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.comment")}
+                  </Typography>
+                </Box>
+                <Box className="row-share-col">
+                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
+                    <ReplyOutlinedIcon />
+                  </IconButton>
+                  <Typography
+                    className="share-text"
+                    component="div">
+                    {t("fb.p1.share")}
+                  </Typography>
+                </Box>
+              </Toolbar>
+            </Box>
+          </Box>
+        </Box>
       </>)
   }
 
@@ -393,7 +458,24 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
             </Box>
           </Toolbar>
         </AppBar>
+        <Short />
         <Content />
+        <AppBar position="fixed" className="fb-last-bar">
+          <BottomNavigation
+            showLabels
+            value={fbNavVal}
+            onChange={(event, newValue) => {
+              setFbNavVal(newValue);
+            }}
+          >
+            <BottomNavigationAction className="nav-bar-col nav-bar-first-col" icon={<HomeIcon />} />
+            <BottomNavigationAction className="nav-bar-col" icon={<OndemandVideoOutlinedIcon />} />
+            <BottomNavigationAction className="nav-bar-col" icon={<TourOutlinedIcon />} />
+            <BottomNavigationAction className="nav-bar-col" icon={<AccountCircleOutlinedIcon />} />
+            <BottomNavigationAction className="nav-bar-col" icon={<NotificationsNoneOutlinedIcon />} />
+            <BottomNavigationAction className="nav-bar-col" icon={<MoreHorizIcon />} />
+          </BottomNavigation>
+        </AppBar>
       </PhonePadding>
       {renderMobileMenu}
       {renderMenu}

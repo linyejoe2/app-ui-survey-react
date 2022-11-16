@@ -15,7 +15,3 @@ body {
 .MuiFormGroup-root {
   margin-left: 25px;
 }
-
-.center-child .MuiFormControlLabel-root {
-  /* display: inline-block; */
-}
