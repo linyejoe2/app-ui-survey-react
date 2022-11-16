@@ -102,9 +102,17 @@
       "comment": "Comment",
       "share": "Share"
     },
-    "s" : {
+    "s": {
       "create": "Create story",
       "s1": "Randy Lin"
+    }
+  },
+  "yt": {
+    "p1": {
+      "visit": "Visit Website",
+      "title": "That's right, Come join us at NTPU!",
+      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "ads": "Ad ‧ LAMDO"
     }
   }
 }

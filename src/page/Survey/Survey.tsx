@@ -20,7 +20,6 @@ import { UiStyle } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
 import { Phone } from "../../components/phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
-import BottomAppBar from "../../components/phone/BottomAppbar";
 
 export interface IsurveyData {
   gender: "male" | "female" | "other" | '' | string,

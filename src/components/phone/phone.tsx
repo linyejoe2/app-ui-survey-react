@@ -37,6 +37,7 @@ import { FbCreateShort } from "./Facebook/Short/FbCreateShort";
 import { FbShort1 } from "./Facebook/Short/FbShort1";
 import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
+import { YTContent, YTContentNavigationBar, YTFirstRow, YTSearchBar, YTSecondRow } from "./YouTube/YouTube";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -112,6 +113,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
 
   const FirstRow: FC = () => {
     return (
+      <YTFirstRow>
+        <YTSearchBar />
+      </YTFirstRow>
+    )
+    return (
       <FbFirstRow >
         <FbSearchBar />
       </FbFirstRow>
@@ -119,6 +125,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
   }
 
   const SecondRow: FC = () => {
+    return (
+      <YTSecondRow>
+        <YTContentNavigationBar />
+      </YTSecondRow>
+    )
     return (
       <FbSecondRow>
         <FbPostBar />
@@ -132,6 +143,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
         <FbShortBar />
       </FbThirdRow>
     )
+  }
+
+  const Content: FC = () => {
+    return <YTContent />
+    return <FbContent />
   }
 
   const FourthRow: FC = () => {
@@ -151,8 +167,8 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
         ].color}>
         <FirstRow />
         <SecondRow />
+        <Content />
         <ThirdRow />
-        <FbContent />
         <FourthRow />
       </PhonePadding>
     </>
