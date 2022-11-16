@@ -33,9 +33,10 @@ import { PhonePadding } from "./PhonePadding";
 import "./Phone.css"
 import { useTranslation } from "react-i18next";
 import { Height } from "@mui/icons-material";
-import { FbCreateShort } from "./FbShort/FbCreateShort";
-import { FbShort1 } from "./FbShort/FbShort1";
-import { FbShort2 } from "./FbShort/FbShort2";
+import { FbCreateShort } from "./Facebook/Short/FbCreateShort";
+import { FbShort1 } from "./Facebook/Short/FbShort1";
+import { FbShort2 } from "./Facebook/Short/FbShort2";
+import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -109,272 +110,36 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
-
-  const Short: FC = () => {
+  const FirstRow: FC = () => {
     return (
-      <Box className="fb-short">
-        <Box className="fb-short-row">
-          <FbCreateShort />
-          <FbShort1 />
-          <FbShort2 />
-          {/* <Box className="fb-short-col fb-short-col-1">
-            <img width="320px" src="
-        https://placekitten.com/200/300" alt="picture" />
-            <Avatar alt={t("fb.s.s1")} src="/S__162758683.jpg" />
-            <Typography
-              component="div">
-              {t("fb.s.s1")}
-            </Typography>
-          </Box> */}
-        </Box >
-      </Box>
+      <FbFirstRow >
+        <FbSearchBar />
+      </FbFirstRow>
     )
   }
 
-  const Content: FC = () => {
+  const SecondRow: FC = () => {
     return (
-      <>
-        <Box className="fb-content" >
-          <Box className="content-1">
-            <Box className="row-1">
-              <Box className="col">
-                <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
-              </Box>
-              <Box className="col title">
-                <Typography
-                  className="sub-name"
-                  noWrap
-                  component="div"
-                >
-                  {t("fb.p1.name")}
-                </Typography>
-                <Typography
-                  className="sub-title"
-                  noWrap
-                  component="div"
-                >
-                  {t("fb.p1.sub-title")}
-                </Typography>
-              </Box>
-              <Box className="col-tool">
-                <IconButton size="small" className="col-tool-moreicon" aria-label="show 4 new mails" color="inherit">
-                  <MoreHorizIcon />
-                </IconButton>
-                <IconButton size="small" className="col-tool-closeicon" aria-label="show 4 new mails" color="inherit">
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-            </Box>
-            <Box className="row-2">
-              <Typography
-                className="sub-text"
-                component="div">
-                {t("fb.p1.text")}
-              </Typography>
-            </Box>
-            <img width="320px" src="/S__162758683.jpg" alt="picture" />
-            <Box className="row-like">
-              <Box className="col content-like">
-                <RecommendIcon sx={{ fill: "#1976d2", verticalAlign: "middle" }} />
-                <Typography
-                  className="content-like-count"
-                  component="div">
-                  299
-                </Typography>
-              </Box>
-              <Box className="col content-like-right">
-                <Typography
-                  className="content-like-text"
-                  component="div">
-                  {t("fb.p1.like-text")}
-                </Typography>
-              </Box>
-            </Box>
-            <Box className="row-share">
-              <Toolbar className="row-share-bar">
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ThumbUpOutlinedIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.like")}
-                  </Typography>
-                </Box>
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ChatBubbleOutlineIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.comment")}
-                  </Typography>
-                </Box>
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ReplyOutlinedIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.share")}
-                  </Typography>
-                </Box>
-              </Toolbar>
-            </Box>
-          </Box>
-          <Box className="content-1">
-            <Box className="row-1">
-              <Box className="col">
-                <Skeleton variant="circular" width={40} height={40} />
-                {/* <Avatar alt={t("main.un")} src="/S__162758683.jpg" /> */}
-              </Box>
-              <Box className="col title">
-                <Typography
-                  className="sub-name"
-                  noWrap
-                  component="div"
-                >
-                  {t("fb.p1.name")}
-                </Typography>
-                <Typography
-                  className="sub-title"
-                  noWrap
-                  component="div"
-                >
-                  {t("fb.p1.sub-title")}
-                </Typography>
-              </Box>
-              <Box className="col-tool">
-                <IconButton size="small" className="col-tool-moreicon" aria-label="show 4 new mails" color="inherit">
-                  <MoreHorizIcon />
-                </IconButton>
-                <IconButton size="small" className="col-tool-closeicon" aria-label="show 4 new mails" color="inherit">
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-            </Box>
-            <Box className="row-2">
-              <Typography
-                className="sub-text"
-                component="div">
-                {t("fb.p1.text")}
-              </Typography>
-            </Box>
-            {/* <img width="320px" src="/S__162758683.jpg" alt="picture" /> */}
-            <Skeleton variant="rectangular" width={340} height={150} />
-            <Box className="row-share">
-              <Toolbar className="row-share-bar">
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ThumbUpOutlinedIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.like")}
-                  </Typography>
-                </Box>
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ChatBubbleOutlineIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.comment")}
-                  </Typography>
-                </Box>
-                <Box className="row-share-col">
-                  <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-                    <ReplyOutlinedIcon />
-                  </IconButton>
-                  <Typography
-                    className="share-text"
-                    component="div">
-                    {t("fb.p1.share")}
-                  </Typography>
-                </Box>
-              </Toolbar>
-            </Box>
-          </Box>
-        </Box>
-      </>)
+      <FbSecondRow>
+        <FbPostBar />
+      </FbSecondRow>
+    )
+  }
+
+  const ThirdRow: FC = () => {
+    return (
+      <FbThirdRow>
+        <FbShortBar />
+      </FbThirdRow>
+    )
+  }
+
+  const FourthRow: FC = () => {
+    return (
+      <FbFourthRow>
+        <FbNavigationBar />
+      </FbFourthRow>
+    )
   }
 
   // FB
@@ -384,101 +149,12 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
         suveyData.positionDatas[
           suveyData.positionDatas.findIndex(val => { return val.position == '1' })
         ].color}>
-        <AppBar position="fixed" className="fb-first-bar" >
-          <Toolbar className="CToolbar" sx={{
-            backgroundColor: suveyData.positionDatas[
-              suveyData.positionDatas.findIndex(val => { return val.position == '1' })
-            ].color,
-            m: '0',
-            p: "0",
-            px: "0"
-          }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              className="fb-tb-t"
-            >
-              facebook
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: 'flex' }}>
-              <IconButton className="fb-tb-b" size="small" aria-label="show 4 new mails" color="inherit">
-                <AddIcon />
-              </IconButton>
-              <IconButton className="fb-tb-b" size="small" aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="error">
-                  <SearchIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                className="fb-tb-b"
-                size="small"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </Box>
-          </Toolbar>
-        </AppBar>
-        <AppBar position="static" className="fb-secend-bar">
-          <Toolbar className="CToolbar" sx={{
-            backgroundColor: suveyData.positionDatas[
-              suveyData.positionDatas.findIndex(val => { return val.position == '1' })
-            ].color,
-            m: '0',
-            p: "0",
-            px: "0"
-          }}>
-            <Box sx={{ display: 'flex' }}>
-              <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
-            </Box>
-            <Typography
-              // variant="h8"
-              noWrap
-              component="div"
-              color="black"
-              sx={{
-                marginLeft: "6px",
-                fontSize: "13px",
-                fontWeight: "500",
-                cursor: "text"
-              }}
-            >
-              {t("fb.t1")}
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: 'flex' }}>
-              <IconButton className="fb-sb-b" size="small" aria-label="show 4 new mails" color="inherit">
-                <CollectionsIcon />
-              </IconButton>
-            </Box>
-          </Toolbar>
-        </AppBar>
-        <Short />
-        <Content />
-        <AppBar position="fixed" className="fb-last-bar">
-          <BottomNavigation
-            showLabels
-            value={fbNavVal}
-            onChange={(event, newValue) => {
-              setFbNavVal(newValue);
-            }}
-          >
-            <BottomNavigationAction className="nav-bar-col nav-bar-first-col" icon={<HomeIcon />} />
-            <BottomNavigationAction className="nav-bar-col" icon={<OndemandVideoOutlinedIcon />} />
-            <BottomNavigationAction className="nav-bar-col" icon={<TourOutlinedIcon />} />
-            <BottomNavigationAction className="nav-bar-col" icon={<AccountCircleOutlinedIcon />} />
-            <BottomNavigationAction className="nav-bar-col" icon={<NotificationsNoneOutlinedIcon />} />
-            <BottomNavigationAction className="nav-bar-col" icon={<MoreHorizIcon />} />
-          </BottomNavigation>
-        </AppBar>
+        <FirstRow />
+        <SecondRow />
+        <ThirdRow />
+        <FbContent />
+        <FourthRow />
       </PhonePadding>
-      {renderMobileMenu}
-      {renderMenu}
     </>
   )
 }
