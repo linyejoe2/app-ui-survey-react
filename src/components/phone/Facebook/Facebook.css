@@ -251,7 +251,7 @@
   min-width: 50px !important;
 }
 
-.Mui-selected ::before {
+.fb-nav-bar .Mui-selected ::before {
   transform: scaleY(.5);
   transform-origin: 0 0;
   margin: 0 5px;
@@ -267,10 +267,10 @@
   z-index: 0;
 }
 
-.Mui-selected svg {
+.fb-nav-bar .Mui-selected svg {
   fill: #1776ef
 }
 
-.Mui-selected span {
+.fb-nav-bar .Mui-selected span {
   color: #1776ef
 }

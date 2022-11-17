@@ -111,8 +111,19 @@
     "p1": {
       "visit": "Visit Website",
       "title": "That's right, Come join us at NTPU!",
-      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "text": "Lorem ipsum dolor, sit amet consectetur.",
       "ads": "Ad ‧ LAMDO"
+    },
+    "p2": {
+      "title": "10 thing you NEED to know BERORE getting a cat/kitten!",
+      "user": "Amber ‧ 5.5M views ‧ 11, 2022",
+      "text": "I’m getting a kitten on Wednesday, for the first time ever. This has been the best and..."
+    },
+    "n": {
+      "home": "Home",
+      "shorts": "Shorts",
+      "subscription": "Subscription",
+      "library": "Library"
     }
   }
 }

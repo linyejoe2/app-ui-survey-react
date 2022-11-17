@@ -37,7 +37,7 @@ import { FbCreateShort } from "./Facebook/Short/FbCreateShort";
 import { FbShort1 } from "./Facebook/Short/FbShort1";
 import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
-import { YTContent, YTContentNavigationBar, YTFirstRow, YTSearchBar, YTSecondRow } from "./YouTube/YouTube";
+import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -139,6 +139,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
 
   const ThirdRow: FC = () => {
     return (
+      <YTThirdRow>
+        <YTShortBar />
+      </YTThirdRow>
+    )
+    return (
       <FbThirdRow>
         <FbShortBar />
       </FbThirdRow>
@@ -151,6 +156,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
   }
 
   const FourthRow: FC = () => {
+    return (
+      <YTFourthRow>
+        <YTNavigationBar />
+      </YTFourthRow>
+    )
     return (
       <FbFourthRow>
         <FbNavigationBar />

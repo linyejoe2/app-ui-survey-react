@@ -349,11 +349,12 @@ export const FbNavigationBar: FC = () => {
       <BottomNavigation
         showLabels
         value={fbNavVal}
+        className="fb-nav-bar"
         onChange={(event, newValue) => {
           setFbNavVal(newValue);
         }}
       >
-        <BottomNavigationAction className="nav-bar-col nav-bar-first-col" icon={<HomeIcon />} />
+        <BottomNavigationAction className="nav-bar-col" icon={<HomeIcon />} />
         <BottomNavigationAction className="nav-bar-col" icon={<OndemandVideoOutlinedIcon />} />
         <BottomNavigationAction className="nav-bar-col" icon={<TourOutlinedIcon />} />
         <BottomNavigationAction className="nav-bar-col" icon={<AccountCircleOutlinedIcon />} />

@@ -1,7 +1,9 @@
 #PhoneBody {
+  /* margin: 105px 10px 0 10px; */
   margin: 145px 10px 0 10px;
   background: #e4e6eb;
-  height: 475px;
+  /* height: 475px; */
+  height: 450px;
   overflow: auto;
   overflow-x: hidden;
 }
