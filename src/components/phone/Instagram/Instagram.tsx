@@ -41,6 +41,7 @@ import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import MovieIcon from '@mui/icons-material/Movie';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 
 import { AppBar, Box, Toolbar, IconButton, Badge, Avatar, Typography, BottomNavigation, BottomNavigationAction } from '@mui/material';
@@ -100,90 +101,245 @@ export const IGContent: FC = () => {
   const { t } = useTranslation()
   return (
     <>
-      <Box className="yt-content">
-        <Box className="yt-content-row1">
-          <Box className="yt-conten2-row-avatar">
-            <Avatar className="yt-conten2-avatar" alt={t("main.un")} src="/amberAvatar.jpg" />
+      <Box className="ig-content">
+        <Box className="ig-content-title">
+          <Box className="">
+            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
           </Box>
           <Typography
             noWrap
-            className="yt-content-row1-text"
+            className="ig-content-title-name"
             component="div">
-            {t("yt.p1.visit")}
+            {t("ig.p1.name")}
           </Typography>
-          <Box className="yt-content-row1-icon">
-            <OpenInNewOutlinedIcon />
+          <Box className="ig-content-title-icon">
+            <MoreIcon />
           </Box>
         </Box>
-        <Box className="yt-content-img">
+        <Box className="ig-content-img">
           <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
         </Box>
-        <Box className="yt-content-row1">
-          <Box className="yt-content-row1-text">
-            <FavoriteBorderOutlinedIcon />
-            <ModeCommentOutlinedIcon />
-            <SendOutlinedIcon />
+        <Box className="ig-content-btn-group">
+          <Box className='ig-content-btn-left'>
+            <Box className="ig-content-btn">
+              <FavoriteBorderOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <ModeCommentOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <SendOutlinedIcon />
+            </Box>
           </Box>
-          <Box className="yt-content-row1-text">
+          <Box className="ig-content-dot">
             <FbContentDot />
           </Box>
-          <Box className="yt-content-row1-icon">
-            <OpenInNewOutlinedIcon />
+          <Box className="ig-content-btn-right">
+            <BookmarkBorderOutlinedIcon />
           </Box>
         </Box>
-        <Box className="yt-content-row">
-          <Box className="yt-content-row2">
-            <Typography
-              noWrap
-              className="yt-content-row2-text"
-              component="div">
-              {t("ig.p1.likes")}
-            </Typography>
-            <Box className="yt-content-row2-icon">
-              <MoreIcon />
-            </Box>
-          </Box >
-          <Box className="yt-content-row3">
-            <Typography component="div" className="yt-content-row3-text">
-              {t("ig.p1.name")}
-            </Typography>
-            <Typography component="div" className="yt-content-row3-text">
-              {t("ig.p1.text")}
-            </Typography></Box>
-          <Box className="yt-content-row4">
-            <Typography
-              noWrap
-              className="yt-content-row4-text"
-              component="div">
-              {t("ig.p1.time")}
-            </Typography></Box>
-        </Box>
+        <Box className="ig-content-like">
+          <Typography
+            noWrap
+            className="ig-content-like-text"
+            component="div">
+            {t("ig.p1.likes")}
+          </Typography>
+        </Box >
+        <Box className="ig-content-text">
+          <Typography component="div" className="ig-content-text-name">
+            {t("ig.p1.name") + " "}
+          </Typography>
+          <Typography component="div" className="ig-content-text-text">
+            {t("ig.p1.text")}
+          </Typography></Box>
+        <Box className="ig-content-time">
+          <Typography
+            noWrap
+            className="ig-content-time-text"
+            component="div">
+            {t("ig.p1.time")}
+          </Typography></Box>
       </Box>
-
-      <Box className="yt-content">
-        <Box className="yt-content-img">
-          <img width="320px" src="https://placekitten.com/640/360" alt="picture" />
+      <Box className="ig-content">
+        <Box className="ig-content-title">
+          <Box className="">
+            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+          </Box>
+          <Typography
+            noWrap
+            className="ig-content-title-name"
+            component="div">
+            {t("ig.p1.name")}
+          </Typography>
+          <Box className="ig-content-title-icon">
+            <MoreIcon />
+          </Box>
         </Box>
-        <Box className="yt-conten2-row-avatar">
-          <Avatar className="yt-conten2-avatar" alt={t("main.un")} src="/amberAvatar.jpg" />
+        <Box className="ig-content-img">
+          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
         </Box>
-        <Box className="yt-content2-row">
-          <Box className="yt-content2-row1">
-            <Typography
-              // noWrap
-              className="yt-content2-row1-text"
-              component="div">
-              {t("yt.p2.title")}
-            </Typography>
-            <Box className="yt-content2-row1-icon">
-              <MoreIcon />
+        <Box className="ig-content-btn-group">
+          <Box className='ig-content-btn-left'>
+            <Box className="ig-content-btn">
+              <FavoriteBorderOutlinedIcon />
             </Box>
-          </Box >
-          <Box className="yt-content2-row2">
-            <Typography component="div" className="yt-content2-row2-text">
-              {t("yt.p2.user")}
-            </Typography></Box>
+            <Box className="ig-content-btn">
+              <ModeCommentOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <SendOutlinedIcon />
+            </Box>
+          </Box>
+          <Box className="ig-content-dot">
+            <FbContentDot />
+          </Box>
+          <Box className="ig-content-btn-right">
+            <BookmarkBorderOutlinedIcon />
+          </Box>
         </Box>
+        <Box className="ig-content-like">
+          <Typography
+            noWrap
+            className="ig-content-like-text"
+            component="div">
+            {t("ig.p1.likes")}
+          </Typography>
+        </Box >
+        <Box className="ig-content-text">
+          <Typography component="div" className="ig-content-text-name">
+            {t("ig.p1.name") + " "}
+          </Typography>
+          <Typography component="div" className="ig-content-text-text">
+            {t("ig.p1.text")}
+          </Typography></Box>
+        <Box className="ig-content-time">
+          <Typography
+            noWrap
+            className="ig-content-time-text"
+            component="div">
+            {t("ig.p1.time")}
+          </Typography></Box>
+      </Box>
+      <Box className="ig-content">
+        <Box className="ig-content-title">
+          <Box className="">
+            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+          </Box>
+          <Typography
+            noWrap
+            className="ig-content-title-name"
+            component="div">
+            {t("ig.p1.name")}
+          </Typography>
+          <Box className="ig-content-title-icon">
+            <MoreIcon />
+          </Box>
+        </Box>
+        <Box className="ig-content-img">
+          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
+        </Box>
+        <Box className="ig-content-btn-group">
+          <Box className='ig-content-btn-left'>
+            <Box className="ig-content-btn">
+              <FavoriteBorderOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <ModeCommentOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <SendOutlinedIcon />
+            </Box>
+          </Box>
+          <Box className="ig-content-dot">
+            <FbContentDot />
+          </Box>
+          <Box className="ig-content-btn-right">
+            <BookmarkBorderOutlinedIcon />
+          </Box>
+        </Box>
+        <Box className="ig-content-like">
+          <Typography
+            noWrap
+            className="ig-content-like-text"
+            component="div">
+            {t("ig.p1.likes")}
+          </Typography>
+        </Box >
+        <Box className="ig-content-text">
+          <Typography component="div" className="ig-content-text-name">
+            {t("ig.p1.name") + " "}
+          </Typography>
+          <Typography component="div" className="ig-content-text-text">
+            {t("ig.p1.text")}
+          </Typography></Box>
+        <Box className="ig-content-time">
+          <Typography
+            noWrap
+            className="ig-content-time-text"
+            component="div">
+            {t("ig.p1.time")}
+          </Typography></Box>
+      </Box>
+      <Box className="ig-content">
+        <Box className="ig-content-title">
+          <Box className="">
+            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+          </Box>
+          <Typography
+            noWrap
+            className="ig-content-title-name"
+            component="div">
+            {t("ig.p1.name")}
+          </Typography>
+          <Box className="ig-content-title-icon">
+            <MoreIcon />
+          </Box>
+        </Box>
+        <Box className="ig-content-img">
+          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
+        </Box>
+        <Box className="ig-content-btn-group">
+          <Box className='ig-content-btn-left'>
+            <Box className="ig-content-btn">
+              <FavoriteBorderOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <ModeCommentOutlinedIcon />
+            </Box>
+            <Box className="ig-content-btn">
+              <SendOutlinedIcon />
+            </Box>
+          </Box>
+          <Box className="ig-content-dot">
+            <FbContentDot />
+          </Box>
+          <Box className="ig-content-btn-right">
+            <BookmarkBorderOutlinedIcon />
+          </Box>
+        </Box>
+        <Box className="ig-content-like">
+          <Typography
+            noWrap
+            className="ig-content-like-text"
+            component="div">
+            {t("ig.p1.likes")}
+          </Typography>
+        </Box >
+        <Box className="ig-content-text">
+          <Typography component="div" className="ig-content-text-name">
+            {t("ig.p1.name") + " "}
+          </Typography>
+          <Typography component="div" className="ig-content-text-text">
+            {t("ig.p1.text")}
+          </Typography></Box>
+        <Box className="ig-content-time">
+          <Typography
+            noWrap
+            className="ig-content-time-text"
+            component="div">
+            {t("ig.p1.time")}
+          </Typography></Box>
       </Box>
     </>
   )
@@ -207,7 +363,10 @@ export const IGNavigationBar: FC = () => {
         <BottomNavigationAction className="ig-nav-bar-button" icon={fbNavVal == 1 ? <SearchIcon /> : <SearchIcon />} />
         <BottomNavigationAction className="ig-nav-bar-button" icon={fbNavVal == 2 ? <MovieIcon /> : <MovieOutlinedIcon />} />
         <BottomNavigationAction className="ig-nav-bar-button" icon={fbNavVal == 3 ? <ShoppingBagIcon /> : <ShoppingBagOutlinedIcon />} />
-        <BottomNavigationAction className="ig-nav-bar-button" icon={fbNavVal == 4 ? <SubscriptionsIcon /> : <SubscriptionsOutlinedIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={
+          // <SubscriptionsOutlinedIcon />
+          <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+        } />
       </BottomNavigation>
     </>
   )
