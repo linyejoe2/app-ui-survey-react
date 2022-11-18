@@ -129,7 +129,7 @@ export const FbPostBar: FC = () => {
         px: "0"
       }}>
         <Box sx={{ display: 'flex' }}>
-          <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
+          <Avatar alt={t("main.un")} src="/amberAvatar.jpg" />
         </Box>
         <Typography
           // variant="h8"
@@ -174,7 +174,7 @@ export const FbContent: FC = () => {
         <Box className="content-1">
           <Box className="row-1">
             <Box className="col">
-              <Avatar alt={t("main.un")} src="/S__162758683.jpg" />
+              <Avatar alt={t("main.un")} src="/amberAvatar.jpg" />
             </Box>
             <Box className="col title">
               <Typography
@@ -208,7 +208,7 @@ export const FbContent: FC = () => {
               {t("fb.p1.text")}
             </Typography>
           </Box>
-          <img width="320px" src="/S__162758683.jpg" alt="picture" />
+          <img width="320px" src="/amberAvatar.jpg" alt="picture" />
           <Box className="row-like">
             <Box className="col content-like">
               <RecommendIcon sx={{ fill: "#1976d2", verticalAlign: "middle" }} />
@@ -265,7 +265,7 @@ export const FbContent: FC = () => {
           <Box className="row-1">
             <Box className="col">
               <Skeleton variant="circular" width={40} height={40} />
-              {/* <Avatar alt={t("main.un")} src="/S__162758683.jpg" /> */}
+              {/* <Avatar alt={t("main.un")} src="/amberAvatar.jpg" /> */}
             </Box>
             <Box className="col title">
               <Typography
@@ -299,7 +299,7 @@ export const FbContent: FC = () => {
               <Skeleton />
             </Typography>
           </Box>
-          {/* <img width="320px" src="/S__162758683.jpg" alt="picture" /> */}
+          {/* <img width="320px" src="/amberAvatar.jpg" alt="picture" /> */}
           <Skeleton variant="rectangular" width={340} height={150} />
           <Box className="row-share">
             <Toolbar className="row-share-bar">

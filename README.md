@@ -51,3 +51,25 @@
 ### YTContent
 
 ### YTNavigationBar
+
+# Instagram
+
+## 按照畫面
+
+### IGFirstRow flex
+
+### IGSecondRow static
+
+### IGContent static
+
+### IGThirdRow flex
+
+## 按照內容
+
+### IGTitleBar title notification message
+
+### IGShortBar
+
+### IGContent
+
+### IGNavigationBar

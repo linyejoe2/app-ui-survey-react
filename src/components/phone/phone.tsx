@@ -38,6 +38,7 @@ import { FbShort1 } from "./Facebook/Short/FbShort1";
 import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
+import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -113,6 +114,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
 
   const FirstRow: FC = () => {
     return (
+      <IGFirstRow>
+        <IGTitleBar />
+      </IGFirstRow>
+    )
+    return (
       <YTFirstRow>
         <YTSearchBar />
       </YTFirstRow>
@@ -125,6 +131,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
   }
 
   const SecondRow: FC = () => {
+    return (
+      <IGSecondRow>
+        <IGShortBar />
+      </IGSecondRow>
+    )
     return (
       <YTSecondRow>
         <YTContentNavigationBar />
@@ -139,6 +150,11 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
 
   const ThirdRow: FC = () => {
     return (
+      <IGThirdRow>
+        <IGNavigationBar />
+      </IGThirdRow>
+    )
+    return (
       <YTThirdRow>
         <YTShortBar />
       </YTThirdRow>
@@ -151,11 +167,13 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
   }
 
   const Content: FC = () => {
-    return <YTContent />
+    return <IGContent />
     return <FbContent />
+    return <YTContent />
   }
 
   const FourthRow: FC = () => {
+    return (<></>)
     return (
       <YTFourthRow>
         <YTNavigationBar />

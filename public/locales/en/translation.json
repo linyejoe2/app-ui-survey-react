@@ -125,5 +125,13 @@
       "subscription": "Subscription",
       "library": "Library"
     }
+  },
+  "ig": {
+    "p1": {
+      "name": "Amber",
+      "likes": "999 Likes",
+      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "time": "18 minutes age ‧ See translation"
+    }
   }
 }

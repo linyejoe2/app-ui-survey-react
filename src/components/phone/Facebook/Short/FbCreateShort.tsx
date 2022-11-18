@@ -17,7 +17,7 @@ export const FbCreateShort: FC = () => {
           <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
             <use xlinkHref="#image0_343_1576" transform="translate(0 -0.0797101) scale(0.000462963 0.000402576)" />
           </pattern>
-          <image id="image0_343_1576" width="2160" height="2880" xlinkHref="/S__162758683.jpg" />
+          <image id="image0_343_1576" width="2160" height="2880" xlinkHref="/amberAvatar.jpg" />
         </defs>
         <foreignObject width="100" height="175">
           <Typography

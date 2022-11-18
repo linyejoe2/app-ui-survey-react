@@ -164,7 +164,7 @@ export const YTContent: FC = () => {
           <img width="320px" src="https://placekitten.com/640/360" alt="picture" />
         </Box>
         <Box className="yt-conten2-row-avatar">
-          <Avatar className="yt-conten2-avatar" alt={t("main.un")} src="/S__162758683.jpg" />
+          <Avatar className="yt-conten2-avatar" alt={t("main.un")} src="/amberAvatar.jpg" />
         </Box>
         <Box className="yt-content2-row">
           <Box className="yt-content2-row1">
