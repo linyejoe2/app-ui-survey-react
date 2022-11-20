@@ -2,7 +2,6 @@ import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem, Avatar,
 import { Box } from "@mui/system";
 import { FC } from "react";
 // import { Search } from "react-router-dom";
-import { IsurveyData } from "../../page/Survey/Survey"
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -39,6 +38,7 @@ import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
 import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
+import { IsurveyData, ISurveyProps } from "../../interface";
 
 interface PostsProps {
   suveyData: IsurveyData
@@ -84,7 +84,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const Phone: FC<PostsProps> = ({ suveyData }) => {
+export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   const { t } = useTranslation();
   const [fbNavVal, setFbNavVal] = React.useState(0);
 
@@ -189,10 +189,7 @@ export const Phone: FC<PostsProps> = ({ suveyData }) => {
   // FB
   return (
     <>
-      <PhonePadding color={
-        suveyData.positionDatas[
-          suveyData.positionDatas.findIndex(val => { return val.position == '1' })
-        ].color}>
+      <PhonePadding color="#ffffff">
         <FirstRow />
         <SecondRow />
         <Content />

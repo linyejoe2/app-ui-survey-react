@@ -13,29 +13,14 @@ import Card from '@mui/material/Card';
 import Skeleton from "@mui/material/Skeleton";
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { Calculate } from "@mui/icons-material";
+import { Calculate, Sd } from "@mui/icons-material";
 import { TableDnD } from "../../components/dnd/table";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { UiStyle } from "../../interface";
+import { IpositionData, IsurveyData, ISurveyProps, UiStyle } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
-import { Phone } from "../../components/phone/Phone";
+import { Phone } from "../../components/Phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
-
-export interface IsurveyData {
-  gender: "male" | "female" | "other" | '' | string,
-  age: '20' | '30' | '40' | '50' | '60' | '70' | '80' | '' | string,
-  defaultUI: string,
-  positionDatas: IpositionData[]
-}
-
-export interface IpositionData {
-  uid: string,
-  name: string,
-  position: string,
-  enable: boolean,
-  style: UiStyle,
-  color: string
-}
+import { useState } from "react";
 
 const positionDatas: IpositionData[] = [
   {
@@ -57,6 +42,13 @@ const surveyDate: IsurveyData = {
 }
 
 export default function Survey() {
+  const [state, changeState] = useState(surveyDate);
+  const changeSurveyData = (updateData: IsurveyData) => {
+    changeState(state => ({
+      ...state,
+      ...updateData
+    }))
+  }
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -67,64 +59,44 @@ export default function Survey() {
   }));
 
   return (
-    // <Box sx={{ flexGrow: 1 }}>
     <Box sx={{
       flexGrow: 1, m: '15px',
-      // maxWidth: '1200px',
-      // display: "flex",
-      // justifyContent: "center"
     }}>
       <Grid container rowSpacing={1}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
-        {/* <Grid md={1}/> */}
         <Grid xs={12} sm={6} md={9}>
           {/* <Skeleton variant="rectangular" height='40px' /> */}
           <Paper elevation={5}
             sx={{
-              // padding: theme.spacing(1),
               textAlign: 'center',
             }}>
-            <MainStepper></MainStepper>
+            {/* <Button variant="outlined" onClick={() => {
+              let temp = state
+              temp.defaultUI = "Facebook"
+              changeSurveyData(temp)
+              console.log("in")
+            }}> change </Button> */}
+            <MainStepper state={state} changeSurveyData={changeSurveyData}></MainStepper>
           </Paper>
-          {/* <Item>
-            <MainStepper></MainStepper>
-          </Item> */}
         </Grid>
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
-          {/* <Skeleton variant="rounded" height='660px' width="340px" /> */}
-          {/* <Box sx={{
-            height: "660px",
-            width: "340px",
-            backgroundColor: "darkblue",
-            borderStyle: "solid",
-            borderRadius: "40px",
-            borderWidth: '10px',
-            borderColor: "#272323"
-          }}> </Box> */}
-          <Phone suveyData={surveyDate} />
-          {/* <svg className="outline" width="340" height="660" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#030a1d" d="M 44,0 C 19.71051,0 0,19.71051 0,44 v 572 c 0,24.28949 19.71051,44 44,44 h 252 c 24.28949,0 44,-19.71051 44,-44 V 44 C 340,19.71051 320.28949,0 296,0 Z m 0,10 h 252 c 18.92247,0 34,15.077533 34,34 v 572 c 0,18.92247 -15.07753,34 -34,34 H 44 C 25.077533,650 10,634.92247 10,616 V 44 C 10,25.077533 25.077533,10 44,10 Z"></path>
-            <foreignObject width="340" height="660">
-              <body >
-                <Phone suveyData={surveyDate} />
-              </body>
-            </foreignObject>
-          </svg> */}
-          <div>
-            {/* <Phone suveyData={surveyDate} /> */}
-            {/* sdfsf */}
-            {/* <BottomAppBar /> */}
-            {/* <Calculate/> */}
-          </div>
+          {state.defaultUI ?
+            <Phone state={state} changeSurveyData={changeSurveyData} /> :
+            <Skeleton variant="rounded" height='660px' width="340px" />
+          }
         </Grid>
-        {/* <Grid md={3}/> */}
+        <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
+          {JSON.stringify(state)
+          }
+        </Grid>
       </Grid>
     </Box>
-    // </Box>
   );
 }
 
-const MainStepper = (props: React.PropsWithChildren) => {
+const MainStepper = (props: ISurveyProps) => {
+  // const [sd, changeSurveyData] = useState(surveyDate);
   const { t } = useTranslation();
   // const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
   const steps: string[] = [];
@@ -211,8 +183,9 @@ const MainStepper = (props: React.PropsWithChildren) => {
               // value={value}
               // defaultValue='male'
               onChange={(ev, val) => {
-                surveyDate.gender = val
-                console.log(surveyDate)
+                let temp = props.state
+                temp.gender = val
+                props.changeSurveyData(temp)
               }}
             >
               <FormControlLabel value="male" control={<Radio />} label={t('p1.a1')} />
@@ -230,18 +203,23 @@ const MainStepper = (props: React.PropsWithChildren) => {
               sx={{ mt: 2 }}
               name="age-button-group"
               // value={surveyDate.age}
+              // onChange={(ev, val) => {
+              //   surveyDate.age = val
+              //   console.log(surveyDate)
+              // }}
               onChange={(ev, val) => {
-                surveyDate.age = val
-                console.log(surveyDate)
+                let temp = props.state
+                temp.age = val
+                props.changeSurveyData(temp)
               }}
             >
-              <FormControlLabel value="20" control={<Radio />} label={t('p2.a1')} />
-              <FormControlLabel value="30" control={<Radio />} label={t('p2.a2')} />
-              <FormControlLabel value="40" control={<Radio />} label={t('p2.a3')} />
-              <FormControlLabel value="50" control={<Radio />} label={t('p2.a4')} />
-              <FormControlLabel value="60" control={<Radio />} label={t('p2.a5')} />
-              <FormControlLabel value="70" control={<Radio />} label={t('p2.a6')} />
-              <FormControlLabel value="80" control={<Radio />} label={t('p2.a7')} />
+              <FormControlLabel value="15" control={<Radio />} label={t('p2.a1')} />
+              <FormControlLabel value="25" control={<Radio />} label={t('p2.a2')} />
+              <FormControlLabel value="35" control={<Radio />} label={t('p2.a3')} />
+              <FormControlLabel value="45" control={<Radio />} label={t('p2.a4')} />
+              <FormControlLabel value="55" control={<Radio />} label={t('p2.a5')} />
+              <FormControlLabel value="65" control={<Radio />} label={t('p2.a6')} />
+              <FormControlLabel value="75" control={<Radio />} label={t('p2.a7')} />
             </RadioGroup>
           </FormControl>
         </>
@@ -256,8 +234,9 @@ const MainStepper = (props: React.PropsWithChildren) => {
               name="dafault-ui-button-group"
               // value={surveyDate.age}
               onChange={(ev, val) => {
-                surveyDate.defaultUI = val
-                console.log(surveyDate)
+                let temp = props.state
+                temp.defaultUI = val
+                props.changeSurveyData(temp)
               }}
             >
               <FormControlLabel value={t('p3.a1')} control={<Radio />} label={t('p3.a1')} />

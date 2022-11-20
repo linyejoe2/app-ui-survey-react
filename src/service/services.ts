@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const themeSlice = createSlice({
   name: 'themeState',
-  initialState: false,
+  initialState: true,
   reducers: {
     toggleTheme: (state) => state == false ? state = true : state = false
   }

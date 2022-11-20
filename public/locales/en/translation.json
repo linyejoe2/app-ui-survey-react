@@ -1,6 +1,6 @@
 {
   "main": {
-    "title": "logo",
+    "title": "The Most Liked Social Media UI Design at Taiwan in 2022",
     "un": "Amber"
   },
   "p1": {
@@ -13,13 +13,13 @@
   "p2": {
     "t": "age",
     "q1": "What is your age?",
-    "a1": "0 to 20",
+    "a1": "Under 20",
     "a2": "21 to 30",
     "a3": "31 to 40",
     "a4": "41 to 50",
     "a5": "51 to 60",
     "a6": "61 to 70",
-    "a7": "70+"
+    "a7": "70 or Older"
   },
   "p3": {
     "t": "Default UI Style",

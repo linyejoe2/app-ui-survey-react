@@ -8,10 +8,10 @@ import {
   DropResult,
   NotDraggingStyle
 } from "@hello-pangea/dnd";
-import { IpositionData } from '../../page/Survey/Survey'
 import { Box, Checkbox, Paper } from "@mui/material";
 import { useDispatch, useSelector, RootState } from '../../service/store'
 import ReorderIcon from "@mui/icons-material/Reorder";
+import { IpositionData } from "../../interface";
 
 interface Item {
   id: string;
