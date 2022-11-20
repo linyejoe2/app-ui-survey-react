@@ -1,8 +1,7 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material"
 import { FC, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { UiStyle } from "../../interface"
-import { IpositionData } from "./Survey"
+import { IpositionData, TSocialMedia } from "../../interface"
 
 interface PostsProps {
   stepId: string, positionData: IpositionData
@@ -24,7 +23,7 @@ export const SurveyStep: FC<PostsProps> = ({ stepId, positionData }) => {
           // defaultValue='male'
           onChange={(ev, val) => {
             let temp: IpositionData = JSON.parse(JSON.stringify(state))
-            temp.style = val as UiStyle
+            temp.style = val as TSocialMedia
             setState(temp)
           }}
         >

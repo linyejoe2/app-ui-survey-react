@@ -38,10 +38,17 @@ import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
 import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
-import { IsurveyData, ISurveyProps } from "../../interface";
+import { ISurveyData, ISurveyProps, TBar, TPosition } from "../../interface";
 
 interface PostsProps {
-  suveyData: IsurveyData
+  suveyData: ISurveyData
+}
+
+const searchBar = (surveyData: ISurveyData, position: TPosition): TBar | "" => {
+  if (!surveyData.UIStyle) return ""
+  for (let ele of [...surveyData.UIStyle]) {
+
+  }
 }
 
 const Search = styled('div')(({ theme }) => ({
@@ -113,6 +120,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   };
 
   const FirstRow: FC = () => {
+
     return (
       <IGFirstRow>
         <IGTitleBar />

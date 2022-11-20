@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { Calculate, Sd } from "@mui/icons-material";
 import { TableDnD } from "../../components/dnd/table";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { IpositionData, IsurveyData, ISurveyProps, UiStyle } from "../../interface";
+import { IpositionData, ISurveyData, ISurveyProps, TSocialMedia } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
 import { Phone } from "../../components/Phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
@@ -34,16 +34,19 @@ const positionDatas: IpositionData[] = [
   { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: "Facebook", color: "inherit" },
 ]
 
-const surveyDate: IsurveyData = {
+const surveyDate: ISurveyData = {
+  user: '',
   gender: '',
   age: '',
   defaultUI: "",
-  positionDatas
+  themeStyle: "",
+  themeMode: "light",
+  UIStyle: undefined
 }
 
 export default function Survey() {
   const [state, changeState] = useState(surveyDate);
-  const changeSurveyData = (updateData: IsurveyData) => {
+  const changeSurveyData = (updateData: ISurveyData) => {
     changeState(state => ({
       ...state,
       ...updateData
@@ -213,13 +216,13 @@ const MainStepper = (props: ISurveyProps) => {
                 props.changeSurveyData(temp)
               }}
             >
-              <FormControlLabel value="15" control={<Radio />} label={t('p2.a1')} />
-              <FormControlLabel value="25" control={<Radio />} label={t('p2.a2')} />
-              <FormControlLabel value="35" control={<Radio />} label={t('p2.a3')} />
-              <FormControlLabel value="45" control={<Radio />} label={t('p2.a4')} />
-              <FormControlLabel value="55" control={<Radio />} label={t('p2.a5')} />
-              <FormControlLabel value="65" control={<Radio />} label={t('p2.a6')} />
-              <FormControlLabel value="75" control={<Radio />} label={t('p2.a7')} />
+              <FormControlLabel value="0" control={<Radio />} label={t('p2.a1')} />
+              <FormControlLabel value="20" control={<Radio />} label={t('p2.a2')} />
+              <FormControlLabel value="30" control={<Radio />} label={t('p2.a3')} />
+              <FormControlLabel value="40" control={<Radio />} label={t('p2.a4')} />
+              <FormControlLabel value="50" control={<Radio />} label={t('p2.a5')} />
+              <FormControlLabel value="60" control={<Radio />} label={t('p2.a6')} />
+              <FormControlLabel value="70" control={<Radio />} label={t('p2.a7')} />
             </RadioGroup>
           </FormControl>
         </>
@@ -235,7 +238,7 @@ const MainStepper = (props: ISurveyProps) => {
               // value={surveyDate.age}
               onChange={(ev, val) => {
                 let temp = props.state
-                temp.defaultUI = val
+                temp.defaultUI = val as TSocialMedia
                 props.changeSurveyData(temp)
               }}
             >
