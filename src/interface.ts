@@ -22,7 +22,7 @@ export interface ISurveyData {
   defaultUI: TSocialMedia,
   themeStyle: TSocialMedia,
   themeMode: TThemeMode,
-  UIStyle: Map<TBar, IPhoneBar>
+  UIStyle?: Map<TBar, IPhoneBar>
   // UIStyle?: {
   //   titleBar: IPhoneBar,
   //   functionBar: IPhoneBar,

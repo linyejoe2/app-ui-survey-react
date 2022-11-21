@@ -38,17 +38,18 @@ import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
 import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
-import { ISurveyData, ISurveyProps, TBar, TPosition } from "../../interface";
+import { ISurveyData, ISurveyProps, TBar, TPosition, TSocialMedia } from "../../interface";
 
 interface PostsProps {
   suveyData: ISurveyData
 }
 
-const searchBar = (surveyData: ISurveyData, position: TPosition): TBar | "" => {
-  if (!surveyData.UIStyle) return ""
-  for (let ele of [...surveyData.UIStyle]) {
-
+const searchBar = (surveyData: ISurveyData, position: TPosition): { bar: TBar, style: TSocialMedia } | null => {
+  if (!surveyData.UIStyle || [...surveyData.UIStyle!.entries()].length <= 0) return null
+  for (let ele of surveyData.UIStyle.entries()) {
+    if (ele[1].Position == position) return { bar: ele[0], style: ele[1].Style }
   }
+  return null
 }
 
 const Search = styled('div')(({ theme }) => ({
@@ -120,78 +121,119 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   };
 
   const FirstRow: FC = () => {
-
-    return (
-      <IGFirstRow>
-        <IGTitleBar />
-      </IGFirstRow>
-    )
-    return (
-      <YTFirstRow>
-        <YTSearchBar />
-      </YTFirstRow>
-    )
-    return (
-      <FbFirstRow >
-        <FbSearchBar />
-      </FbFirstRow>
-    )
+    let bar = searchBar(props.state, 1)
+    if (bar?.style == "Facebook") {
+      return (
+        <FbFirstRow >
+          <FbSearchBar />
+        </FbFirstRow>
+      )
+    } else if (bar?.style == "Instagram") {
+      return (
+        <IGFirstRow>
+          <IGTitleBar />
+        </IGFirstRow>
+      )
+    } else if (bar?.style == "YouTube") {
+      return (
+        <YTFirstRow>
+          <YTSearchBar />
+        </YTFirstRow>
+      )
+    } else {
+      return (
+        <></>
+      )
+    }
   }
 
   const SecondRow: FC = () => {
-    return (
-      <IGSecondRow>
-        <IGShortBar />
-      </IGSecondRow>
-    )
-    return (
-      <YTSecondRow>
-        <YTContentNavigationBar />
-      </YTSecondRow>
-    )
-    return (
-      <FbSecondRow>
-        <FbPostBar />
-      </FbSecondRow>
-    )
+    let bar = searchBar(props.state, 2)
+    if (bar?.style == "Facebook") {
+      return (
+        <FbSecondRow>
+          <FbPostBar />
+        </FbSecondRow>
+      )
+    } else if (bar?.style == "Instagram") {
+      return (
+        <IGSecondRow>
+          <IGShortBar />
+        </IGSecondRow>
+      )
+    } else if (bar?.style == "YouTube") {
+      return (
+        <YTSecondRow>
+          <YTContentNavigationBar />
+        </YTSecondRow>
+      )
+    } else {
+      return (
+        <></>
+      )
+    }
   }
-
   const ThirdRow: FC = () => {
-    return (
-      <IGThirdRow>
-        <IGNavigationBar />
-      </IGThirdRow>
-    )
-    return (
-      <YTThirdRow>
-        <YTShortBar />
-      </YTThirdRow>
-    )
-    return (
-      <FbThirdRow>
-        <FbShortBar />
-      </FbThirdRow>
-    )
+    let bar = searchBar(props.state, 3)
+    if (bar?.style == "Facebook") {
+      return (
+        <FbThirdRow>
+          <FbShortBar />
+        </FbThirdRow>
+      )
+    } else if (bar?.style == "Instagram") {
+      return (
+        <IGThirdRow>
+          <IGNavigationBar />
+        </IGThirdRow>
+      )
+    } else if (bar?.style == "YouTube") {
+      return (
+        <YTThirdRow>
+          <YTShortBar />
+        </YTThirdRow>
+      )
+    } else {
+      return (
+        <></>
+      )
+    }
   }
 
   const Content: FC = () => {
-    return <IGContent />
-    return <FbContent />
-    return <YTContent />
+    let bar = searchBar(props.state, 4)
+    if (bar?.style == "Facebook") {
+      return <FbContent />
+    } else if (bar?.style == "Instagram") {
+      return <IGContent />
+    } else if (bar?.style == "YouTube") {
+      return <YTContent />
+    } else {
+      return (
+        <></>
+      )
+    }
   }
 
   const FourthRow: FC = () => {
-    return (<></>)
-    return (
-      <YTFourthRow>
-        <YTNavigationBar />
-      </YTFourthRow>
-    )
-    return (
-      <FbFourthRow>
-        <FbNavigationBar />
-      </FbFourthRow>
-    )
+    let bar = searchBar(props.state, 4)
+    if (bar?.style == "Facebook") {
+      return (
+        <FbFourthRow>
+          <FbNavigationBar />
+        </FbFourthRow>
+      )
+    } else if (bar?.style == "YouTube") {
+      return (
+        <YTFourthRow>
+          <YTNavigationBar />
+        </YTFourthRow>
+      )
+    } else {
+      return (
+        <></>
+      )
+    }
   }
 
   // FB

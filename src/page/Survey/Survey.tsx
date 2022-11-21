@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { Calculate, Sd } from "@mui/icons-material";
 import { TableDnD } from "../../components/dnd/table";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { IpositionData, ISurveyData, ISurveyProps, TSocialMedia } from "../../interface";
+import { IPhoneBar, IpositionData, ISurveyData, ISurveyProps, TBar, TSocialMedia } from "../../interface";
 import { SurveyStep } from "./SurveyStep";
 import { Phone } from "../../components/Phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
@@ -33,6 +33,30 @@ const positionDatas: IpositionData[] = [
   { uid: '4', name: 'Content', position: '4', enable: true, style: "Facebook", color: "inherit" },
   { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: "Facebook", color: "inherit" },
 ]
+
+const FbUIStyle: Map<TBar, IPhoneBar> = new Map([
+  ["titleBar", { Position: 1, Style: "Facebook" }],
+  ["functionBar", { Position: 2, Style: "Facebook" }],
+  ["shortBar", { Position: 3, Style: "Facebook" }],
+  ["content", { Position: 4, Style: "Facebook" }],
+  ["navigationBar", { Position: 5, Style: "Facebook" }]]
+)
+
+const IgUIStyle: Map<TBar, IPhoneBar> = new Map([
+  ["titleBar", { Position: 1, Style: "Instagram" }],
+  ["functionBar", { Position: 0, Style: "Instagram" }],
+  ["shortBar", { Position: 2, Style: "Instagram" }],
+  ["content", { Position: 3, Style: "Instagram" }],
+  ["navigationBar", { Position: 4, Style: "Instagram" }]]
+)
+
+const YTUIStyle: Map<TBar, IPhoneBar> = new Map([
+  ["titleBar", { Position: 1, Style: "YouTube" }],
+  ["functionBar", { Position: 2, Style: "YouTube" }],
+  ["shortBar", { Position: 4, Style: "YouTube" }],
+  ["content", { Position: 3, Style: "YouTube" }],
+  ["navigationBar", { Position: 5, Style: "YouTube" }]]
+)
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -183,7 +207,7 @@ const MainStepper = (props: ISurveyProps) => {
             <RadioGroup
               sx={{ mt: 2 }}
               name="gender-button-group"
-              // value={value}
+              // defaultValue={props.state.gender}
               // defaultValue='male'
               onChange={(ev, val) => {
                 let temp = props.state
@@ -201,10 +225,11 @@ const MainStepper = (props: ISurveyProps) => {
       case 1: {
         return <>
           <FormControl sx={{ mt: 4, mb: 1, }}>
-            <FormLabel sx={{ fontSize: '24px' }} >{t('p2.q1')}</FormLabel>
+            <FormLabel sx={{ fontSize: '24px' }} id="ageFormLabel">{t('p2.q1')}</FormLabel>
             <RadioGroup
               sx={{ mt: 2 }}
               name="age-button-group"
+              // defaultValue={props.state.age}
               // value={surveyDate.age}
               // onChange={(ev, val) => {
               //   surveyDate.age = val
@@ -239,6 +264,19 @@ const MainStepper = (props: ISurveyProps) => {
               onChange={(ev, val) => {
                 let temp = props.state
                 temp.defaultUI = val as TSocialMedia
+                switch (val) {
+                  case "Facebook":
+                    temp.UIStyle = FbUIStyle
+                    break
+                  case "Instagram":
+                    temp.UIStyle = IgUIStyle
+                    break
+                  case "TikTok":
+                    temp.UIStyle = FbUIStyle
+                  case "YouTube":
+                    temp.UIStyle = YTUIStyle
+                    break
+                }
                 props.changeSurveyData(temp)
               }}
             >
@@ -259,7 +297,7 @@ const MainStepper = (props: ISurveyProps) => {
               display: "flex",
               justifyContent: "center"
             }}>
-              <TableDnD positionDatas={positionDatas}></TableDnD>
+              <TableDnD state={props.state} changeSurveyData={props.changeSurveyData}></TableDnD>
             </Box>
           </FormControl>
         </>
