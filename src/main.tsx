@@ -27,6 +27,23 @@ const ThemeProvid = (props: React.PropsWithChildren) => {
   )
 }
 
+// gapi.load('client', () => {
+//   // now we can use gapi.client
+//   // ...
+// });
+
+// gapi.auth.authorize({
+//   client_id: '115177945713282263329',
+//   scope: ['https://www.googleapis.com/auth/drive'],
+//   immediate: true
+// }, authResult => { })
+
+
+
+
+// gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4");
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     {/* <App /> */}

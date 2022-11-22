@@ -2,7 +2,8 @@ export type TSocialMedia = "Facebook" | "Instagram" | "TikTok" | 'YouTube' | "Dc
 
 export type TThemeMode = "light" | "dark" | "system"
 
-export type TPosition = 0 | 1 | 2 | 3 | 4 | 5
+export type TPosition2 = 0 | 1 | 2 | 3 | 4 | 5
+export type TPosition = "1" | "2" | "3" | '4' | "5"
 
 export type TBar = "titleBar" | "functionBar" | "shortBar" | "content" | "navigationBar"
 
@@ -11,7 +12,7 @@ export interface IFCProps {
 }
 
 export interface IPhoneBar {
-  Position: TPosition,
+  Position: TPosition2,
   Style: TSocialMedia
 }
 
@@ -22,6 +23,7 @@ export interface ISurveyData {
   defaultUI: TSocialMedia,
   themeStyle: TSocialMedia,
   themeMode: TThemeMode,
+  positionDatas?: IpositionData[],
   UIStyle?: Map<TBar, IPhoneBar>
   // UIStyle?: {
   //   titleBar: IPhoneBar,
@@ -34,13 +36,13 @@ export interface ISurveyData {
 
 export interface IpositionData {
   uid: string,
-  name: string,
-  position: string,
-  enable: boolean,
+  name: TBar,
+  position: TPosition,
   style: TSocialMedia,
-  color: string
+  fixed: boolean,
+  enable: boolean
 }
-
+ 
 /**
  * props of Survey, can control state of Survey
  */
@@ -48,4 +50,14 @@ export interface ISurveyProps {
   children?: React.ReactNode
   state: ISurveyData,
   changeSurveyData: (updateData: ISurveyData) => void
+}
+
+export interface IPhoneHeight {
+  beforeBody: number,
+  body: number,
+  afterBody: number,
+  titleBar: number,
+  functionBar: number,
+  shortBar: number,
+  navigationBar: number
 }

@@ -11,7 +11,7 @@ import {
 import { Box, Checkbox, Paper } from "@mui/material";
 import { useDispatch, useSelector, RootState } from '../../service/store'
 import ReorderIcon from "@mui/icons-material/Reorder";
-import { IpositionData, ISurveyProps, TPosition } from "../../interface";
+import { IpositionData, ISurveyProps, TBar, TPosition } from "../../interface";
 
 interface Item {
   id: string;
@@ -36,7 +36,7 @@ const reorder = (
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
-  result[endIndex].position = endIndex.toString() as TPosition
+  result[endIndex].position = endIndex.toString()
   return result;
 };
 
@@ -88,15 +88,38 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
     if (!result.destination) {
       return;
     }
-
-    const items: IpositionData[] = reorder(
-      props.state.positionDatas!,
-      result.source.index,
-      result.destination.index
-    );
+    console.log("result.source.droppableId: " + result.source.droppableId)
 
     let temp = props.state
-    temp.positionDatas = items
+    if (result.destination.index < result.source.index) {
+      for (const ele of temp.UIStyle!.values()) {
+        if (ele.Position < result.destination.index || ele.Position > result.source.index) {
+
+        } else if (ele.Position >= result.destination.index && ele.Position < result.source.index) {
+          ele.Position += 1
+        } else if (ele.Position == result.source.index) {
+          ele.Position = result.destination.index as TPosition
+        }
+      }
+    } else if (result.destination.index > result.source.index) {
+      for (const ele of temp.UIStyle!.values()) {
+        if (ele.Position < result.source.index || ele.Position > result.destination.index) {
+
+        } else if (ele.Position >= result.source.index && ele.Position < result.destination.index) {
+          ele.Position -= 1
+        } else if (ele.Position == result.source.index) {
+          ele.Position = result.destination.index as TPosition
+        }
+      }
+    }
+    // temp.UIStyle!.get(result.draggableId as TBar)!.Position = result.destination.index as TPosition
+
+    // const items: IpositionData[] = reorder(
+    //   state,
+    //   result.source.index,
+    //   result.destination.index
+    // );
+
     props.changeSurveyData(temp)
   };
 
@@ -114,8 +137,8 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
               padding: grid,
               width: 250,
             }}> */}
-            {props.state.positionDatas!.map((item, index) => (
-              <Draggable key={item.uid} draggableId={item.uid} index={index}>
+            {[...props.state.UIStyle!.entries()].map((item, index) => (
+              <Draggable key={index} draggableId={item[0]} index={item[1].Position}>
                 {(provided, snapshot): JSX.Element => (
                   <div
                     ref={provided.innerRef}
@@ -134,7 +157,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                       cursor: "grab"
                     }}>
                       <ReorderIcon />
-                      {item.uid == '4' ?
+                      {index.toString() == '3' ?
                         <Checkbox sx={{
                           p: '0',
                           pl: '2px',
@@ -145,15 +168,10 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                           p: '0',
                           pl: '2px',
                           verticalAlign: 'top'
-                        }} defaultChecked={props.state.positionDatas![index].enable}
+                        }} defaultChecked
                           onChange={(event) => {
-                            if (!event.target.checked) {
-                              item.enable = false
-                            }
-                            else item.enable = true
-                            let temp = props.state
-                            temp.positionDatas![index] = item
-                            props.changeSurveyData(temp)
+                            // if (!event.target.checked)
+                            // item[1].Position = 0
                           }} />
                       }
                       {/* <Checkbox sx={{
@@ -162,7 +180,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                         verticalAlign: 'top'
                       }} checked /> */}
                     </Box>
-                    {item.name}
+                    {item[0]}
                   </div>
                 )}
               </Draggable>

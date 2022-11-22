@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, IconButton, Typography, Badge, Menu, MenuItem, Avatar, Card, CardActionArea, CardContent, CardMedia, Grid, Skeleton, BottomNavigationAction, BottomNavigation } from "@mui/material";
 import { Box } from "@mui/system";
-import { FC, useState } from "react";
+import { FC } from "react";
 // import { Search } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -38,73 +38,105 @@ import { FbShort2 } from "./Facebook/Short/FbShort2";
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent, FbFirstRow, FbSecondRow, FbThirdRow, FbFourthRow } from "./Facebook/Facebook";
 import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigationBar, YTSearchBar, YTSecondRow, YTShortBar, YTThirdRow } from "./YouTube/YouTube";
 import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
-import { IPhoneHeight, IpositionData, ISurveyData, ISurveyProps, TBar, TPosition, TPosition2, TSocialMedia } from "../../interface";
-import { BarSelector } from "./BarSelector";
+import { IpositionData, ISurveyData, ISurveyProps, TBar, TPosition, TPosition2, TSocialMedia } from "../../interface";
 
-const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
-  return surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1].enable ? surveyData.positionDatas[parseInt(position) - 1] : null : null : null
+interface PostsProps {
+  suveyData: ISurveyData
 }
 
-// const PhoneHeight: IPhoneHeight = {
-//   beforeBody: 44,
-//   body: 660,
-//   afterBody: 29,
-//   titleBar: 0,
-//   functionBar: 0,
-//   shortBar: 0,
-//   navigationBar: 0
-// }
+const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
+  console.log("search: " + (surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1].style : null : null))
+  return surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1] : null : null
+}
+
+/**
+ * 用 positionDatas.position 的查法
+ */
+const searchBar3 = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
+  for (let ele of surveyData.positionDatas!) {
+    if (ele.position == position) return ele
+  }
+  return null
+}
+
+/**
+ * 用 UIStyle 的查法
+ */
+const searchBar2 = (surveyData: ISurveyData, position: TPosition2): { bar: TBar, style: TSocialMedia } | null => {
+  if (!surveyData.UIStyle || [...surveyData.UIStyle!.entries()].length <= 0) return null
+  for (let ele of surveyData.UIStyle.entries()) {
+    if (ele[1].Position == position) return { bar: ele[0], style: ele[1].Style }
+  }
+  return null
+}
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
 
 export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
-  // const [PhoneHeightState, changePhoneHeight] = useState({
-  //   beforeBody: 44,
-  // })
-  // const changeSurveyData = (updateData: {
-  //   beforeBody: number,
-  // }) => {
-  //   changePhoneHeight(state => ({
-  //     ...state,
-  //     ...updateData
-  //   }))
-  // }
+  const { t } = useTranslation();
+  const [fbNavVal, setFbNavVal] = React.useState(0);
 
-  const PhoneHeight = { beforeBody: 44 }
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
+    React.useState<null | HTMLElement>(null);
 
-  let bars: JSX.Element[] = []
-  for (let ele of props.state.positionDatas!) {
-    if (!ele.enable) continue
-    if (!ele.fixed) {
-      bars.push(BarSelector(ele)[0])
-    } else {
-      // PhoneHeight.beforeBody += BarSelector(ele)[1]
-      bars.push(
-        <AppBar position="fixed"
-          key={ele.uid}
-          sx={{
-            maxWidth: "320px",
-            left: "10px",
-            // top: "50px",
-            top: (PhoneHeight.beforeBody).toString() + "px",
-            boxShadow: 'none'
-          }} >
-          {BarSelector(ele)[0]}
-        </AppBar>
-      )
-      PhoneHeight.beforeBody += BarSelector(ele)[1]
-      // console.log(PhoneHeightState.beforeBody)
-      // let temp = PhoneHeightState
-      // temp.beforeBody += BarSelector(ele)[1]
-      // changeSurveyData(temp)
-    }
-  }
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  return (
-    <>
-      <PhonePadding color="#ffffff">
-        {bars}
-        {/* < key={bars}> {bars}</> */}
-      </PhonePadding>
-    </>)
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
 
   const FirstRow: FC = () => {
     let bar = searchBar(props.state, "1")

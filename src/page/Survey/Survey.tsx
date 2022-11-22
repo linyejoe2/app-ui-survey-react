@@ -21,42 +21,7 @@ import { SurveyStep } from "./SurveyStep";
 import { Phone } from "../../components/Phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
 import { useState } from "react";
-
-const positionDatas: IpositionData[] = [
-  {
-    uid: '1', name: 'searchBar', position: '1', enable: true, style: "Facebook",
-    color: "#ffffff"
-    // color: "#1976d2"
-  },
-  { uid: '2', name: 'postBar', position: '2', enable: true, style: "Facebook", color: "inherit" },
-  { uid: '3', name: 'Short', position: '3', enable: true, style: "Facebook", color: "inherit" },
-  { uid: '4', name: 'Content', position: '4', enable: true, style: "Facebook", color: "inherit" },
-  { uid: '5', name: 'NavigationBar', position: '5', enable: true, style: "Facebook", color: "inherit" },
-]
-
-const FbUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ["titleBar", { Position: 1, Style: "Facebook" }],
-  ["functionBar", { Position: 2, Style: "Facebook" }],
-  ["shortBar", { Position: 3, Style: "Facebook" }],
-  ["content", { Position: 4, Style: "Facebook" }],
-  ["navigationBar", { Position: 5, Style: "Facebook" }]]
-)
-
-const IgUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ["titleBar", { Position: 1, Style: "Instagram" }],
-  ["functionBar", { Position: 0, Style: "Instagram" }],
-  ["shortBar", { Position: 2, Style: "Instagram" }],
-  ["content", { Position: 3, Style: "Instagram" }],
-  ["navigationBar", { Position: 4, Style: "Instagram" }]]
-)
-
-const YTUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ["titleBar", { Position: 1, Style: "YouTube" }],
-  ["functionBar", { Position: 2, Style: "YouTube" }],
-  ["shortBar", { Position: 4, Style: "YouTube" }],
-  ["content", { Position: 3, Style: "YouTube" }],
-  ["navigationBar", { Position: 5, Style: "YouTube" }]]
-)
+import { FbPositionDatas, FbUIStyle, IgPositionDatas, IgUIStyle, YTPositionDatas, YTUIStyle } from "../../const";
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -65,7 +30,8 @@ const surveyDate: ISurveyData = {
   defaultUI: "",
   themeStyle: "",
   themeMode: "light",
-  UIStyle: undefined
+  UIStyle: undefined,
+  positionDatas: undefined
 }
 
 export default function Survey() {
@@ -130,7 +96,6 @@ const MainStepper = (props: ISurveyProps) => {
   for (let i = 1; i < 10; i++) {
     steps.push(t('p' + i + '.t'))
   }
-
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
 
@@ -267,14 +232,18 @@ const MainStepper = (props: ISurveyProps) => {
                 switch (val) {
                   case "Facebook":
                     temp.UIStyle = FbUIStyle
+                    temp.positionDatas = FbPositionDatas
                     break
                   case "Instagram":
                     temp.UIStyle = IgUIStyle
+                    temp.positionDatas = IgPositionDatas
                     break
                   case "TikTok":
                     temp.UIStyle = FbUIStyle
+                    temp.positionDatas = FbPositionDatas
                   case "YouTube":
                     temp.UIStyle = YTUIStyle
+                    temp.positionDatas = YTPositionDatas
                     break
                 }
                 props.changeSurveyData(temp)
@@ -303,29 +272,29 @@ const MainStepper = (props: ISurveyProps) => {
         </>
       }
       case 4: {
-        console.log(positionDatas)
+        // console.log(positionDatas)
         return <>
-          <SurveyStep stepId="5" positionData={positionDatas[0]} />
+          <SurveyStep stepId="5" positionData={props.state.positionDatas![0]} />
         </>
       }
       case 5: {
         return <>
-          <SurveyStep stepId="6" positionData={positionDatas[1]} />
+          <SurveyStep stepId="6" positionData={props.state.positionDatas![1]} />
         </>
       }
       case 6: {
         return <>
-          <SurveyStep stepId="7" positionData={positionDatas[2]} />
+          <SurveyStep stepId="7" positionData={props.state.positionDatas![2]} />
         </>
       }
       case 7: {
         return <>
-          <SurveyStep stepId="8" positionData={positionDatas[3]} />
+          <SurveyStep stepId="8" positionData={props.state.positionDatas![3]} />
         </>
       }
       case 8: {
         return <>
-          <SurveyStep stepId="9" positionData={positionDatas[4]} />
+          <SurveyStep stepId="9" positionData={props.state.positionDatas![4]} />
         </>
       }
       default: {

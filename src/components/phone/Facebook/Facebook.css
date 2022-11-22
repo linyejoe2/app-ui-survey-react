@@ -69,6 +69,7 @@
 }
 
 .fb-short-row {
+  height: 200px !important;
   display: flex;
   height: inherit;
   background-color: #ffffff;
