@@ -1,11 +1,13 @@
-export type TSocialMedia = "Facebook" | "Instagram" | "TikTok" | 'YouTube' | "Dcard" | ""
+import React from 'react'
 
-export type TThemeMode = "light" | "dark" | "system"
+export type TSocialMedia = 'Facebook' | 'Instagram' | 'TikTok' | 'YouTube' | 'Dcard' | ''
+
+export type TThemeMode = 'light' | 'dark' | 'system'
 
 export type TPosition2 = 0 | 1 | 2 | 3 | 4 | 5
-export type TPosition = "1" | "2" | "3" | '4' | "5"
+export type TPosition = '1' | '2' | '3' | '4' | '5'
 
-export type TBar = "titleBar" | "functionBar" | "shortBar" | "content" | "navigationBar"
+export type TBar = 'titleBar' | 'functionBar' | 'shortBar' | 'content' | 'navigationBar'
 
 export interface IFCProps {
   children?: React.ReactNode
@@ -16,9 +18,18 @@ export interface IPhoneBar {
   Style: TSocialMedia
 }
 
+export interface IpositionData {
+  uid: string,
+  name: TBar,
+  position: TPosition,
+  style: TSocialMedia,
+  fixed: boolean,
+  enable: boolean
+}
+
 export interface ISurveyData {
   user: string
-  gender: "male" | "female" | "other" | '' | string,
+  gender: 'male' | 'female' | 'other' | '' | string,
   age: '0' | '20' | '30' | '40' | '50' | '60' | '70' | '' | string,
   defaultUI: TSocialMedia,
   themeStyle: TSocialMedia,
@@ -32,15 +43,6 @@ export interface ISurveyData {
   //   content: IPhoneBar,
   //   navigationBar: IPhoneBar,
   // }
-}
-
-export interface IpositionData {
-  uid: string,
-  name: TBar,
-  position: TPosition,
-  style: TSocialMedia,
-  fixed: boolean,
-  enable: boolean
 }
 
 /**

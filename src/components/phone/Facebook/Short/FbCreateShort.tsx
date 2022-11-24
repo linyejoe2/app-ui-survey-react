@@ -1,9 +1,9 @@
-import { Typography } from "@mui/material";
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
+import { Typography } from '@mui/material'
+import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const FbCreateShort: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
       <svg className="fb-short-col" width="102" height="177" viewBox="0 0 102 177" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -17,13 +17,13 @@ export const FbCreateShort: FC = () => {
           <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
             <use xlinkHref="#image0_343_1576" transform="translate(0 -0.0797101) scale(0.000462963 0.000402576)" />
           </pattern>
-          <image id="image0_343_1576" width="2160" height="2880" xlinkHref="/amberAvatar.jpg" />
+          <image id="image0_343_1576" width="2160" height="2880" xlinkHref="./amberAvatar.jpg" />
         </defs>
         <foreignObject width="100" height="175">
           <Typography
             className="fb-short-create-text"
             component="div">
-            {t("fb.s.create")}
+            {t('fb.s.create')}
           </Typography>
         </foreignObject>
       </svg>

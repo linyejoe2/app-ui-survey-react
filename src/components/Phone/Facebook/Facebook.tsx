@@ -1,40 +1,32 @@
-import "./Facebook.css"
+import './Facebook.css'
 
 // components
-import { FbCreateShort } from "./Short/FbCreateShort"
-import { FbShort1 } from "./Short/FbShort1";
-import { FbShort2 } from "./Short/FbShort2";
+import { FbCreateShort } from './Short/FbCreateShort'
+import { FbShort1 } from './Short/FbShort1'
+import { FbShort2 } from './Short/FbShort2'
 
 // icon
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import DensityMediumOutlinedIcon from '@mui/icons-material/DensityMediumOutlined';
-import AddIcon from '@mui/icons-material/Add';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import CloseIcon from '@mui/icons-material/Close';
-import RecommendIcon from '@mui/icons-material/Recommend';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import ReplyIcon from '@mui/icons-material/Reply';
-import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import HomeIcon from '@mui/icons-material/Home';
-import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
-import TourOutlinedIcon from '@mui/icons-material/TourOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import SearchIcon from '@mui/icons-material/Search'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import AddIcon from '@mui/icons-material/Add'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import CloseIcon from '@mui/icons-material/Close'
+import RecommendIcon from '@mui/icons-material/Recommend'
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
+import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined'
+import CollectionsIcon from '@mui/icons-material/Collections'
+import HomeIcon from '@mui/icons-material/Home'
+import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined'
+import TourOutlinedIcon from '@mui/icons-material/TourOutlined'
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
 
-import { AppBar, Avatar, Badge, BottomNavigation, BottomNavigationAction, Box, IconButton, Skeleton, Toolbar, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { FC } from "react";
-import React from "react";
-import { IFCProps } from "../../../interface";
+import { AppBar, Avatar, Badge, BottomNavigation, BottomNavigationAction, Box, IconButton, Skeleton, Toolbar, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import React, { FC } from 'react'
+
+import { IFCProps } from '../../../interface'
 
 export const FbFirstRow: FC<IFCProps> = (props: IFCProps) => {
   return (
@@ -68,7 +60,6 @@ export const FbFourthRow: FC<IFCProps> = (props: IFCProps) => {
   )
 }
 
-
 export const FbSearchBar: FC = () => {
   return (
     <>
@@ -76,10 +67,10 @@ export const FbSearchBar: FC = () => {
         // backgroundColor: suveyData.positionDatas[
         //   suveyData.positionDatas.findIndex(val => { return val.position == '1' })
         // ].color,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         m: '0',
-        p: "0",
-        px: "0"
+        p: '0',
+        px: '0'
       }}>
         <Typography
           variant="h6"
@@ -116,20 +107,20 @@ export const FbSearchBar: FC = () => {
 }
 
 export const FbPostBar: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
       <Toolbar className="CToolbar" sx={{
         // backgroundColor: suveyData.positionDatas[
         //   suveyData.positionDatas.findIndex(val => { return val.position == '1' })
         // ].color,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         m: '0',
-        p: "0",
-        px: "0"
+        p: '0',
+        px: '0'
       }}>
         <Box sx={{ display: 'flex' }}>
-          <Avatar alt={t("main.un")} src="/amberAvatar.jpg" />
+          <Avatar alt={t('main.un')} src="./amberAvatar.jpg" />
         </Box>
         <Typography
           // variant="h8"
@@ -137,13 +128,13 @@ export const FbPostBar: FC = () => {
           component="div"
           color="black"
           sx={{
-            marginLeft: "6px",
-            fontSize: "13px",
-            fontWeight: "500",
-            cursor: "text"
+            marginLeft: '6px',
+            fontSize: '13px',
+            fontWeight: '500',
+            cursor: 'text'
           }}
         >
-          {t("fb.t1")}
+          {t('fb.t1')}
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: 'flex' }}>
@@ -167,14 +158,14 @@ export const FbShortBar: FC = () => {
 }
 
 export const FbContent: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
       <Box className="fb-content" >
         <Box className="content-1">
           <Box className="row-1">
             <Box className="col">
-              <Avatar alt={t("main.un")} src="/amberAvatar.jpg" />
+              <Avatar alt={t('main.un')} src="./amberAvatar.jpg" />
             </Box>
             <Box className="col title">
               <Typography
@@ -182,14 +173,14 @@ export const FbContent: FC = () => {
                 noWrap
                 component="div"
               >
-                {t("fb.p1.name")}
+                {t('fb.p1.name')}
               </Typography>
               <Typography
                 className="sub-title"
                 noWrap
                 component="div"
               >
-                {t("fb.p1.sub-title")}
+                {t('fb.p1.sub-title')}
               </Typography>
             </Box>
             <Box className="col-tool">
@@ -205,13 +196,13 @@ export const FbContent: FC = () => {
             <Typography
               className="sub-text"
               component="div">
-              {t("fb.p1.text")}
+              {t('fb.p1.text')}
             </Typography>
           </Box>
-          <img width="320px" src="/amberAvatar.jpg" alt="picture" />
+          <img width="320px" src="./amberAvatar.jpg" alt="picture" />
           <Box className="row-like">
             <Box className="col content-like">
-              <RecommendIcon sx={{ fill: "#1976d2", verticalAlign: "middle" }} />
+              <RecommendIcon sx={{ fill: '#1976d2', verticalAlign: 'middle' }} />
               <Typography
                 className="content-like-count"
                 component="div">
@@ -222,7 +213,7 @@ export const FbContent: FC = () => {
               <Typography
                 className="content-like-text"
                 component="div">
-                {t("fb.p1.like-text")}
+                {t('fb.p1.like-text')}
               </Typography>
             </Box>
           </Box>
@@ -235,7 +226,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.like")}
+                  {t('fb.p1.like')}
                 </Typography>
               </Box>
               <Box className="row-share-col">
@@ -245,7 +236,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.comment")}
+                  {t('fb.p1.comment')}
                 </Typography>
               </Box>
               <Box className="row-share-col">
@@ -255,7 +246,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.share")}
+                  {t('fb.p1.share')}
                 </Typography>
               </Box>
             </Toolbar>
@@ -265,7 +256,7 @@ export const FbContent: FC = () => {
           <Box className="row-1">
             <Box className="col">
               <Skeleton variant="circular" width={40} height={40} />
-              {/* <Avatar alt={t("main.un")} src="/amberAvatar.jpg" /> */}
+              {/* <Avatar alt={t("main.un")} src="./amberAvatar.jpg" /> */}
             </Box>
             <Box className="col title">
               <Typography
@@ -299,7 +290,7 @@ export const FbContent: FC = () => {
               <Skeleton />
             </Typography>
           </Box>
-          {/* <img width="320px" src="/amberAvatar.jpg" alt="picture" /> */}
+          {/* <img width="320px" src="./amberAvatar.jpg" alt="picture" /> */}
           <Skeleton variant="rectangular" width={340} height={150} />
           <Box className="row-share">
             <Toolbar className="row-share-bar">
@@ -310,7 +301,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.like")}
+                  {t('fb.p1.like')}
                 </Typography>
               </Box>
               <Box className="row-share-col">
@@ -320,7 +311,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.comment")}
+                  {t('fb.p1.comment')}
                 </Typography>
               </Box>
               <Box className="row-share-col">
@@ -330,7 +321,7 @@ export const FbContent: FC = () => {
                 <Typography
                   className="share-text"
                   component="div">
-                  {t("fb.p1.share")}
+                  {t('fb.p1.share')}
                 </Typography>
               </Box>
             </Toolbar>
@@ -342,7 +333,7 @@ export const FbContent: FC = () => {
 }
 
 export const FbNavigationBar: FC = () => {
-  const [fbNavVal, setFbNavVal] = React.useState(0);
+  const [fbNavVal, setFbNavVal] = React.useState(0)
 
   return (
     <>
@@ -351,7 +342,7 @@ export const FbNavigationBar: FC = () => {
         value={fbNavVal}
         className="fb-nav-bar"
         onChange={(event, newValue) => {
-          setFbNavVal(newValue);
+          setFbNavVal(newValue)
         }}
       >
         <BottomNavigationAction className="nav-bar-col" icon={<HomeIcon />} />

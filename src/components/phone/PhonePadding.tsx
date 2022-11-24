@@ -1,6 +1,6 @@
-import { FC } from "react"
-import { IPhoneHeight } from "../../interface"
-import "./Phone.css"
+import React, { FC } from 'react'
+import { IPhoneHeight } from '../../interface'
+import './Phone.css'
 
 export interface LayoutProps {
   children: React.ReactNode

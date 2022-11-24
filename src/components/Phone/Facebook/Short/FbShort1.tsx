@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC } from 'react'
 
 export const FbShort1: FC = () => {
   return (
@@ -28,7 +28,7 @@ export const FbShort1: FC = () => {
           <use xlinkHref="#randy_short1" transform="translate(-0.0909091) scale(0.00185529)" />
         </pattern>
         <image id="200_300_cat" width="200" height="300" xlinkHref="https://placekitten.com/200/300"></image>
-        <image id="randy_short1" width="637" height="539" xlinkHref="/randy.jpg"></image>
+        <image id="randy_short1" width="637" height="539" xlinkHref="./randy.jpg"></image>
       </defs>
     </svg>
   )

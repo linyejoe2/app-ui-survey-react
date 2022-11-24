@@ -1,8 +1,6 @@
-import React from "react"
-import { FC } from "react"
+import { FC } from 'react'
 
 export const IGShort: FC = () => {
-
   return (
     <svg width="604" height="90" viewBox="0 0 604 90" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <g clipPath="url(#clip0_898_528)">
@@ -140,7 +138,7 @@ export const IGShort: FC = () => {
           <rect width="51.2" height="51.2" fill="white" transform="translate(10.2401 11.9468)" />
         </clipPath>
 
-        <image id="image0_898_528" width="3024" height="4032" xlinkHref="/amberAvatar.jpg"></image>
+        <image id="image0_898_528" width="3024" height="4032" xlinkHref="./amberAvatar.jpg"></image>
         <image id="image1_898_528" width="4096" height="2731" xlinkHref="https://placekitten.com/400/270"></image>
         <image id="image2_898_528" width="4096" height="3076" xlinkHref="https://placekitten.com/400/300"></image>
         <image id="image3_898_528" width="2385" height="3623" xlinkHref="https://placekitten.com/230/360"></image>

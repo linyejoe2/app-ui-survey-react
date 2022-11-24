@@ -6,7 +6,10 @@ const themeSlice = createSlice({
   name: 'themeState',
   initialState: true,
   reducers: {
-    toggleTheme: (state) => state == false ? state = true : state = false
+    // eslint-disable-next-line no-return-assign
+    toggleTheme: (state) => state === false
+      ? state = true
+      : state = false
   }
 })
 

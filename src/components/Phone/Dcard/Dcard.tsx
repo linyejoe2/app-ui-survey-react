@@ -1,63 +1,48 @@
-import "./Dcard.css"
+import './Dcard.css'
 
-import DensityMediumIcon from '@mui/icons-material/DensityMedium';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import StyleIcon from '@mui/icons-material/Style';
-import SearchIcon from '@mui/icons-material/Search';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import HomeIcon from '@mui/icons-material/Home';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
-import MovieIcon from '@mui/icons-material/Movie';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import StyleIcon from '@mui/icons-material/Style'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import HomeIcon from '@mui/icons-material/Home'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import BookmarkIcon from '@mui/icons-material/Bookmark'
 
-import { Box, Avatar, Typography, BottomNavigation, BottomNavigationAction, TextField, Badge, IconButton, Toolbar } from "@mui/material";
-import React, { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { FbContentDot } from "../Instagram/Content/dot";
-import { IGShort } from "../Instagram/ShortBar/IGShort";
-import { IGTitle } from "../Instagram/TitleBar/IGTitle";
-import { YTLogo } from "../YouTube/SearchBar/YtLogo";
-
+import { Box, Avatar, Typography, BottomNavigation, BottomNavigationAction } from '@mui/material'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const DcTitleBar: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     // <Box className='dc-first-row phone-row'>
-      <Box className='dc-title-bar'>
-        <input type="text" className="dc-title-input" placeholder={t("dc.t.text")} />
-      </Box>
+    <Box className='dc-title-bar'>
+      <input type="text" className="dc-title-input" placeholder={t('dc.t.text')} />
+    </Box>
     // </Box>
   )
 }
 
 export const DcFunctionBar: FC = () => {
-  const [fbNavVal, setFbNavVal] = React.useState(0);
-  const { t } = useTranslation();
+  const [fbNavVal, setFbNavVal] = React.useState(0)
+  const { t } = useTranslation()
   return (
     // <Box className='dc-second-row phone-row'>
-      <Box className='dc-function-bar'>
-        <BottomNavigation
-          showLabels
-          value={fbNavVal}
-          className="dc-nav-bar"
-          onChange={(event, newValue) => {
-            setFbNavVal(newValue);
-          }}>
-          <BottomNavigationAction className="nav-bar-col" label={t("dc.s.recommend")} />
-          <BottomNavigationAction className="nav-bar-col" label={t("dc.s.all")} />
-          <BottomNavigationAction className="nav-bar-col" label={t("dc.s.follow")} />
-          <BottomNavigationAction className="nav-bar-col" label={t("dc.s.topic")} />
-        </BottomNavigation>
-      </Box>
+    <Box className='dc-function-bar'>
+      <BottomNavigation
+        showLabels
+        value={fbNavVal}
+        className="dc-nav-bar"
+        onChange={(event, newValue) => {
+          setFbNavVal(newValue)
+        }}>
+        <BottomNavigationAction className="nav-bar-col" label={t('dc.s.recommend')} />
+        <BottomNavigationAction className="nav-bar-col" label={t('dc.s.all')} />
+        <BottomNavigationAction className="nav-bar-col" label={t('dc.s.follow')} />
+        <BottomNavigationAction className="nav-bar-col" label={t('dc.s.topic')} />
+      </BottomNavigation>
+    </Box>
     // </Box>
   )
 }
@@ -70,10 +55,10 @@ export const DcContent: FC = () => {
       <Box key={i} className="dc-content">
         <Box className="dc-content-topic">
           <Box className="dc-content-topic-avater-box">
-            <Avatar className="dc-content-topic-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+            <Avatar className="dc-content-topic-avater" alt={t('main.un')} src="./amberAvatar.jpg" />
           </Box>
           <Typography className="dc-content-topic-text">
-            {t("dc.c1.topic")}
+            {t('dc.c1.topic')}
           </Typography>
           <Box className="dc-content-topic-icon">
             <MoreHorizIcon />
@@ -83,12 +68,12 @@ export const DcContent: FC = () => {
           <Box className="dc-content-text-box">
             <Box className="dc-content-title">
               <Typography className="dc-content-title-text">
-                {t("dc.c1.title")}
+                {t('dc.c1.title')}
               </Typography>
             </Box>
             <Box className="dc-content-text">
               <Typography className="dc-content-text-text">
-                {t("dc.c1.text")}
+                {t('dc.c1.text')}
               </Typography>
             </Box>
             <Box className="dc-content-like">
@@ -96,13 +81,13 @@ export const DcContent: FC = () => {
               <Typography className="dc-content-like-like">
                 121
               </Typography>
-              <img width="16px" src="/comment.svg" alt="comment" />
+              <img width="16px" src="./comment.svg" alt="comment" />
               <Typography className="dc-content-like-comment">
                 5
               </Typography>
               <BookmarkIcon />
               <Typography className="dc-content-like-text">
-                {t("dc.c1.store")}
+                {t('dc.c1.store')}
               </Typography>
             </Box>
           </Box>
@@ -118,27 +103,26 @@ export const DcContent: FC = () => {
 }
 
 export const DcNavigationBar: FC = () => {
-  const { t } = useTranslation()
-  const [fbNavVal, setFbNavVal] = React.useState(0);
+  const [fbNavVal, setFbNavVal] = React.useState(0)
 
   return (
     <>
       {/* <Box className='dc-third-row phone-row'> */}
-        <BottomNavigation
-          showLabels
-          className='ig-nav-bar'
-          value={fbNavVal}
-          onChange={(event, newValue) => {
-            setFbNavVal(newValue);
-          }}
-        >
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<HomeIcon />} />
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<DashboardIcon />} />
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<StyleIcon />} />
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<ShoppingBagIcon />} />
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<NotificationsIcon />} />
-          <BottomNavigationAction className="ig-nav-bar-button" icon={<DensityMediumIcon />} />
-        </BottomNavigation>
+      <BottomNavigation
+        showLabels
+        className='ig-nav-bar'
+        value={fbNavVal}
+        onChange={(event, newValue) => {
+          setFbNavVal(newValue)
+        }}
+      >
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<HomeIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<DashboardIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<StyleIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<ShoppingBagIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<NotificationsIcon />} />
+        <BottomNavigationAction className="ig-nav-bar-button" icon={<DensityMediumIcon />} />
+      </BottomNavigation>
       {/* </Box> */}
     </>
   )

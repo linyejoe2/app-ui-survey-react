@@ -1,24 +1,32 @@
-import "./style/main.css"
-import React from 'react'
+import './style/main.css'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
-import { store } from './service/store'
-import { Provider } from 'react-redux';
+import { store, useSelector, RootState } from './service/store'
+import { Provider } from 'react-redux'
 // style
-import CssBaseline from "@mui/material/CssBaseline"
+import CssBaseline from '@mui/material/CssBaseline'
 import Theme from './Theme'
 import ThemeProvider from '@mui/material/styles/ThemeProvider'
 // route
 import router from './routes'
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from 'react-router-dom'
 // comp
 import TopNavigationBar from './components/TopNavigationBar'
-import { useDispatch, useSelector, RootState } from './service/store'
-import { toggleTheme } from "./service/services"
-import { Dashboard } from '@mui/icons-material';
-import './i18n';
+
+import './i18n'
 
 const ThemeProvid = (props: React.PropsWithChildren) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
+
+  // wellcome
+  let wellcome = true
+  useEffect(() => {
+    if (!wellcome) return
+    wellcome = false
+    console.log('%c恭喜你來到了秘密樂園。\n你知道嗎？在非洲，每六十秒，就有一分鐘過去。', 'color: red; font-size: 30px')
+    console.log('%c想看更多，歡迎來我的 Blog 看。\nhttps://linyejoe2.github.io/', 'color: red; font-size: 30px')
+  }, [])
+
   const themeState = useSelector((state: RootState) => state.themeState)
   return (
     <ThemeProvider theme={themeState ? Theme.lightMode : Theme.darkMode}>
@@ -38,11 +46,7 @@ const ThemeProvid = (props: React.PropsWithChildren) => {
 //   immediate: true
 // }, authResult => { })
 
-
-
-
 // gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4");
-
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

@@ -1,8 +1,6 @@
-import { Box } from "@mui/material"
-import { FC } from "react"
+import { FC } from 'react'
 
 export const IGTitle: FC = () => {
-
   return (
     <svg width="320" height="31" viewBox="0 0 320 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="320" height="31" transform="translate(0.5 0.0932617)" fill="white" />
