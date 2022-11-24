@@ -1,7 +1,7 @@
 #PhoneBody {
   /* margin: 105px 10px 0 10px; fb */ 
   /* margin: 145px 10px 0 10px; yt */
-  margin: 80px 10px 0 10px;
+  margin: 130px 10px 0 10px;
   background: #e4e6eb;
   /* height: 475px; fb*/
   /* height: 450px; yt*/
@@ -12,4 +12,10 @@
 
 #PhoneBody::-webkit-scrollbar {
   display: none;
+}
+
+.phone-row {
+  max-width: 320px !important;
+  left: 10px !important;
+  box-shadow: none !important;
 }

@@ -40,6 +40,7 @@ import { YTContent, YTContentNavigationBar, YTFirstRow, YTFourthRow, YTNavigatio
 import { IGContent, IGFirstRow, IGNavigationBar, IGSecondRow, IGShortBar, IGThirdRow, IGTitleBar } from "./Instagram/Instagram";
 import { IPhoneHeight, IpositionData, ISurveyData, ISurveyProps, TBar, TPosition, TPosition2, TSocialMedia } from "../../interface";
 import { BarSelector } from "./BarSelector";
+import { DcContent, DcFunctionBar, DcNavigationBar, DcTitleBar } from "./Dcard/Dcard";
 
 const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
   return surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1].enable ? surveyData.positionDatas[parseInt(position) - 1] : null : null : null
@@ -122,6 +123,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
     </>)
 
   const FirstRow: FC = () => {
+    return (<DcTitleBar></DcTitleBar>)
     let bar = searchBar(props.state, "1")
     if (bar?.style == "Facebook") {
       return (
@@ -149,6 +151,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   }
 
   const SecondRow: FC = () => {
+    return (<DcFunctionBar />)
     let bar = searchBar(props.state, "2")
     if (bar?.style == "Facebook") {
       return (
@@ -202,6 +205,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   }
 
   const Content: FC = () => {
+    return <DcContent />
     let bar = searchBar(props.state, "4")
     if (bar?.style == "Facebook") {
       return <FbContent />
@@ -217,6 +221,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   }
 
   const FourthRow: FC = () => {
+    return <DcNavigationBar />
     let bar = searchBar(props.state, "4")
     if (bar?.style == "Facebook") {
       return (

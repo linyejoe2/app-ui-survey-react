@@ -133,5 +133,22 @@
       "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
       "time": "18 minutes age ‧ See translation"
     }
+  },
+  "dc": {
+    "t": {
+      "text": " Dcard 聖誕美妝盒"
+    },
+    "s": {
+      "recommend": "推薦",
+      "all": "全部",
+      "follow": "追蹤",
+      "topic": "主題"
+    },
+    "c1": {
+      "topic": "女孩 ‧ 追蹤中",
+      "title": "求解！！這是什麼貓",
+      "text": "有一隻好可愛的貓貓！！",
+      "store": "收藏"
+    }
   }
 }
