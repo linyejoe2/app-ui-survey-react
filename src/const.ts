@@ -47,3 +47,11 @@ export const YTPositionDatas: IpositionData[] = [
   { uid: '3', name: 'shortBar', position: '4', enable: true, style: "YouTube", fixed: false },
   { uid: '5', name: 'navigationBar', position: '5', enable: true, style: "YouTube", fixed: true },
 ]
+
+export const DcPositionDatas: IpositionData[] = [
+  { uid: '1', name: 'titleBar', position: '1', enable: true, style: "Dcard", fixed: true },
+  { uid: '2', name: 'functionBar', position: '2', enable: true, style: "Dcard", fixed: true },
+  { uid: '4', name: 'content', position: '3', enable: true, style: "Dcard", fixed: false },
+  { uid: '3', name: 'shortBar', position: '4', enable: false, style: "Facebook", fixed: false },
+  { uid: '5', name: 'navigationBar', position: '5', enable: true, style: "Dcard", fixed: true },
+]

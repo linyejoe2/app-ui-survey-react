@@ -28,7 +28,7 @@ import TourOutlinedIcon from '@mui/icons-material/TourOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import React from "react";
-import { PhonePadding } from "./PhonePadding";
+import { LayoutProps, PhonePadding } from "./PhonePadding";
 import "./Phone.css"
 import { useTranslation } from "react-i18next";
 import { Height } from "@mui/icons-material";
@@ -46,81 +46,86 @@ const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData 
   return surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1].enable ? surveyData.positionDatas[parseInt(position) - 1] : null : null : null
 }
 
-// const PhoneHeight: IPhoneHeight = {
-//   beforeBody: 44,
-//   body: 660,
-//   afterBody: 29,
-//   titleBar: 0,
-//   functionBar: 0,
-//   shortBar: 0,
-//   navigationBar: 0
-// }
-
 export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
-  // const [PhoneHeightState, changePhoneHeight] = useState({
-  //   beforeBody: 44,
-  // })
-  // const changeSurveyData = (updateData: {
-  //   beforeBody: number,
-  // }) => {
-  //   changePhoneHeight(state => ({
-  //     ...state,
-  //     ...updateData
-  //   }))
-  // }
 
-
-  const PhoneHeight: IPhoneHeight = {
+  const phoneHeight: IPhoneHeight = {
     beforeBody: 44,
     body: 660,
     afterBody: 29,
-    before: true
+    beforeContent: true,
+    firstBar: true
   }
-  // const PhoneHeight = { beforeBody: 44 }
+
+  const phonePaddingProps = {
+    notificationBarColor: "#ffffff",
+    backgroundColor: "#ffffff",
+    phoneHeight
+  }
 
   let bars: JSX.Element[] = []
-  for (let ele of props.state.positionDatas!) {
+
+  // reverse after content
+  let positionDatas = props.state.positionDatas!
+  let reverseIndex = 0
+  for (let i = 0; i < positionDatas.length; i++) {
+    if (positionDatas[i].name == "content") {
+      reverseIndex = i + 1
+      break
+    }
+  }
+  positionDatas = positionDatas.slice(0, reverseIndex).concat(positionDatas.slice(reverseIndex).reverse())
+
+  for (let ele of positionDatas) {
     if (!ele.enable) continue
 
     if (ele.name == "content") {
-      PhoneHeight.before = false
+      phoneHeight.beforeContent = false
     }
     if (!ele.fixed) {
       bars.push(BarSelector(ele)[0])
     } else {
-      console.log(PhoneHeight.before)
-      // PhoneHeight.beforeBody += BarSelector(ele)[1]
       bars.push(
         <AppBar position="fixed"
           key={ele.uid}
           sx={{
             maxWidth: "320px",
             left: "10px",
-            // top: "50px",
-            top: PhoneHeight.before ?
-              PhoneHeight.beforeBody.toString() + "px" :
-              (660 - (PhoneHeight.afterBody + BarSelector(ele)[1])).toString() + "px",
-            boxShadow: 'none'
+            top: phoneHeight.beforeContent ?
+              phoneHeight.beforeBody.toString() + "px" :
+              (660 - (phoneHeight.afterBody + BarSelector(ele)[1])).toString() + "px",
+            // phoneHeight.afterBody.toString() + "px",
+            boxShadow: 'none',
+            backgroundColor: "#00000000"
+
           }} >
           {BarSelector(ele)[0]}
         </AppBar>
       )
-      PhoneHeight.before ?
-        PhoneHeight.beforeBody += BarSelector(ele)[1] :
-        PhoneHeight.afterBody += BarSelector(ele)[1]
+      // console.log(phoneHeight.afterBody)
+      phoneHeight.beforeContent ?
+        phoneHeight.beforeBody += BarSelector(ele)[1] :
+        phoneHeight.afterBody += BarSelector(ele)[1]
+    }
+
+    // control Notification bar color
+    if (phoneHeight.firstBar) {
+      phonePaddingProps.notificationBarColor = BarSelector(ele)[2] ? BarSelector(ele)[2] : "#ffffff"
+      phoneHeight.firstBar = false
     }
   }
 
-  PhoneHeight.body = 660 - PhoneHeight.afterBody - PhoneHeight.beforeBody
+  // caculate phoneContent height
+  // phoneHeight.body = 660 - phoneHeight.beforeBody - (660 - phoneHeight.afterBody)
+  phoneHeight.body = 660 - phoneHeight.beforeBody - phoneHeight.afterBody
+  console.log(JSON.stringify(phoneHeight))
 
-  // return (
-  //   <>
-  //     {PhoneHeight.body}
-  //     <PhonePadding color="#ffffff">
-  //       {bars}
-  //       {/* < key={bars}> {bars}</> */}
-  //     </PhonePadding>
-  //   </>)
+  return (
+    <>
+      {/* {phoneHeight.body} */}
+      <PhonePadding {...phonePaddingProps}>
+        {bars}
+      </PhonePadding>
+    </>)
 
   const FirstRow: FC = () => {
     return (<DcTitleBar></DcTitleBar>)
@@ -243,15 +248,15 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   }
 
   // FB
-  return (
-    <>
-      <PhonePadding color="#ffffff">
-        <FirstRow />
-        <SecondRow />
-        <Content />
-        <ThirdRow />
-        <FourthRow />
-      </PhonePadding>
-    </>
-  )
+  // return (
+  //   <>
+  //     <PhonePadding color="#ffffff">
+  //       <FirstRow />
+  //       <SecondRow />
+  //       <Content />
+  //       <ThirdRow />
+  //       <FourthRow />
+  //     </PhonePadding>
+  //   </>
+  // )
 }

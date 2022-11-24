@@ -21,7 +21,7 @@ import { SurveyStep } from "./SurveyStep";
 import { Phone } from "../../components/Phone/Phone";
 import TopNavigationBar from "../../components/TopNavigationBar";
 import { useState } from "react";
-import { FbPositionDatas, FbUIStyle, IgPositionDatas, IgUIStyle, YTPositionDatas, YTUIStyle } from "../../const";
+import { DcPositionDatas, FbPositionDatas, FbUIStyle, IgPositionDatas, IgUIStyle, YTPositionDatas, YTUIStyle } from "../../const";
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -64,12 +64,6 @@ export default function Survey() {
             sx={{
               textAlign: 'center',
             }}>
-            {/* <Button variant="outlined" onClick={() => {
-              let temp = state
-              temp.defaultUI = "Facebook"
-              changeSurveyData(temp)
-              console.log("in")
-            }}> change </Button> */}
             <MainStepper state={state} changeSurveyData={changeSurveyData}></MainStepper>
           </Paper>
         </Grid>
@@ -106,7 +100,6 @@ const MainStepper = (props: ISurveyProps) => {
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
-
 
   const handleNext = () => {
     switch (activeStep) {
@@ -156,12 +149,6 @@ const MainStepper = (props: ISurveyProps) => {
 
 
   const [value, setValue] = React.useState('female');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
-    console.log(value)
-  };
-
 
   const subTab = () => {
     switch (activeStep) {
@@ -238,9 +225,10 @@ const MainStepper = (props: ISurveyProps) => {
                     temp.UIStyle = IgUIStyle
                     temp.positionDatas = IgPositionDatas
                     break
-                  case "TikTok":
+                  case "Dcard":
                     temp.UIStyle = FbUIStyle
-                    temp.positionDatas = FbPositionDatas
+                    temp.positionDatas = DcPositionDatas
+                    break
                   case "YouTube":
                     temp.UIStyle = YTUIStyle
                     temp.positionDatas = YTPositionDatas

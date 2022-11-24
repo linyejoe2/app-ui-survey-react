@@ -42,7 +42,7 @@ export interface IpositionData {
   fixed: boolean,
   enable: boolean
 }
- 
+
 /**
  * props of Survey, can control state of Survey
  */
@@ -56,5 +56,6 @@ export interface IPhoneHeight {
   beforeBody: number,
   body: number,
   afterBody: number,
-  before:boolean
+  beforeContent: boolean,
+  firstBar: boolean
 }
