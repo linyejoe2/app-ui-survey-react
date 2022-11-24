@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Skeleton from '@mui/material/Skeleton'
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
+import { FormControl, FormControlLabel, FormLabel, MobileStepper, Radio, RadioGroup } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -18,6 +18,7 @@ import { SurveyStep } from './SurveyStep'
 import { Phone } from '../../components/Phone/Phone'
 import { useState } from 'react'
 import { DcPositionDatas, FbPositionDatas, FbUIStyle, IgPositionDatas, IgUIStyle, YTPositionDatas, YTUIStyle } from '../../const'
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -32,6 +33,7 @@ const surveyDate: ISurveyData = {
 
 export default function Survey() {
   const [state, changeState] = useState(surveyDate)
+  // const onMobile = useMediaQuery('(min-width:600px)')
   const changeSurveyData = (updateData: ISurveyData) => {
     changeState(state => ({
       ...state,
@@ -40,19 +42,15 @@ export default function Survey() {
   }
 
   return (
-    <Box sx={{
-      flexGrow: 1, m: '15px'
-    }}>
-      <Grid container rowSpacing={1}
+    <Box sx={{ flexGrow: 1, m: '15px' }}>
+      <Grid container rowSpacing={3}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
         <Grid xs={12} sm={6} md={9}>
-          {/* <Skeleton variant="rectangular" height='40px' /> */}
           <Paper elevation={5}
-            sx={{
-              textAlign: 'center'
-            }}>
-            <MainStepper state={state} changeSurveyData={changeSurveyData}></MainStepper>
+            sx={{ textAlign: 'center' }}>
+            <MainStepper state={state} changeSurveyData={changeSurveyData}>
+            </MainStepper>
           </Paper>
         </Grid>
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
@@ -78,6 +76,8 @@ const MainStepper = (props: ISurveyProps) => {
   for (let i = 1; i < 10; i++) {
     steps.push(t('p' + i + '.t'))
   }
+  // const theme = useTheme()
+  const onMobile = useMediaQuery('(max-width:600px)')
   const [activeStep, setActiveStep] = React.useState(0)
   const [skipped, setSkipped] = React.useState(new Set<number>())
 
@@ -139,8 +139,8 @@ const MainStepper = (props: ISurveyProps) => {
     switch (activeStep) {
       case 0: {
         return <>
-          <FormControl sx={{ mt: 4, mb: 1 }}>
-            <FormLabel sx={{ fontSize: '24px' }} id='gender'>{t('p1.q1')}</FormLabel>
+          <FormControl className={'survey-step-form'}>
+            <FormLabel className={'survey-step-label'} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
               sx={{ mt: 2 }}
               name="gender-button-group"
@@ -161,8 +161,8 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 1: {
         return <>
-          <FormControl sx={{ mt: 4, mb: 1 }}>
-            <FormLabel sx={{ fontSize: '24px' }} id="ageFormLabel">{t('p2.q1')}</FormLabel>
+          <FormControl className={'survey-step-form'}>
+            <FormLabel className={'survey-step-label'} id="ageFormLabel">{t('p2.q1')}</FormLabel>
             <RadioGroup
               sx={{ mt: 2 }}
               name="age-button-group"
@@ -191,9 +191,9 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 2: {
         return <>
-          <FormControl sx={{ mt: 4, mb: 1 }}>
-            <FormLabel sx={{ fontSize: '24px' }} >{t('p3.q1')}</FormLabel>
-            <FormLabel sx={{ fontSize: '20px' }} >{t('p3.q2')}</FormLabel>
+          <FormControl className={'survey-step-form'}>
+            <FormLabel className={'survey-step-label'} >{t('p3.q1')}</FormLabel>
+            <FormLabel className={'survey-step-sub-label'} >{t('p3.q2')}</FormLabel>
             <RadioGroup
               sx={{ mt: 2 }}
               name="dafault-ui-button-group"
@@ -232,8 +232,8 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 3: {
         return <>
-          <FormControl sx={{ mt: 4, mb: 1 }}>
-            <FormLabel sx={{ fontSize: '24px' }} >{t('p4.q1')}</FormLabel>
+          <FormControl className={'survey-step-form'}>
+            <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
             <FormLabel sx={{ fontSize: '20px' }} >{t('p4.q2')}</FormLabel>
             <Box sx={{
               display: 'flex',
@@ -282,43 +282,79 @@ const MainStepper = (props: ISurveyProps) => {
   return (
     <Box sx={{
       width: '100%',
-      height: '650px'
+      height: '650px',
+      p: 2
     }}
       className='center-child'
     >
       {/* top stepper */}
-      <Box sx={{ pt: 2, px: 2 }}>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label, index) => {
-            const stepProps: { completed?: boolean } = {}
-            const labelProps: {
-              optional?: React.ReactNode;
-            } = {}
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+      <Box>
+        {!onMobile
+          ? <Stepper activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps: { completed?: boolean } = {}
+              const labelProps: {
+                optional?: React.ReactNode;
+              } = {}
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                )
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  {matches
+                    ? <StepLabel {...labelProps}>{label}</StepLabel>
+                    : <StepLabel {...labelProps}></StepLabel>
+                  }
+                </Step>
               )
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                {matches
-                  ? <StepLabel {...labelProps}>{label}</StepLabel>
-                  : <StepLabel {...labelProps}></StepLabel>
-                }
-              </Step>
-            )
-          })}
-        </Stepper></Box>
+            })}
+          </Stepper>
+          : <></>
+        }
+      </Box>
       {/* tab */}
-      <Box sx={{ height: 'calc(100% - 140px)', pt: 4 }}>
+      <Box sx={{
+        height: onMobile ? 'calc(100% - 40px)' : 'calc(100% - 140px)',
+        pt: onMobile ? 0 : 4
+      }}>
         {subTab()}
       </Box>
       {/* bottom button group */}
-      {
-        activeStep === steps.length
+      {onMobile
+        // onMobile
+        ? <MobileStepper activeStep={activeStep}
+          variant="text"
+          steps={steps.length}
+          position="static"
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === steps.length - 1}
+            >
+              Next
+              <KeyboardArrowRight />
+              {/* {theme.direction === 'rtl'
+                ? (<KeyboardArrowLeft />)
+                : (<KeyboardArrowRight />)} */}
+            </Button>
+          }
+          backButton={
+            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              <KeyboardArrowLeft />
+              {/* {theme.direction === 'rtl'
+                ? (<KeyboardArrowRight />)
+                : (<KeyboardArrowLeft />)} */}
+              Back
+            </Button>
+          } />
+        // onDesktop
+        : activeStep === steps.length
           ? (<Box sx={{ display: 'flex', flexDirection: 'row', pt: 2, px: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
             <Button
@@ -351,7 +387,8 @@ const MainStepper = (props: ISurveyProps) => {
               size="large">
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
-          </Box>)}
-    </Box>
+          </Box>)
+      }
+    </Box >
   )
 }

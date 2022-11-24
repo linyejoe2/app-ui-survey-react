@@ -13,6 +13,7 @@ import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { useMediaQuery } from '@mui/material'
 
 // const langOption = ['en', 'zh-TW']
 
@@ -20,6 +21,7 @@ export default function TopNavigationBar() {
   const dispatch = useDispatch()
   const themeState = useSelector((state: RootState) => state.themeState)
   const { t, i18n } = useTranslation()
+  const onMobile = useMediaQuery('(max-width:600px)')
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -54,7 +56,7 @@ export default function TopNavigationBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href='./' underline='none' color="unset">
               {/* {TITLE} */}
-              {t('main.title')}
+              {onMobile ? '' : t('main.title')}
             </Link>
           </Typography>
           <Link href='./#/survey' underline='none' color="unset">
