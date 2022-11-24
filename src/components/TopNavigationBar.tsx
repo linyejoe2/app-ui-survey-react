@@ -57,6 +57,9 @@ export default function TopNavigationBar() {
               {t('main.title')}
             </Link>
           </Typography>
+          <Link href='./#/survey' underline='none' color="unset">
+            survey
+          </Link>
           <IconButton
             size="large"
             title="change language"

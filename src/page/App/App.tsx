@@ -36,7 +36,7 @@ function App() {
         <Button variant="outlined" href={`hello-world`}>Hello World</Button>
       </div> */}
       <div className="card">
-        <Button variant="contained" href={'survey'}>選擇你最愛的社群介面！</Button>
+        <Button variant="contained" href={'./#/survey'}>選擇你最愛的社群介面！</Button>
       </div>
     </div>
   )
