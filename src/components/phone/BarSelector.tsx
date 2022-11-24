@@ -13,11 +13,11 @@ export const BarSelector = (positionData: IpositionData):
         case "Facebook":
           return [<FbSearchBar key="FbSearchBar" />, 40]
         case "Instagram":
-          return [<IGTitleBar />, 40]
+          return [<IGTitleBar key="IGTitleBar" />, 40]
         case "YouTube":
-          return [<YTSearchBar />, 40]
+          return [<YTSearchBar key="YTSearchBar" />, 40]
         case "Dcard":
-          return [<FbSearchBar />, 40]
+          return [<FbSearchBar key="FbSearchBar" />, 40]
       }
       break
     case "functionBar":
@@ -27,9 +27,9 @@ export const BarSelector = (positionData: IpositionData):
         // case "Instagram":
         //   return <IG/>
         case "YouTube":
-          return [<YTContentNavigationBar />, 40]
+          return [<YTContentNavigationBar key="YTContentNavigationBar" />, 40]
         case "Dcard":
-          return [<FbPostBar />, 40]
+          return [<FbPostBar key="FbPostBar" />, 40]
       }
       break
     case "shortBar":
@@ -37,11 +37,11 @@ export const BarSelector = (positionData: IpositionData):
         case "Facebook":
           return [<FbShortBar key="FbShortBar" />, 330]
         case "Instagram":
-          return [<IGShortBar />, 330]
+          return [<IGShortBar key="IGShortBar" />, 330]
         case "YouTube":
-          return [<YTShortBar />, 330]
+          return [<YTShortBar key="YTShortBar" />, 330]
         case "Dcard":
-          return [<FbShortBar />, 330]
+          return [<FbShortBar key="FbShortBar" />, 330]
       }
       break
     case "content":
@@ -49,11 +49,11 @@ export const BarSelector = (positionData: IpositionData):
         case "Facebook":
           return [<FbContent key="FbContent" />, 0]
         case "Instagram":
-          return [<IGContent />, 0]
+          return [<IGContent key="IGContent" />, 0]
         case "YouTube":
-          return [<YTContent />, 0]
+          return [<YTContent key="YTContent" />, 0]
         case "Dcard":
-          return [<FbContent />, 0]
+          return [<FbContent key="FbContent" />, 0]
       }
       break
     case "navigationBar":
@@ -61,11 +61,11 @@ export const BarSelector = (positionData: IpositionData):
         case "Facebook":
           return [<FbNavigationBar key="FbNavigationBar" />, 40]
         case "Instagram":
-          return [<IGNavigationBar />, 40]
+          return [<IGNavigationBar key="IGNavigationBar" />, 40]
         case "YouTube":
-          return [<YTNavigationBar />, 40]
+          return [<YTNavigationBar key="YTNavigationBar" />, 40]
         case "Dcard":
-          return [<FbNavigationBar />, 40]
+          return [<FbNavigationBar key="FbNavigationBar" />, 40]
       }
       break
   }

@@ -56,8 +56,5 @@ export interface IPhoneHeight {
   beforeBody: number,
   body: number,
   afterBody: number,
-  titleBar: number,
-  functionBar: number,
-  shortBar: number,
-  navigationBar: number
+  before:boolean
 }

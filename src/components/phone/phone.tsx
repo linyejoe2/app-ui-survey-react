@@ -68,14 +68,26 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   //   }))
   // }
 
-  const PhoneHeight = { beforeBody: 44 }
+
+  const PhoneHeight: IPhoneHeight = {
+    beforeBody: 44,
+    body: 660,
+    afterBody: 29,
+    before: true
+  }
+  // const PhoneHeight = { beforeBody: 44 }
 
   let bars: JSX.Element[] = []
   for (let ele of props.state.positionDatas!) {
     if (!ele.enable) continue
+
+    if (ele.name == "content") {
+      PhoneHeight.before = false
+    }
     if (!ele.fixed) {
       bars.push(BarSelector(ele)[0])
     } else {
+      console.log(PhoneHeight.before)
       // PhoneHeight.beforeBody += BarSelector(ele)[1]
       bars.push(
         <AppBar position="fixed"
@@ -84,22 +96,25 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
             maxWidth: "320px",
             left: "10px",
             // top: "50px",
-            top: (PhoneHeight.beforeBody).toString() + "px",
+            top: PhoneHeight.before ?
+              PhoneHeight.beforeBody.toString() + "px" :
+              (660 - (PhoneHeight.afterBody + BarSelector(ele)[1])).toString() + "px",
             boxShadow: 'none'
           }} >
           {BarSelector(ele)[0]}
         </AppBar>
       )
-      PhoneHeight.beforeBody += BarSelector(ele)[1]
-      // console.log(PhoneHeightState.beforeBody)
-      // let temp = PhoneHeightState
-      // temp.beforeBody += BarSelector(ele)[1]
-      // changeSurveyData(temp)
+      PhoneHeight.before ?
+        PhoneHeight.beforeBody += BarSelector(ele)[1] :
+        PhoneHeight.afterBody += BarSelector(ele)[1]
     }
   }
 
+  PhoneHeight.body = 660 - PhoneHeight.afterBody - PhoneHeight.beforeBody
+
   return (
     <>
+      {PhoneHeight.body}
       <PhonePadding color="#ffffff">
         {bars}
         {/* < key={bars}> {bars}</> */}
