@@ -113,14 +113,14 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
 
   PhoneHeight.body = 660 - PhoneHeight.afterBody - PhoneHeight.beforeBody
 
-  return (
-    <>
-      {PhoneHeight.body}
-      <PhonePadding color="#ffffff">
-        {bars}
-        {/* < key={bars}> {bars}</> */}
-      </PhonePadding>
-    </>)
+  // return (
+  //   <>
+  //     {PhoneHeight.body}
+  //     <PhonePadding color="#ffffff">
+  //       {bars}
+  //       {/* < key={bars}> {bars}</> */}
+  //     </PhonePadding>
+  //   </>)
 
   const FirstRow: FC = () => {
     return (<DcTitleBar></DcTitleBar>)

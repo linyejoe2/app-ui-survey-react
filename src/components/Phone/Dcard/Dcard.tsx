@@ -6,6 +6,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import StyleIcon from '@mui/icons-material/Style';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -16,7 +17,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import { Box, Avatar, Typography, BottomNavigation, BottomNavigationAction, TextField, Badge, IconButton, Toolbar } from "@mui/material";
 import React, { FC } from "react";
@@ -25,6 +26,7 @@ import { FbContentDot } from "../Instagram/Content/dot";
 import { IGShort } from "../Instagram/ShortBar/IGShort";
 import { IGTitle } from "../Instagram/TitleBar/IGTitle";
 import { YTLogo } from "../YouTube/SearchBar/YtLogo";
+
 
 export const DcTitleBar: FC = () => {
   const { t } = useTranslation();
@@ -65,286 +67,181 @@ export const DcContent: FC = () => {
   return (<>
     <Box className="dc-content">
       <Box className="dc-content-topic">
-        <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
-        <Typography >
+        <Box className="dc-content-topic-avater-box">
+          <Avatar className="dc-content-topic-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+        </Box>
+        <Typography className="dc-content-topic-text">
           {t("dc.c1.topic")}
         </Typography>
-        <Box className="ig-content-title-icon">
-          <MoreIcon />
+        <Box className="dc-content-topic-icon">
+          <MoreHorizIcon />
         </Box>
       </Box>
       <Box className="dc-content-item">
         <Box className="dc-content-text-box">
           <Box className="dc-content-title">
-            <Typography>
+            <Typography className="dc-content-title-text">
               {t("dc.c1.title")}
             </Typography>
           </Box>
           <Box className="dc-content-text">
-            <Typography>
+            <Typography className="dc-content-text-text">
               {t("dc.c1.text")}
             </Typography>
           </Box>
           <Box className="dc-content-like">
-            <Typography>
-              121 4 {t("dc.c1.store")}
+            <img width="15px" src="https://megapx.dcard.tw/v1/images/52057289-337a-4f2f-88c0-cb8a77ee422a/responsive?width=32" alt="heart" />
+            <Typography className="dc-content-like-like">
+              121
+            </Typography>
+            <img width="16px" src="/comment.svg" alt="comment" />
+            <Typography className="dc-content-like-comment">
+              5
+            </Typography>
+            <BookmarkIcon />
+            <Typography className="dc-content-like-text">
+              {t("dc.c1.store")}
             </Typography>
           </Box>
         </Box>
         <Box className="dc-content-img">
-          <img width="320px" src="/NationalTaipeiUni.jpg" alt="picture" />
+          <img width="320px" src="https://placekitten.com/500/500" alt="picture" />
+        </Box>
+      </Box>
+    </Box>
+    <Box className="dc-content">
+      <Box className="dc-content-topic">
+        <Box className="dc-content-topic-avater-box">
+          <Avatar className="dc-content-topic-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+        </Box>
+        <Typography className="dc-content-topic-text">
+          {t("dc.c1.topic")}
+        </Typography>
+        <Box className="dc-content-topic-icon">
+          <MoreHorizIcon />
+        </Box>
+      </Box>
+      <Box className="dc-content-item">
+        <Box className="dc-content-text-box">
+          <Box className="dc-content-title">
+            <Typography className="dc-content-title-text">
+              {t("dc.c1.title")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-text">
+            <Typography className="dc-content-text-text">
+              {t("dc.c1.text")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-like">
+            <img width="15px" src="https://megapx.dcard.tw/v1/images/52057289-337a-4f2f-88c0-cb8a77ee422a/responsive?width=32" alt="heart" />
+            <Typography className="dc-content-like-like">
+              121
+            </Typography>
+            <img width="16px" src="/comment.svg" alt="comment" />
+            <Typography className="dc-content-like-comment">
+              5
+            </Typography>
+            <BookmarkIcon />
+            <Typography className="dc-content-like-text">
+              {t("dc.c1.store")}
+            </Typography>
+          </Box>
+        </Box>
+        <Box className="dc-content-img">
+          <img width="320px" src="https://placekitten.com/500/500" alt="picture" />
+        </Box>
+      </Box>
+    </Box>
+    <Box className="dc-content">
+      <Box className="dc-content-topic">
+        <Box className="dc-content-topic-avater-box">
+          <Avatar className="dc-content-topic-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+        </Box>
+        <Typography className="dc-content-topic-text">
+          {t("dc.c1.topic")}
+        </Typography>
+        <Box className="dc-content-topic-icon">
+          <MoreHorizIcon />
+        </Box>
+      </Box>
+      <Box className="dc-content-item">
+        <Box className="dc-content-text-box">
+          <Box className="dc-content-title">
+            <Typography className="dc-content-title-text">
+              {t("dc.c1.title")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-text">
+            <Typography className="dc-content-text-text">
+              {t("dc.c1.text")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-like">
+            <img width="15px" src="https://megapx.dcard.tw/v1/images/52057289-337a-4f2f-88c0-cb8a77ee422a/responsive?width=32" alt="heart" />
+            <Typography className="dc-content-like-like">
+              121
+            </Typography>
+            <img width="16px" src="/comment.svg" alt="comment" />
+            <Typography className="dc-content-like-comment">
+              5
+            </Typography>
+            <BookmarkIcon />
+            <Typography className="dc-content-like-text">
+              {t("dc.c1.store")}
+            </Typography>
+          </Box>
+        </Box>
+        <Box className="dc-content-img">
+          <img width="320px" src="https://placekitten.com/500/500" alt="picture" />
+        </Box>
+      </Box>
+    </Box>
+    <Box className="dc-content">
+      <Box className="dc-content-topic">
+        <Box className="dc-content-topic-avater-box">
+          <Avatar className="dc-content-topic-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
+        </Box>
+        <Typography className="dc-content-topic-text">
+          {t("dc.c1.topic")}
+        </Typography>
+        <Box className="dc-content-topic-icon">
+          <MoreHorizIcon />
+        </Box>
+      </Box>
+      <Box className="dc-content-item">
+        <Box className="dc-content-text-box">
+          <Box className="dc-content-title">
+            <Typography className="dc-content-title-text">
+              {t("dc.c1.title")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-text">
+            <Typography className="dc-content-text-text">
+              {t("dc.c1.text")}
+            </Typography>
+          </Box>
+          <Box className="dc-content-like">
+            <img width="15px" src="https://megapx.dcard.tw/v1/images/52057289-337a-4f2f-88c0-cb8a77ee422a/responsive?width=32" alt="heart" />
+            <Typography className="dc-content-like-like">
+              121
+            </Typography>
+            <img width="16px" src="/comment.svg" alt="comment" />
+            <Typography className="dc-content-like-comment">
+              5
+            </Typography>
+            <BookmarkIcon />
+            <Typography className="dc-content-like-text">
+              {t("dc.c1.store")}
+            </Typography>
+          </Box>
+        </Box>
+        <Box className="dc-content-img">
+          <img width="320px" src="https://placekitten.com/500/500" alt="picture" />
         </Box>
       </Box>
     </Box>
   </>)
-}
-
-export const IGContent: FC = () => {
-  const { t } = useTranslation()
-  return (
-    <>
-      <Box className="ig-content">
-        <Box className="ig-content-title">
-          <Box className="">
-            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
-          </Box>
-          <Typography
-            noWrap
-            className="ig-content-title-name"
-            component="div">
-            {t("ig.p1.name")}
-          </Typography>
-          <Box className="ig-content-title-icon">
-            <MoreIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-img">
-          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
-        </Box>
-        <Box className="ig-content-btn-group">
-          <Box className='ig-content-btn-left'>
-            <Box className="ig-content-btn">
-              <FavoriteBorderOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <ModeCommentOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <SendOutlinedIcon />
-            </Box>
-          </Box>
-          <Box className="ig-content-dot">
-            <FbContentDot />
-          </Box>
-          <Box className="ig-content-btn-right">
-            <BookmarkBorderOutlinedIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-like">
-          <Typography
-            noWrap
-            className="ig-content-like-text"
-            component="div">
-            {t("ig.p1.likes")}
-          </Typography>
-        </Box >
-        <Box className="ig-content-text">
-          <Typography component="div" className="ig-content-text-name">
-            {t("ig.p1.name") + " "}
-          </Typography>
-          <Typography component="div" className="ig-content-text-text">
-            {t("ig.p1.text")}
-          </Typography></Box>
-        <Box className="ig-content-time">
-          <Typography
-            noWrap
-            className="ig-content-time-text"
-            component="div">
-            {t("ig.p1.time")}
-          </Typography></Box>
-      </Box>
-      <Box className="ig-content">
-        <Box className="ig-content-title">
-          <Box className="">
-            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
-          </Box>
-          <Typography
-            noWrap
-            className="ig-content-title-name"
-            component="div">
-            {t("ig.p1.name")}
-          </Typography>
-          <Box className="ig-content-title-icon">
-            <MoreIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-img">
-          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
-        </Box>
-        <Box className="ig-content-btn-group">
-          <Box className='ig-content-btn-left'>
-            <Box className="ig-content-btn">
-              <FavoriteBorderOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <ModeCommentOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <SendOutlinedIcon />
-            </Box>
-          </Box>
-          <Box className="ig-content-dot">
-            <FbContentDot />
-          </Box>
-          <Box className="ig-content-btn-right">
-            <BookmarkBorderOutlinedIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-like">
-          <Typography
-            noWrap
-            className="ig-content-like-text"
-            component="div">
-            {t("ig.p1.likes")}
-          </Typography>
-        </Box >
-        <Box className="ig-content-text">
-          <Typography component="div" className="ig-content-text-name">
-            {t("ig.p1.name") + " "}
-          </Typography>
-          <Typography component="div" className="ig-content-text-text">
-            {t("ig.p1.text")}
-          </Typography></Box>
-        <Box className="ig-content-time">
-          <Typography
-            noWrap
-            className="ig-content-time-text"
-            component="div">
-            {t("ig.p1.time")}
-          </Typography></Box>
-      </Box>
-      <Box className="ig-content">
-        <Box className="ig-content-title">
-          <Box className="">
-            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
-          </Box>
-          <Typography
-            noWrap
-            className="ig-content-title-name"
-            component="div">
-            {t("ig.p1.name")}
-          </Typography>
-          <Box className="ig-content-title-icon">
-            <MoreIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-img">
-          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
-        </Box>
-        <Box className="ig-content-btn-group">
-          <Box className='ig-content-btn-left'>
-            <Box className="ig-content-btn">
-              <FavoriteBorderOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <ModeCommentOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <SendOutlinedIcon />
-            </Box>
-          </Box>
-          <Box className="ig-content-dot">
-            <FbContentDot />
-          </Box>
-          <Box className="ig-content-btn-right">
-            <BookmarkBorderOutlinedIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-like">
-          <Typography
-            noWrap
-            className="ig-content-like-text"
-            component="div">
-            {t("ig.p1.likes")}
-          </Typography>
-        </Box >
-        <Box className="ig-content-text">
-          <Typography component="div" className="ig-content-text-name">
-            {t("ig.p1.name") + " "}
-          </Typography>
-          <Typography component="div" className="ig-content-text-text">
-            {t("ig.p1.text")}
-          </Typography></Box>
-        <Box className="ig-content-time">
-          <Typography
-            noWrap
-            className="ig-content-time-text"
-            component="div">
-            {t("ig.p1.time")}
-          </Typography></Box>
-      </Box>
-      <Box className="ig-content">
-        <Box className="ig-content-title">
-          <Box className="">
-            <Avatar className="ig-content-title-avater" alt={t("main.un")} src="/amberAvatar.jpg" />
-          </Box>
-          <Typography
-            noWrap
-            className="ig-content-title-name"
-            component="div">
-            {t("ig.p1.name")}
-          </Typography>
-          <Box className="ig-content-title-icon">
-            <MoreIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-img">
-          <img width="320px" src="https://placekitten.com/320/320" alt="picture" />
-        </Box>
-        <Box className="ig-content-btn-group">
-          <Box className='ig-content-btn-left'>
-            <Box className="ig-content-btn">
-              <FavoriteBorderOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <ModeCommentOutlinedIcon />
-            </Box>
-            <Box className="ig-content-btn">
-              <SendOutlinedIcon />
-            </Box>
-          </Box>
-          <Box className="ig-content-dot">
-            <FbContentDot />
-          </Box>
-          <Box className="ig-content-btn-right">
-            <BookmarkBorderOutlinedIcon />
-          </Box>
-        </Box>
-        <Box className="ig-content-like">
-          <Typography
-            noWrap
-            className="ig-content-like-text"
-            component="div">
-            {t("ig.p1.likes")}
-          </Typography>
-        </Box >
-        <Box className="ig-content-text">
-          <Typography component="div" className="ig-content-text-name">
-            {t("ig.p1.name") + " "}
-          </Typography>
-          <Typography component="div" className="ig-content-text-text">
-            {t("ig.p1.text")}
-          </Typography></Box>
-        <Box className="ig-content-time">
-          <Typography
-            noWrap
-            className="ig-content-time-text"
-            component="div">
-            {t("ig.p1.time")}
-          </Typography></Box>
-      </Box>
-    </>
-  )
 }
 
 export const DcNavigationBar: FC = () => {
