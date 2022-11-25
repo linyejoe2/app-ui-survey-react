@@ -9,7 +9,8 @@
     "build-on-local": "tsc && vite build",
     "preview": "vite preview",
     "eslint": "eslint src --ext .ts,.tsx",
-    "eslint-fix": "eslint src --ext .ts,.tsx --fix"
+    "eslint-fix": "eslint src --ext .ts,.tsx --fix",
+    "deploy": "bash ./.github/deploy.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
