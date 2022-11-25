@@ -30,7 +30,7 @@ import { IFCProps } from '../../../interface'
 
 export const FbFirstRow: FC<IFCProps> = (props: IFCProps) => {
   return (
-    <AppBar position="fixed" className="fb-first-bar" >
+    <AppBar position="sticky" className="fb-first-bar" >
       {props!.children}
     </AppBar>
   )

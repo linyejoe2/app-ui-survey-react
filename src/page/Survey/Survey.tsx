@@ -365,9 +365,9 @@ const MainStepper = (props: ISurveyProps) => {
             <Button
               size="small"
               onClick={handleNext}
-              disabled={activeStep === steps.length - 1}
+            // disabled={activeStep === steps.length - 1}
             >
-              Next
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               <KeyboardArrowRight />
             </Button>
           }
