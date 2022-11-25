@@ -32,6 +32,12 @@ const surveyDate: ISurveyData = {
 }
 
 export default function Survey() {
+  React.useEffect(() => {
+    window.onbeforeunload = function (event) {
+      return confirm('Confirm refresh')
+    }
+  })
+
   const [state, changeState] = useState(surveyDate)
   // const onMobile = useMediaQuery('(min-width:600px)')
   const changeSurveyData = (updateData: ISurveyData) => {
