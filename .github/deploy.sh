@@ -14,7 +14,7 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # 設定 git 相關資訊
 msg='來自 GitHub Actions 的自動部署。'
-githubUrl=git@github.com:linyejoe2/tic-tac-toe.lamdo.git
+githubUrl=git@github.com:linyejoe2/app-ui-survey-react.git
 git config --global user.name "linyejoe2"
 git config --global user.email "linyejoe2@gmail.com"
 
