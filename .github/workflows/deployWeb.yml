@@ -17,5 +17,5 @@ jobs:
         node-version: "16.x"
     - name : run deploy.sh
       env: # 設定環境變數
-        GITHUB_TOKEN: ${{ secrets.LAMDO }}
+        GITHUB_TOKEN: ${{ secrets.DS }}
       run: npm install && npm run deploy
