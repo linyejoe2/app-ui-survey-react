@@ -33,7 +33,7 @@ const surveyDate: ISurveyData = {
 
 export default function Survey() {
   React.useEffect(() => {
-    window.onbeforeunload = function (event) {
+    window.onbeforeunload = function () {
       return confirm('Confirm refresh')
     }
   })
@@ -148,7 +148,7 @@ const MainStepper = (props: ISurveyProps) => {
           <FormControl className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
-              sx={{ mt: 2 }}
+
               name="gender-button-group"
               // defaultValue={props.state.gender}
               // defaultValue='male'
@@ -170,7 +170,7 @@ const MainStepper = (props: ISurveyProps) => {
           <FormControl className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id="ageFormLabel">{t('p2.q1')}</FormLabel>
             <RadioGroup
-              sx={{ mt: 2 }}
+
               name="age-button-group"
               // defaultValue={props.state.age}
               // value={surveyDate.age}
@@ -200,9 +200,7 @@ const MainStepper = (props: ISurveyProps) => {
           <FormControl className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p3.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p3.q2')}</FormLabel>
-            <RadioGroup
-              sx={{ mt: 2 }}
-              name="dafault-ui-button-group"
+            <RadioGroup name="dafault-ui-button-group"
               // value={surveyDate.age}
               onChange={(ev, val) => {
                 const temp = props.state
@@ -240,7 +238,7 @@ const MainStepper = (props: ISurveyProps) => {
         return <>
           <FormControl className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
-            <FormLabel sx={{ fontSize: '20px' }} >{t('p4.q2')}</FormLabel>
+            <FormLabel className={'survey-step-sub-label'} >{t('p4.q2')}</FormLabel>
             <Box sx={{
               display: 'flex',
               justifyContent: 'center'
@@ -288,7 +286,7 @@ const MainStepper = (props: ISurveyProps) => {
   return (
     <Box sx={{
       width: '100%',
-      height: '650px',
+      height: onMobile ? '500px' : '650px',
       p: 2
     }}
       className='center-child'

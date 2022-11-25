@@ -2,9 +2,12 @@ import './App.css'
 // import { useState } from 'react'
 import Button from '@mui/material/Button'
 import { useTranslation } from 'react-i18next'
+import { useMediaQuery } from '@mui/material'
 
 function App() {
   const { t } = useTranslation()
+  const onMobile = useMediaQuery('(max-width:600px)')
+  const onSmallMobile = useMediaQuery('(max-width:400px)')
   // const { t, i18n } = useTranslation()
   // const [count, setCount] = useState(0)
 
@@ -13,7 +16,8 @@ function App() {
       <div>
         <a href="#">
           <img src="./TP.svg" className="logo" style={{
-            height: '200px',
+            // height: {onMobile?'':'200px'},
+            width: onMobile ? onSmallMobile ? '200px' : '300px' : '550px',
             padding: '0',
             display: 'inline-block',
             willChange: 'filter'

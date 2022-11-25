@@ -59,9 +59,9 @@ export default function TopNavigationBar() {
               {onMobile ? '' : t('main.title')}
             </Link>
           </Typography>
-          <Link href='./#/survey' underline='none' color="unset">
+          {/* <Link href='./#/survey' underline='none' color="unset">
             survey
-          </Link>
+          </Link> */}
           <IconButton
             size="large"
             title="change language"

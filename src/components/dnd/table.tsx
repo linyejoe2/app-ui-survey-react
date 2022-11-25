@@ -7,22 +7,10 @@ import {
   DropResult,
   NotDraggingStyle
 } from '@hello-pangea/dnd'
-import { Box, Checkbox } from '@mui/material'
+import { Box, Checkbox, useMediaQuery } from '@mui/material'
 import { useSelector, RootState } from '../../service/store'
 import ReorderIcon from '@mui/icons-material/Reorder'
 import { IpositionData, ISurveyProps, TPosition } from '../../interface'
-
-// interface Item {
-//   id: string;
-//   content: string;
-// }
-
-// // fake data generator
-// const getItems = (count: number): Item[] =>
-//   Array.from({ length: count }, (v, k) => k).map(k => ({
-//     id: `item-${k}`,
-//     content: `item ${k}`
-//   }));
 
 // a little function to help us with reordering the result
 const reorder = (
@@ -43,6 +31,7 @@ const grid = 8
 
 const getItemStyle = (
   isDragging: boolean,
+  onMobile: boolean,
   draggableStyle: DraggingStyle | NotDraggingStyle | undefined,
   themeState: boolean
 ): React.CSSProperties => ({
@@ -51,7 +40,7 @@ const getItemStyle = (
   padding: grid * 2,
   borderRadius: '5px',
   margin: `0 0 ${grid}px 0`,
-
+  height: onMobile ? '50px' : '',
   // change background colour if dragging
   background: themeState
     ? isDragging ? '#9bbde46e' : '#9bbde4'
@@ -65,21 +54,12 @@ const getItemStyle = (
 })
 
 const getListStyle = (onMobile: boolean, themeState: boolean): React.CSSProperties => {
-  if (onMobile) {
-    return {
-      background: themeState ? '#e8e8e8' : '#383838',
-      marginTop: '20px',
-      padding: grid,
-      width: 200,
-      borderRadius: '3px',
-      boxShadow: '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%'
-    }
-  }
   return {
     background: themeState ? '#e8e8e8' : '#383838',
     marginTop: '20px',
     padding: grid,
     width: 250,
+    height: onMobile ? '300px' : '100%',
     borderRadius: '3px',
     boxShadow: '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%'
   }
@@ -89,6 +69,7 @@ const getListStyle = (onMobile: boolean, themeState: boolean): React.CSSProperti
 export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
   // const [state, setState] = useState(positionDatas.sort((a, b) => parseInt(a.position) - parseInt(b.position)));
   const themeState = useSelector((state: RootState) => state.themeState)
+  const onMobile = useMediaQuery('(max-width:600px)')
 
   const onDragEnd = (result: DropResult): void => {
     // dropped outside the list
@@ -114,7 +95,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            style={getListStyle(snapshot.isDraggingOver, themeState)}
+            style={getListStyle(onMobile, themeState)}
           >
             {props.state.positionDatas!.map((item, index) => (
               <Draggable key={item.uid} draggableId={item.uid} index={index}>
@@ -125,6 +106,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                     {...provided.dragHandleProps}
                     style={getItemStyle(
                       snapshot.isDragging,
+                      onMobile,
                       provided.draggableProps.style,
                       themeState
                     )}
