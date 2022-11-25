@@ -1,7 +1,8 @@
 {
   "main": {
     "title": "The Most Liked Social Media UI Design at Taiwan in 2022",
-    "un": "Amber"
+    "un": "Amber",
+    "alert": "Choose a Answer First!"
   },
   "p1": {
     "t": "gender",
@@ -47,9 +48,9 @@
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Search bar?",
     "a1": "Facebook",
-    "a2": "Instagram",
-    "a3": "TikTok",
-    "a4": "YouTube"
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
   },
   "p6": {
     "t": "Post bar Style",
@@ -57,9 +58,9 @@
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Post bar?",
     "a1": "Facebook",
-    "a2": "Instagram",
-    "a3": "TikTok",
-    "a4": "YouTube"
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
   },
   "p7": {
     "t": "Short Style",
@@ -67,9 +68,9 @@
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Short?",
     "a1": "Facebook",
-    "a2": "Instagram",
-    "a3": "TikTok",
-    "a4": "YouTube"
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
   },
   "p8": {
     "t": "Content Style",
@@ -77,9 +78,9 @@
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Content?",
     "a1": "Facebook",
-    "a2": "Instagram",
-    "a3": "TikTok",
-    "a4": "YouTube"
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
   },
   "p9": {
     "t": "Navigation bar Style",
@@ -87,9 +88,9 @@
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Navigation bar?",
     "a1": "Facebook",
-    "a2": "Instagram",
-    "a3": "TikTok",
-    "a4": "YouTube"
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
   },
   "fb": {
     "t1": "What's on your mind, Amber?",

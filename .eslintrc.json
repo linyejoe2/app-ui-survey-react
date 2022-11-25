@@ -34,6 +34,7 @@
             } ],
         "unused-imports/no-unused-imports": "error", // 沒有未使用的 imports 需搭配套件 eslint-plugin-unused-imports
         "no-undef": "warn",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "quotes": "warn"
     }
 }

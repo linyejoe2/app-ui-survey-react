@@ -78,7 +78,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
     }
 
     const items: IpositionData[] = reorder(
-      props.state.positionDatas!,
+      props.state.positionDatas,
       result.source.index,
       result.destination.index
     )
@@ -97,7 +97,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
             ref={provided.innerRef}
             style={getListStyle(onMobile, themeState)}
           >
-            {props.state.positionDatas!.map((item, index) => (
+            {props.state.positionDatas.map((item, index) => (
               <Draggable key={item.uid} draggableId={item.uid} index={index}>
                 {(provided, snapshot): JSX.Element => (
                   <div
@@ -129,13 +129,13 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                           p: '0',
                           pl: '2px',
                           verticalAlign: 'top'
-                        }} defaultChecked={props.state.positionDatas![index].enable}
+                        }} defaultChecked={props.state.positionDatas[index].enable}
                           onChange={(event) => {
                             if (!event.target.checked) {
                               item.enable = false
                             } else item.enable = true
                             const temp = props.state
-                            temp.positionDatas![index] = item
+                            temp.positionDatas[index] = item
                             props.changeSurveyData(temp)
                           }} />
                       }

@@ -53,7 +53,7 @@ const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData 
  * 用 positionDatas.position 的查法
  */
 const searchBar3 = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
-  for (let ele of surveyData.positionDatas!) {
+  for (let ele of surveyData.positionDatas) {
     if (ele.position == position) return ele
   }
   return null

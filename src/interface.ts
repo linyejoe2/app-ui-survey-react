@@ -34,7 +34,7 @@ export interface ISurveyData {
   defaultUI: TSocialMedia,
   themeStyle: TSocialMedia,
   themeMode: TThemeMode,
-  positionDatas?: IpositionData[],
+  positionDatas: IpositionData[],
   UIStyle?: Map<TBar, IPhoneBar>
   // UIStyle?: {
   //   titleBar: IPhoneBar,

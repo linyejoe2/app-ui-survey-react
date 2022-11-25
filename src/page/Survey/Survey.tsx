@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Skeleton from '@mui/material/Skeleton'
-import { FormControl, FormControlLabel, FormLabel, MobileStepper, Radio, RadioGroup } from '@mui/material'
+import { Alert, FormControl, FormControlLabel, FormLabel, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -28,7 +28,7 @@ const surveyDate: ISurveyData = {
   themeStyle: '',
   themeMode: 'light',
   UIStyle: undefined,
-  positionDatas: undefined
+  positionDatas: []
 }
 
 export default function Survey() {
@@ -59,16 +59,16 @@ export default function Survey() {
             </MainStepper>
           </Paper>
         </Grid>
+        {/* <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
+          {JSON.stringify(state)
+          }
+        </Grid> */}
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
           {state.defaultUI
             ? <Phone state={state} changeSurveyData={changeSurveyData} />
             : <Skeleton variant="rounded" height='660px' width="340px" />
           }
         </Grid>
-        {/* <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
-          {JSON.stringify(state)
-          }
-        </Grid> */}
       </Grid>
     </Box>
   )
@@ -85,6 +85,7 @@ const MainStepper = (props: ISurveyProps) => {
   // const theme = useTheme()
   const onMobile = useMediaQuery('(max-width:600px)')
   const [activeStep, setActiveStep] = React.useState(0)
+  const [openAlert, setAlert] = React.useState(false)
   const [skipped, setSkipped] = React.useState(new Set<number>())
 
   const isStepOptional = (step: number) => {
@@ -96,14 +97,27 @@ const MainStepper = (props: ISurveyProps) => {
   }
 
   const handleNext = () => {
-    switch (activeStep) {
-      case 0:
-        if (!surveyDate.gender) { /* empty */ }
-        break
-
-      default:
-        break
+    try {
+      switch (activeStep) {
+        case 0:
+          if (!props.state.gender) throw new Error("")
+          break
+        case 1:
+          if (!props.state.age) throw new Error("")
+          break
+        case 2:
+          if (!props.state.defaultUI) throw new Error("")
+          break
+        case 3:
+          break
+        default:
+        // throw new Error("")
+      }
+    } catch (error) {
+      setAlert(true)
+      return
     }
+
     let newSkipped = skipped
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values())
@@ -145,13 +159,12 @@ const MainStepper = (props: ISurveyProps) => {
     switch (activeStep) {
       case 0: {
         return <>
-          <FormControl className={'survey-step-form'}>
+          <FormControl key={"step0"} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
 
               name="gender-button-group"
-              // defaultValue={props.state.gender}
-              // defaultValue='male'
+              defaultValue={props.state.gender}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.gender = val
@@ -167,7 +180,7 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 1: {
         return <>
-          <FormControl className={'survey-step-form'}>
+          <FormControl key={"step1"} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id="ageFormLabel">{t('p2.q1')}</FormLabel>
             <RadioGroup
 
@@ -178,6 +191,7 @@ const MainStepper = (props: ISurveyProps) => {
               //   surveyDate.age = val
               //   console.log(surveyDate)
               // }}
+              defaultValue={props.state.age}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.age = val
@@ -197,11 +211,12 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 2: {
         return <>
-          <FormControl className={'survey-step-form'}>
+          <FormControl key={"step2"} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p3.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p3.q2')}</FormLabel>
             <RadioGroup name="dafault-ui-button-group"
               // value={surveyDate.age}
+              defaultValue={props.state.defaultUI}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.defaultUI = val as TSocialMedia
@@ -236,7 +251,7 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 3: {
         return <>
-          <FormControl className={'survey-step-form'}>
+          <FormControl key={"step3"} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p4.q2')}</FormLabel>
             <Box sx={{
@@ -251,27 +266,27 @@ const MainStepper = (props: ISurveyProps) => {
       case 4: {
         // console.log(positionDatas)
         return <>
-          <SurveyStep stepId="5" positionData={props.state.positionDatas![0]} />
+          <SurveyStep stepId='5' uid='1' survey={props} />
         </>
       }
       case 5: {
         return <>
-          <SurveyStep stepId="6" positionData={props.state.positionDatas![1]} />
+          <SurveyStep stepId='6' uid='2' survey={props} />
         </>
       }
       case 6: {
         return <>
-          <SurveyStep stepId="7" positionData={props.state.positionDatas![2]} />
+          <SurveyStep stepId='7' uid='3' survey={props} />
         </>
       }
       case 7: {
         return <>
-          <SurveyStep stepId="8" positionData={props.state.positionDatas![3]} />
+          <SurveyStep stepId='8' uid='4' survey={props} />
         </>
       }
       case 8: {
         return <>
-          <SurveyStep stepId="9" positionData={props.state.positionDatas![4]} />
+          <SurveyStep stepId='9' uid='5' survey={props} />
         </>
       }
       default: {
@@ -328,6 +343,16 @@ const MainStepper = (props: ISurveyProps) => {
       }}>
         {subTab()}
       </Box>
+      {openAlert
+        ? <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: 'absolute', bottom: '0px', width: '100%' }}>
+            <Zoom in={openAlert}>
+              <Alert severity="error" onClose={() => { setAlert(false) }}>{t("main.alert")}</Alert>
+            </Zoom>
+          </Box>
+        </Box>
+        : <></>
+      }
       {/* bottom button group */}
       {onMobile
         // onMobile
@@ -343,17 +368,11 @@ const MainStepper = (props: ISurveyProps) => {
             >
               Next
               <KeyboardArrowRight />
-              {/* {theme.direction === 'rtl'
-                ? (<KeyboardArrowLeft />)
-                : (<KeyboardArrowRight />)} */}
             </Button>
           }
           backButton={
             <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
               <KeyboardArrowLeft />
-              {/* {theme.direction === 'rtl'
-                ? (<KeyboardArrowRight />)
-                : (<KeyboardArrowLeft />)} */}
               Back
             </Button>
           } />

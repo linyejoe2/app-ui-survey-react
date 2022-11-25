@@ -29,7 +29,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   const bars: JSX.Element[] = []
 
   // reverse after content
-  let positionDatas = props.state.positionDatas!
+  let positionDatas = props.state.positionDatas
   let reverseIndex = 0
   for (let i = 0; i < positionDatas.length; i++) {
     if (positionDatas[i].name === 'content') {

@@ -1,27 +1,39 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { IpositionData, TSocialMedia } from '../../interface'
+import { IpositionData, ISurveyProps, TSocialMedia } from '../../interface'
 
 interface PostsProps {
-  stepId: string, positionData: IpositionData
+  stepId: string,
+  uid: string,
+  survey: ISurveyProps
 }
 
-export const SurveyStep: FC<PostsProps> = ({ stepId, positionData }) => {
-  const [state, setState] = useState(positionData)
+export const SurveyStep: FC<PostsProps> = ({ stepId, uid, survey }) => {
+  // const [state, setState] = useState(positionData)
+  const pickBar = (uid: string, datas: IpositionData[]): IpositionData => {
+    for (const ele of datas) {
+      if (ele.uid === uid) return ele
+    }
+    return datas[0]
+  }
   const { t } = useTranslation()
   return <>
-    {positionData.enable
-      ? <FormControl className={'survey-step-form'}>
-        <FormLabel className={'survey-step-label'} id='gender'>{t(`p${stepId}.q1`)}</FormLabel>
+    {pickBar(uid, survey.state.positionDatas).enable
+      ? <FormControl key={"step" + stepId} className={'survey-step-form'}>
+        <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.q1`)}</FormLabel>
         {/* <FormLabel sx={{ fontSize: '20px' }} >{t({`p${stepId}.q2')}</FormLabel> */}
         <RadioGroup name={`style-${stepId}-button-group`}
           // value={value}
           // defaultValue='male'
+          defaultValue={pickBar(uid, survey.state.positionDatas).style}
           onChange={(ev, val) => {
-            const temp: IpositionData = JSON.parse(JSON.stringify(state))
-            temp.style = val as TSocialMedia
-            setState(temp)
+            const temp = survey.state
+            pickBar(uid, temp.positionDatas).style = val as TSocialMedia
+            survey.changeSurveyData(temp)
+            // const temp: IpositionData = JSON.parse(JSON.stringify(state))
+            // temp.style = val as TSocialMedia
+            // setState(temp)
           }}
         >
           <FormControlLabel value={t(`p${stepId}.a1`)} control={<Radio />} label={t(`p${stepId}.a1`)} />
@@ -31,7 +43,7 @@ export const SurveyStep: FC<PostsProps> = ({ stepId, positionData }) => {
         </RadioGroup>
       </FormControl>
       : <FormControl className={'survey-step-form'}>
-        <FormLabel className={'survey-step-label'} id='gender'>{t(`p${stepId}.s1`)}</FormLabel>
+        <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.s1`)}</FormLabel>
         <FormLabel sx={{ fontSize: '20px' }} >{t(`p${stepId}.s2`)}</FormLabel>
       </FormControl>
     }
