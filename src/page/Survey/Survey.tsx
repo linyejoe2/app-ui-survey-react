@@ -83,6 +83,7 @@ const MainStepper = (props: ISurveyProps) => {
     steps.push(t('p' + i + '.t'))
   }
   // const theme = useTheme()
+  const onLaptop = useMediaQuery('(max-width:1000px)')
   const onMobile = useMediaQuery('(max-width:600px)')
   const [activeStep, setActiveStep] = React.useState(0)
   const [openAlert, setAlert] = React.useState(false)
@@ -308,7 +309,7 @@ const MainStepper = (props: ISurveyProps) => {
     >
       {/* top stepper */}
       <Box>
-        {!onMobile
+        {!onLaptop
           ? <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps: { completed?: boolean } = {}
@@ -338,8 +339,8 @@ const MainStepper = (props: ISurveyProps) => {
       </Box>
       {/* tab */}
       <Box sx={{
-        height: onMobile ? 'calc(100% - 40px)' : 'calc(100% - 140px)',
-        pt: onMobile ? 0 : 4
+        height: onLaptop ? 'calc(100% - 40px)' : 'calc(100% - 140px)',
+        pt: onLaptop ? 0 : 4
       }}>
         {subTab()}
       </Box>
@@ -354,7 +355,7 @@ const MainStepper = (props: ISurveyProps) => {
         : <></>
       }
       {/* bottom button group */}
-      {onMobile
+      {onLaptop
         // onMobile
         ? <MobileStepper activeStep={activeStep}
           variant="text"

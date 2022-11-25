@@ -55,7 +55,7 @@ export const DcContent: FC = () => {
       <Box key={i} className="dc-content">
         <Box className="dc-content-topic">
           <Box className="dc-content-topic-avater-box">
-            <Avatar className="dc-content-topic-avater" alt={t('main.un')} src="./amberAvatar.jpg" />
+            <Avatar className="dc-content-topic-avater" alt={t('main.un')} src="./dcardWoman.webp" />
           </Box>
           <Typography className="dc-content-topic-text">
             {t('dc.c1.topic')}

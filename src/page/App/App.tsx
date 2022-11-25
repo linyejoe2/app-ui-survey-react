@@ -15,9 +15,9 @@ function App() {
     <div className="App">
       <div>
         <a href="#">
-          <img src="./TP.svg" className="logo" style={{
+          <img src="./socialMedia.svg" className="logo" style={{
             // height: {onMobile?'':'200px'},
-            width: onMobile ? onSmallMobile ? '200px' : '300px' : '550px',
+            width: onMobile ? onSmallMobile ? '200px' : '300px' : '300px',
             padding: '0',
             display: 'inline-block',
             willChange: 'filter'
