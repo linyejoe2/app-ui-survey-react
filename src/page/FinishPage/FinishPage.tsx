@@ -4,35 +4,33 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
 import { ISurveyData } from '../../interface'
-import { gSurveyData2 } from '../../service/services'
-import { Backdrop, CircularProgress, Fab, Typography } from '@mui/material'
-import { PieChart } from 'react-minimal-pie-chart'
+import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
-import { lazy, Suspense } from 'react'
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
+
 import { LoadingTP } from '../../components/LoadingTP'
 import { useTranslation } from 'react-i18next'
 
 const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 // import CustomPieChart from '../../components/FinishPage/CustomPieChart'
 
-const fakeData: ISurveyData = {
-  user: '',
-  gender: 'male',
-  age: '0',
-  defaultUI: 'Facebook',
-  themeStyle: 'YouTube',
-  themeMode: 'light',
-  UIStyle: undefined,
-  positionDatas: [
-    { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
-    { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
-    { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
-    { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
-    { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
-  ]
-}
+// const fakeData: ISurveyData = {
+//   user: '',
+//   gender: 'male',
+//   age: '0',
+//   defaultUI: 'Facebook',
+//   themeStyle: 'YouTube',
+//   themeMode: 'light',
+//   UIStyle: undefined,
+//   positionDatas: [
+//     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
+//     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
+//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
+//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
+//     { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
+//   ]
+// }
 
 export const FinishPage = () => {
   // const gSurveyData2 = fakeData
@@ -59,21 +57,21 @@ export const FinishPage = () => {
       {gSurveyData2.defaultUI === surveyAnalyzer.mostLikeUI.UIName
         ? <Box className='resource-box '>
           <Typography className="finish-text">
-            {t("f.res.same.t1") + ' ' + gSurveyData2.defaultUI + ' '} <br /> {t("f.res.same.t2") + ' ' + surveyAnalyzer.mostLikeUI.UIName + t("f.res.same.t3")}
+            {t('f.res.same.t1') + ' ' + gSurveyData2.defaultUI + ' '} <br /> {t('f.res.same.t2') + ' ' + surveyAnalyzer.mostLikeUI.UIName + t('f.res.same.t3')}
           </Typography>
           <Typography className="finish-text">
-            {t("f.res.same.t4") + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t("f.res.same.t5") + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t("f.res.same.t6")}
+            {t('f.res.same.t4') + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t('f.res.same.t5') + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t('f.res.same.t6')}
           </Typography>
           <Typography className="finish-text">
-            {t("f.res.same.t7")}
+            {t('f.res.same.t7')}
           </Typography>
         </Box>
         : <Box className='resource-box '>
           <Typography className="finish-text">
-            {t("f.res.n-same.t1") + ' ' + gSurveyData2.defaultUI + ' ' + t("f.res.n-same.t2") + ' ' + surveyAnalyzer.mostLikeUI.UIName + t("f.res.n-same.t3")}
+            {t('f.res.n-same.t1') + ' ' + gSurveyData2.defaultUI + ' ' + t('f.res.n-same.t2') + ' ' + surveyAnalyzer.mostLikeUI.UIName + t('f.res.n-same.t3')}
           </Typography>
           <Typography className="finish-text">
-            {t("f.res.n-same.t4") + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t("f.res.n-same.t5") + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t("f.res.n-same.t6")}
+            {t('f.res.n-same.t4') + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t('f.res.n-same.t5') + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t('f.res.n-same.t6')}
           </Typography>
         </Box>
       }

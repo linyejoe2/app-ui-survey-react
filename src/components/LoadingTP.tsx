@@ -1,5 +1,5 @@
-import { Backdrop, CircularProgress, Typography } from "@mui/material";
-import React, { FC } from "react";
+import { Backdrop, CircularProgress, Typography } from '@mui/material'
+import React, { FC } from 'react'
 
 export const LoadingTP: FC = () => {
   return (
@@ -7,7 +7,7 @@ export const LoadingTP: FC = () => {
       sx={{
         color: '#fff',
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        flexDirection: "column"
+        flexDirection: 'column'
       }}
       open={true}
     // onClick={handleClose}
@@ -18,7 +18,7 @@ export const LoadingTP: FC = () => {
   )
 }
 
-const src = "好想躺平..."
+const src = '好想躺平...'
 const srcs = src.split('')
 const index2 = 1
 

@@ -1,5 +1,5 @@
-import { FC, lazy } from "react"
-import { PieChart } from "react-minimal-pie-chart"
+import { FC } from 'react'
+import { PieChart } from 'react-minimal-pie-chart'
 interface props {
   pieData: {
     title: string;
@@ -31,7 +31,7 @@ const CustomPieChart: FC<props> = ({
             fill: dataEntry.color
           }}
         >
-          {dataEntry.title + ": " + Math.round(dataEntry.percentage) + '%'}
+          {dataEntry.title + ': ' + Math.round(dataEntry.percentage) + '%'}
         </text>
       )
     }}
