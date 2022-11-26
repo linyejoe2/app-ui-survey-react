@@ -61,7 +61,7 @@ export const gSurveyData2 = surveySlice2.reducer
 export const { storeSurveyData2 } = surveySlice2.actions
 
 export function isIOS() {
-  return !([
+  return ([
     'iPad Simulator',
     'iPhone Simulator',
     'iPod Simulator',
