@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { ISurveyData, ISurveyProps, TSocialMedia } from '../../interface'
-import { SurveyStep } from './SurveyStep'
+import { SurveyStep } from '../../components/SurveyStep'
 import { Phone } from '../../components/Phone/Phone'
 import { useState } from 'react'
 import { DcPositionDatas, FbPositionDatas, IgPositionDatas, YTPositionDatas } from '../../const'
@@ -119,11 +119,6 @@ const MainStepper = (props: ISurveyProps) => {
         case 2:
           if (!props.state.defaultUI) throw new Error('')
           break
-        case 3:
-          break
-        case 8:
-          console.log('8')
-          break
         default:
         // throw new Error("")
       }
@@ -189,7 +184,6 @@ const MainStepper = (props: ISurveyProps) => {
                 if (onLaptop) handleDelayNext()
               }}
               onKeyDown={(ev) => {
-                console.log(ev.key)
                 if (ev.key === 'Enter') {
                   handleNext()
                 }
@@ -223,7 +217,6 @@ const MainStepper = (props: ISurveyProps) => {
                 if (onLaptop) handleDelayNext()
               }}
               onKeyDown={(ev) => {
-                console.log(ev.key)
                 if (ev.key === 'Enter') {
                   handleNext()
                 }
@@ -274,7 +267,6 @@ const MainStepper = (props: ISurveyProps) => {
                 // if (onLaptop) handleDelayNext()
               }}
               onKeyDown={(ev) => {
-                console.log(ev.key)
                 if (ev.key === 'Enter') {
                   handleNext()
                 }

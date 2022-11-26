@@ -1,0 +1,26 @@
+.finish-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: auto;
+}
+
+.finish-text {
+  font-size: 30px !important;
+  text-align: center;
+}
+
+.resource-box {
+  margin-top: 20px;
+}
+
+.phone-box {
+
+  margin-top: 20px;
+}
+
+.pie-chart-box {
+
+  margin-top: 20px;
+}

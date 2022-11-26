@@ -61,3 +61,19 @@ export interface IPhoneHeight {
   beforeContent: boolean,
   firstBar: boolean
 }
+
+export interface ISurveyAnalyze {
+  defaultUI: TSocialMedia,
+  mostLikeUI: {
+    UIName: TSocialMedia,
+    count: number
+  }
+  barCount?: (TSocialMedia | number)[][]
+
+  barCount2: {
+    Facebook: number,
+    Instagram: number,
+    YouTube: number,
+    Dcard: number
+  }
+}

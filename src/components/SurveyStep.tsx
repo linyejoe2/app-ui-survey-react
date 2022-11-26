@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { IpositionData, ISurveyProps, TSocialMedia } from '../../interface'
+import { IpositionData, ISurveyProps, TSocialMedia } from '../interface'
 
 interface PostsProps {
   stepId: string,
@@ -29,7 +29,6 @@ export const SurveyStep: FC<PostsProps> = ({ stepId, uid, survey, handleNext }) 
           // value={value}
           // defaultValue='male'
           onKeyDown={(ev) => {
-            console.log(ev.key)
             if (ev.key === 'Enter') {
               handleNext()
             }

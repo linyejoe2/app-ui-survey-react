@@ -59,7 +59,3 @@ const surveySlice2 = createSlice({
 
 export const gSurveyData2 = surveySlice2.reducer
 export const { storeSurveyData2 } = surveySlice2.actions
-
-export const delay = (func: () => any, ms: number): void => {
-  setTimeout(func, ms)
-}

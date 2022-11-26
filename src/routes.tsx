@@ -2,7 +2,7 @@ import { createHashRouter } from 'react-router-dom'
 
 import App from './page/App/App'
 import ErrorPage from './page/ErrorPage'
-import { FinishPage } from './page/FinishPage'
+import { FinishPage } from './page/FinishPage/FinishPage'
 import { HelloWorld } from './page/HelloWorld'
 import Survey from './page/Survey/Survey'
 
