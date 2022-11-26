@@ -83,6 +83,8 @@ const MainStepper = (props: ISurveyProps) => {
   // const [sd, changeSurveyData] = useState(surveyDate);
   React.useEffect(() => {
     window.onbeforeunload = function () {
+      console.log(window.location.href)
+      if (window.location.href.indexOf('finish') !== -1) return
       return confirm('Confirm refresh')
     }
   })

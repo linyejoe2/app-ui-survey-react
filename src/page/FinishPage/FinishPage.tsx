@@ -35,6 +35,10 @@ const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieC
 export const FinishPage = () => {
   // const gSurveyData2 = fakeData
   const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
+  if (gSurveyData2.defaultUI === '') {
+    window.document.location.href = "./"
+    return
+  }
   // console.log(gSurveyData2)
   const { t } = useTranslation()
   const [loading, setLoading] = React.useState(true)
@@ -100,7 +104,7 @@ export const FinishPage = () => {
           Facebook
         </Fab>
         <Fab variant="extended" aria-label="share-line" sx={{ ml: 2, backgroundColor: '#1fc32e' }}
-          href="http://line.naver.jp/R/msg/text/?https://linyejoe2.github.io/app-ui-survey-react"
+          href="http://line.naver.jp/R/msg/text/?https://linyejoe2.github.io/app-ui-survey-react?openExternalBrowser=1"
           target="line">
           Line
         </Fab>
