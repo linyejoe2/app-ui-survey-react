@@ -43,14 +43,14 @@ export const PhonePadding: FC<LayoutProps> = (props: LayoutProps) => {
           {/* <body style={{
             margin: "0 10px"
           }}> */}
-            <div id="PhoneBody" style={{
-
-              height: props.phoneHeight.body,
-              // height: 660,
-              marginTop: props.phoneHeight.beforeBody
-            }}>
-              {props.children}
-            </div>
+          <div id="PhoneBody" style={{
+            position: "fixed",
+            height: props.phoneHeight.body,
+            // height: 660,
+            marginTop: props.phoneHeight.beforeBody
+          }}>
+            {props.children}
+          </div>
           {/* </body> */}
         </foreignObject>
       </svg>
