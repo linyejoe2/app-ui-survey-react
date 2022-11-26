@@ -190,7 +190,7 @@ const MainStepper = (props: ISurveyProps) => {
               }}
               onKeyDown={(ev) => {
                 console.log(ev.key)
-                if (ev.key === "Enter") {
+                if (ev.key === 'Enter') {
                   handleNext()
                 }
               }}
@@ -224,7 +224,7 @@ const MainStepper = (props: ISurveyProps) => {
               }}
               onKeyDown={(ev) => {
                 console.log(ev.key)
-                if (ev.key === "Enter") {
+                if (ev.key === 'Enter') {
                   handleNext()
                 }
               }}
@@ -275,7 +275,7 @@ const MainStepper = (props: ISurveyProps) => {
               }}
               onKeyDown={(ev) => {
                 console.log(ev.key)
-                if (ev.key === "Enter") {
+                if (ev.key === 'Enter') {
                   handleNext()
                 }
               }}

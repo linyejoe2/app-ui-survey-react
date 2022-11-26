@@ -18,7 +18,7 @@ export const DcTitleBar: FC = () => {
   return (
     // <Box className='dc-first-row phone-row'>
     <Box className='dc-title-bar'>
-      <input type="text" className="dc-title-input" placeholder={" " + t('dc.t.text')} />
+      <input type="text" className="dc-title-input" placeholder={' ' + t('dc.t.text')} />
     </Box>
     // </Box>
   )

@@ -1,4 +1,7 @@
 {
+    "globals": {
+        "JSX": "readonly"
+    },
     "env": {
         "browser": true,
         "es2021": true
@@ -20,7 +23,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "ignorePatterns":["./archive"],
+    "ignorePatterns": [ "./archive" ],
     "plugins": [
         "react",
         "@typescript-eslint",
