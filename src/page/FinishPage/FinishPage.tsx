@@ -3,7 +3,7 @@ import { Phone } from '../../components/Phone/Phone'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
-import { ISurveyData } from '../../interface'
+// import { ISurveyData } from '../../interface'
 import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
