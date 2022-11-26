@@ -1,6 +1,7 @@
 // import { AnyAction } from 'redux'
 // import { createReducer, createAction, PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { ISurveyData } from '../interface'
 
 const themeSlice = createSlice({
   name: 'themeState',
@@ -16,50 +17,49 @@ const themeSlice = createSlice({
 export const themeState = themeSlice.reducer
 export const { toggleTheme } = themeSlice.actions
 
-// const initialState = {
-//   darkTheme: false
-// }
+const surveySlice = createSlice({
+  name: 'surveySlice',
+  initialState: '',
+  reducers: {
+    // storeSurveyData: (state, action: PayloadAction<ISurveyData>) => action.payload
+    storeSurveyData: (state, action: PayloadAction<string>) => {
+      // console.log(action.payload)
+      state = action.payload
+      return action.payload
+    }
+  }
+})
 
-// const toggleTheme = createAction('CHANGE_THEME')
-// // const addOne = createAction("ADD_ONE")
-// // const delOne = createAction("DEL_ONE")
+export const gSurveyData = surveySlice.reducer
+export const { storeSurveyData } = surveySlice.actions
 
-// export const ThemeReducer = createReducer(initialState, {
-//   [toggleTheme.type]: (state, action) => {
-//     return {
-//       ...state,
-//       darkTheme: !state.darkTheme
-//     }
-//   }
-// })
+const surveySlice2 = createSlice({
+  name: 'surveySlice',
+  initialState: {
+    user: '',
+    gender: '',
+    age: '',
+    defaultUI: '',
+    themeStyle: '',
+    themeMode: 'light',
+    UIStyle: undefined,
+    positionDatas: []
+  } as ISurveyData,
+  reducers: {
+    // storeSurveyData: (state, action: PayloadAction<ISurveyData>) => action.payload
+    storeSurveyData2: (state, action: PayloadAction<ISurveyData>) => {
+      try {
+        return (JSON.parse(JSON.stringify(action.payload)))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+})
 
-// // export const numReducer = createReducer(2, {
-// //   [addOne.type]: (state, action) => state + 1,
-// //   [delOne.type]: (state, action) => state - 1
-// // })
+export const gSurveyData2 = surveySlice2.reducer
+export const { storeSurveyData2 } = surveySlice2.actions
 
-// const countSlice = createSlice({
-//   name: 'numReducer2',
-//   initialState: 3,
-//   reducers: {
-//     addOne: (state) => state + 1,
-//     delOne: (state, action: PayloadAction<undefined>) => state - 1
-//   }
-// })
-
-// export const numReducer2 = countSlice.reducer
-// export const { addOne, delOne } = countSlice.actions
-
-// const reducer = (state = initialState, action: AnyAction) => {
-//   switch (action.type) {
-//     case 'CHANGE_THEME':
-//       return {
-//         ...state,
-//         darkTheme: !state.darkTheme
-//       }
-//     default:
-//       return state
-//   }
-// }
-
-// export default reducer;
+export const delay = (func: () => any, ms: number): void => {
+  setTimeout(func, ms)
+}

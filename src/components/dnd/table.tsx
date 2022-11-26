@@ -129,7 +129,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                           p: '0',
                           pl: '2px',
                           verticalAlign: 'top'
-                        }} defaultChecked={props.state.positionDatas[index].enable}
+                        }} checked={props.state.positionDatas[index].enable}
                           onChange={(event) => {
                             if (!event.target.checked) {
                               item.enable = false

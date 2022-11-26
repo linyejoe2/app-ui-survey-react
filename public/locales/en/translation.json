@@ -36,41 +36,41 @@
     "t2": "Components Position",
     "q1": "Drag and Drop to Chose the perfect position of all Components.",
     "q2": "Real-Time Change will show at the right side.",
-    "a1": "Search bar",
-    "a2": "Post bar",
-    "a3": "Short",
+    "a1": "Title bar",
+    "a2": "Function bar",
+    "a3": "Short bar",
     "a4": "Content",
     "a5": "Navigation bar"
   },
   "p5": {
-    "t": "Search bar Style",
-    "s1": "You don't chose the Search bar on your UI model!",
+    "t": "Title bar Style",
+    "s1": "You don't chose the Title bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
-    "q1": "To which Style do you prefer to use on Search bar?",
+    "q1": "To which Style do you prefer to use on Title bar?",
     "a1": "Facebook",
     "a2": "YouTube",
     "a3": "Instagram",
     "a4": "Dcard"
   },
   "p6": {
-    "t": "Post bar Style",
-    "s1": "You don't chose the Post bar on your UI model!",
+    "t": "Function bar Style",
+    "s1": "You don't chose the Function bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
-    "q1": "To which Style do you prefer to use on Post bar?",
+    "q1": "To which Style do you prefer to use on Function bar?",
     "a1": "Facebook",
     "a2": "YouTube",
-    "a3": "Instagram",
+    "a3": "",
     "a4": "Dcard"
   },
   "p7": {
-    "t": "Short Style",
-    "s1": "You don't chose the Short on your UI model!",
+    "t": "Short bar Style",
+    "s1": "You don't chose the Short bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
-    "q1": "To which Style do you prefer to use on Short?",
+    "q1": "To which Style do you prefer to use on Short bar?",
     "a1": "Facebook",
     "a2": "YouTube",
     "a3": "Instagram",
-    "a4": "Dcard"
+    "a4": ""
   },
   "p8": {
     "t": "Content Style",
@@ -84,7 +84,7 @@
   },
   "p9": {
     "t": "Navigation bar Style",
-    "s1": "You don't chose the Short on your UI model!",
+    "s1": "You don't chose the Navigation bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
     "q1": "To which Style do you prefer to use on Navigation bar?",
     "a1": "Facebook",
@@ -137,7 +137,7 @@
   },
   "dc": {
     "t": {
-      "text": " Dcard 聖誕美妝盒"
+      "text": "Dcard 聖誕美妝盒"
     },
     "s": {
       "recommend": "推薦",

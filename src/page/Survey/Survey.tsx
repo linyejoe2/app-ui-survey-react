@@ -17,8 +17,10 @@ import { ISurveyData, ISurveyProps, TSocialMedia } from '../../interface'
 import { SurveyStep } from './SurveyStep'
 import { Phone } from '../../components/Phone/Phone'
 import { useState } from 'react'
-import { DcPositionDatas, FbPositionDatas, FbUIStyle, IgPositionDatas, IgUIStyle, YTPositionDatas, YTUIStyle } from '../../const'
+import { DcPositionDatas, FbPositionDatas, IgPositionDatas, YTPositionDatas } from '../../const'
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { storeSurveyData2 } from '../../service/services'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -38,9 +40,12 @@ export default function Survey() {
     }
   })
 
+  const dispatch = useDispatch()
+  // const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   const [state, changeState] = useState(surveyDate)
   // const onMobile = useMediaQuery('(min-width:600px)')
   const changeSurveyData = (updateData: ISurveyData) => {
+    dispatch(storeSurveyData2(updateData))
     changeState(state => ({
       ...state,
       ...updateData
@@ -60,7 +65,7 @@ export default function Survey() {
           </Paper>
         </Grid>
         {/* <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
-          {JSON.stringify(state)
+          {JSON.stringify(gSurveyData2)
           }
         </Grid> */}
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
@@ -76,6 +81,11 @@ export default function Survey() {
 
 const MainStepper = (props: ISurveyProps) => {
   // const [sd, changeSurveyData] = useState(surveyDate);
+  React.useEffect(() => {
+    window.onbeforeunload = function () {
+      return confirm('Confirm refresh')
+    }
+  })
   const { t } = useTranslation()
   // const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
   const steps: string[] = []
@@ -92,7 +102,7 @@ const MainStepper = (props: ISurveyProps) => {
   const isStepOptional = (step: number) => {
     return step === -1
   }
-
+  // console.log(gSurveyData)
   const isStepSkipped = (step: number) => {
     return skipped.has(step)
   }
@@ -101,15 +111,18 @@ const MainStepper = (props: ISurveyProps) => {
     try {
       switch (activeStep) {
         case 0:
-          if (!props.state.gender) throw new Error("")
+          if (!props.state.gender) throw new Error('')
           break
         case 1:
-          if (!props.state.age) throw new Error("")
+          if (!props.state.age) throw new Error('')
           break
         case 2:
-          if (!props.state.defaultUI) throw new Error("")
+          if (!props.state.defaultUI) throw new Error('')
           break
         case 3:
+          break
+        case 8:
+          console.log('8')
           break
         default:
         // throw new Error("")
@@ -127,6 +140,10 @@ const MainStepper = (props: ISurveyProps) => {
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
     setSkipped(newSkipped)
+  }
+
+  const handleDelayNext = () => {
+    setTimeout(() => { handleNext() }, 300)
   }
 
   const handleBack = () => {
@@ -160,16 +177,22 @@ const MainStepper = (props: ISurveyProps) => {
     switch (activeStep) {
       case 0: {
         return <>
-          <FormControl key={"step0"} className={'survey-step-form'}>
+          <FormControl key={'step0'} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
-
               name="gender-button-group"
-              defaultValue={props.state.gender}
+              value={props.state.gender}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.gender = val
                 props.changeSurveyData(temp)
+                if (onLaptop) handleDelayNext()
+              }}
+              onKeyDown={(ev) => {
+                console.log(ev.key)
+                if (ev.key === "Enter") {
+                  handleNext()
+                }
               }}
             >
               <FormControlLabel value="male" control={<Radio />} label={t('p1.a1')} />
@@ -181,10 +204,9 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 1: {
         return <>
-          <FormControl key={"step1"} className={'survey-step-form'}>
+          <FormControl key={'step1'} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} id="ageFormLabel">{t('p2.q1')}</FormLabel>
             <RadioGroup
-
               name="age-button-group"
               // defaultValue={props.state.age}
               // value={surveyDate.age}
@@ -192,11 +214,19 @@ const MainStepper = (props: ISurveyProps) => {
               //   surveyDate.age = val
               //   console.log(surveyDate)
               // }}
-              defaultValue={props.state.age}
+              // defaultValue={props.state.age}
+              value={props.state.age}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.age = val
                 props.changeSurveyData(temp)
+                if (onLaptop) handleDelayNext()
+              }}
+              onKeyDown={(ev) => {
+                console.log(ev.key)
+                if (ev.key === "Enter") {
+                  handleNext()
+                }
               }}
             >
               <FormControlLabel value="0" control={<Radio />} label={t('p2.a1')} />
@@ -212,34 +242,42 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 2: {
         return <>
-          <FormControl key={"step2"} className={'survey-step-form'}>
+          <FormControl key={'step2'} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p3.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p3.q2')}</FormLabel>
             <RadioGroup name="dafault-ui-button-group"
               // value={surveyDate.age}
-              defaultValue={props.state.defaultUI}
+              // defaultValue={props.state.defaultUI}
+              value={props.state.defaultUI}
               onChange={(ev, val) => {
                 const temp = props.state
                 temp.defaultUI = val as TSocialMedia
                 switch (val) {
                   case 'Facebook':
-                    temp.UIStyle = FbUIStyle
+                    // temp.UIStyle = FbUIStyle
                     temp.positionDatas = FbPositionDatas
                     break
                   case 'Instagram':
-                    temp.UIStyle = IgUIStyle
+                    // temp.UIStyle = IgUIStyle
                     temp.positionDatas = IgPositionDatas
                     break
                   case 'Dcard':
-                    temp.UIStyle = FbUIStyle
+                    // temp.UIStyle = FbUIStyle
                     temp.positionDatas = DcPositionDatas
                     break
                   case 'YouTube':
-                    temp.UIStyle = YTUIStyle
+                    // temp.UIStyle = YTUIStyle
                     temp.positionDatas = YTPositionDatas
                     break
                 }
                 props.changeSurveyData(temp)
+                // if (onLaptop) handleDelayNext()
+              }}
+              onKeyDown={(ev) => {
+                console.log(ev.key)
+                if (ev.key === "Enter") {
+                  handleNext()
+                }
               }}
             >
               <FormControlLabel value={t('p3.a1')} control={<Radio />} label={t('p3.a1')} />
@@ -252,7 +290,8 @@ const MainStepper = (props: ISurveyProps) => {
       }
       case 3: {
         return <>
-          <FormControl key={"step3"} className={'survey-step-form'}>
+          <FormControl
+            key={'step3'} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p4.q2')}</FormLabel>
             <Box sx={{
@@ -267,27 +306,27 @@ const MainStepper = (props: ISurveyProps) => {
       case 4: {
         // console.log(positionDatas)
         return <>
-          <SurveyStep stepId='5' uid='1' survey={props} />
+          <SurveyStep stepId='5' uid='1' survey={props} handleNext={handleDelayNext} />
         </>
       }
       case 5: {
         return <>
-          <SurveyStep stepId='6' uid='2' survey={props} />
+          <SurveyStep stepId='6' uid='2' survey={props} handleNext={handleDelayNext} />
         </>
       }
       case 6: {
         return <>
-          <SurveyStep stepId='7' uid='3' survey={props} />
+          <SurveyStep stepId='7' uid='3' survey={props} handleNext={handleDelayNext} />
         </>
       }
       case 7: {
         return <>
-          <SurveyStep stepId='8' uid='4' survey={props} />
+          <SurveyStep stepId='8' uid='4' survey={props} handleNext={handleDelayNext} />
         </>
       }
       case 8: {
         return <>
-          <SurveyStep stepId='9' uid='5' survey={props} />
+          <SurveyStep stepId='9' uid='5' survey={props} handleNext={handleDelayNext} />
         </>
       }
       default: {
@@ -298,6 +337,15 @@ const MainStepper = (props: ISurveyProps) => {
       }
     }
   }
+  // handleAnswerChange
+  // React.useEffect(() => {
+  //   window.document.addEventListener("keydown", (e) => {
+  //     if (e.code === "Enter") {
+  //       console.log(e.code)
+  //       handleNext()
+  //     }
+  //   })
+  // })
 
   return (
     <Box sx={{
@@ -348,7 +396,7 @@ const MainStepper = (props: ISurveyProps) => {
         ? <Box sx={{ position: 'relative' }}>
           <Box sx={{ position: 'absolute', bottom: '0px', width: '100%' }}>
             <Zoom in={openAlert}>
-              <Alert severity="error" onClose={() => { setAlert(false) }}>{t("main.alert")}</Alert>
+              <Alert severity="error" onClose={() => { setAlert(false) }}>{t('main.alert')}</Alert>
             </Zoom>
           </Box>
         </Box>
@@ -365,6 +413,7 @@ const MainStepper = (props: ISurveyProps) => {
             <Button
               size="small"
               onClick={handleNext}
+              href={activeStep === steps.length - 1 ? './#/finish' : undefined}
             // disabled={activeStep === steps.length - 1}
             >
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
@@ -408,6 +457,7 @@ const MainStepper = (props: ISurveyProps) => {
             <Button
               variant="contained"
               onClick={handleNext}
+              href={activeStep === steps.length - 1 ? './#/finish' : undefined}
               size="large">
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>

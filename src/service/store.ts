@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { themeState } from './services'
+import { gSurveyData, gSurveyData2, themeState } from './services'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
-    themeState
+    themeState,
+    gSurveyData,
+    gSurveyData2
   }
 })
 

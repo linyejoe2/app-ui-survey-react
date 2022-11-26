@@ -40,9 +40,9 @@ export const PhonePadding: FC<LayoutProps> = (props: LayoutProps) => {
           </clipPath>
         </defs>
         <foreignObject width="340" height="620">
-          <body style={{
+          {/* <body style={{
             margin: "0 10px"
-          }}>
+          }}> */}
             <div id="PhoneBody" style={{
 
               height: props.phoneHeight.body,
@@ -51,7 +51,7 @@ export const PhonePadding: FC<LayoutProps> = (props: LayoutProps) => {
             }}>
               {props.children}
             </div>
-          </body>
+          {/* </body> */}
         </foreignObject>
       </svg>
     </>

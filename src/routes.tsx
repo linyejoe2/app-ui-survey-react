@@ -2,6 +2,7 @@ import { createHashRouter } from 'react-router-dom'
 
 import App from './page/App/App'
 import ErrorPage from './page/ErrorPage'
+import { FinishPage } from './page/FinishPage'
 import { HelloWorld } from './page/HelloWorld'
 import Survey from './page/Survey/Survey'
 
@@ -18,6 +19,10 @@ export default createHashRouter([
   {
     path: '/survey',
     element: <Survey />
+  },
+  {
+    path: '/finish',
+    element: <FinishPage />
   }
 ]
   // , {
