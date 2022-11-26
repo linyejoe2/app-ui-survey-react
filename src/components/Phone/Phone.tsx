@@ -6,16 +6,19 @@ import { PhonePadding } from './PhonePadding'
 import './Phone.css'
 import { IPhoneHeight, ISurveyProps } from '../../interface'
 import { BarSelector } from './BarSelector'
+import { isIOS } from '../../service/services'
+import { PhonePaddingOnFukIos } from './PhonePaddingOnFukIos'
 
 // const searchBar = (surveyData: ISurveyData, position: TPosition): IpositionData | null => {
 //   return surveyData.positionDatas ? surveyData.positionDatas[parseInt(position) - 1] ? surveyData.positionDatas[parseInt(position) - 1].enable ? surveyData.positionDatas[parseInt(position) - 1] : null : null : null
 // }
 
 export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
+  // const onIos = useMediaQuery("-webkit-touch-callout: none")
   const phoneHeight: IPhoneHeight = {
-    beforeBody: 44,
+    beforeBody: isIOS() ? 0 : 44,
     body: 660,
-    afterBody: 29,
+    afterBody: isIOS() ? 109 : 29,
     beforeContent: true,
     firstBar: true
   }
@@ -49,18 +52,18 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
       bars.push(BarSelector(ele)[0])
     } else {
       bars.push(
-        <AppBar position="fixed"
+        <AppBar position="absolute"
           key={ele.uid}
           sx={{
             maxWidth: '320px',
-            left: '10px',
+            left: isIOS() ? "auto" : '10px',
             top: phoneHeight.beforeContent
               ? phoneHeight.beforeBody.toString() + 'px'
               : (660 - (phoneHeight.afterBody + BarSelector(ele)[1])).toString() + 'px',
             // phoneHeight.afterBody.toString() + "px",
             boxShadow: 'none',
-            backgroundColor: '#00000000'
-
+            backgroundColor: '#00000000',
+            zIndex: 0
           }} >
           {BarSelector(ele)[0]}
         </AppBar>
@@ -86,141 +89,13 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
   return (
     <>
       {/* {phoneHeight.body} */}
-      <PhonePadding {...phonePaddingProps}>
-        {bars}
-      </PhonePadding>
+      {isIOS()
+        ? <PhonePaddingOnFukIos {...phonePaddingProps}>
+          {bars}
+        </PhonePaddingOnFukIos>
+        : <PhonePadding {...phonePaddingProps}>
+          {bars}
+        </PhonePadding>
+      }
     </>)
-
-  // const FirstRow: FC = () => {
-  //   return (<DcTitleBar></DcTitleBar>)
-  //   const bar = searchBar(props.state, '1')
-  //   if (bar?.style == 'Facebook') {
-  //     return (
-  //       <FbFirstRow >
-  //         <FbSearchBar />
-  //       </FbFirstRow>
-  //     )
-  //   } else if (bar?.style == 'Instagram') {
-  //     return (
-  //       <IGFirstRow>
-  //         <IGTitleBar />
-  //       </IGFirstRow>
-  //     )
-  //   } else if (bar?.style == 'YouTube') {
-  //     return (
-  //       <YTFirstRow>
-  //         <YTSearchBar />
-  //       </YTFirstRow>
-  //     )
-  //   } else {
-  //     return (
-  //       <></>
-  //     )
-  //   }
-  // }
-
-  // const SecondRow: FC = () => {
-  //   return (<DcFunctionBar />)
-  //   const bar = searchBar(props.state, '2')
-  //   if (bar?.style == 'Facebook') {
-  //     return (
-  //       <FbSecondRow>
-  //         <FbPostBar />
-  //       </FbSecondRow>
-  //     )
-  //   } else if (bar?.style == 'Instagram') {
-  //     return (
-  //       <IGSecondRow>
-  //         <IGShortBar />
-  //       </IGSecondRow>
-  //     )
-  //   } else if (bar?.style == 'YouTube') {
-  //     return (
-  //       <YTSecondRow>
-  //         <YTContentNavigationBar />
-  //       </YTSecondRow>
-  //     )
-  //   } else {
-  //     return (
-  //       <></>
-  //     )
-  //   }
-  // }
-  // const ThirdRow: FC = () => {
-  //   const bar = searchBar(props.state, '3')
-  //   if (bar?.style == 'Facebook') {
-  //     return (
-  //       <FbThirdRow>
-  //         <FbShortBar />
-  //       </FbThirdRow>
-  //     )
-  //   } else if (bar?.style == 'Instagram') {
-  //     return (
-  //       <IGThirdRow>
-  //         <IGNavigationBar />
-  //       </IGThirdRow>
-  //     )
-  //   } else if (bar?.style == 'YouTube') {
-  //     return (
-  //       <YTThirdRow>
-  //         <YTShortBar />
-  //       </YTThirdRow>
-  //     )
-  //   } else {
-  //     return (
-  //       <></>
-  //     )
-  //   }
-  // }
-
-  // const Content: FC = () => {
-  //   return <DcContent />
-  //   const bar = searchBar(props.state, '4')
-  //   if (bar?.style == 'Facebook') {
-  //     return <FbContent />
-  //   } else if (bar?.style == 'Instagram') {
-  //     return <IGContent />
-  //   } else if (bar?.style == 'YouTube') {
-  //     return <YTContent />
-  //   } else {
-  //     return (
-  //       <></>
-  //     )
-  //   }
-  // }
-
-  // const FourthRow: FC = () => {
-  //   return <DcNavigationBar />
-  //   const bar = searchBar(props.state, '4')
-  //   if (bar?.style == 'Facebook') {
-  //     return (
-  //       <FbFourthRow>
-  //         <FbNavigationBar />
-  //       </FbFourthRow>
-  //     )
-  //   } else if (bar?.style == 'YouTube') {
-  //     return (
-  //       <YTFourthRow>
-  //         <YTNavigationBar />
-  //       </YTFourthRow>
-  //     )
-  //   } else {
-  //     return (
-  //       <></>
-  //     )
-  //   }
-  // }
-
-  // FB
-  // return (
-  //   <>
-  //     <PhonePadding color="#ffffff">
-  //       <FirstRow />
-  //       <SecondRow />
-  //       <Content />
-  //       <ThirdRow />
-  //       <FourthRow />
-  //     </PhonePadding>
-  //   </>
-  // )
 }

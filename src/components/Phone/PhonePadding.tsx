@@ -44,7 +44,6 @@ export const PhonePadding: FC<LayoutProps> = (props: LayoutProps) => {
             margin: "0 10px"
           }}> */}
           <div id="PhoneBody" style={{
-            position: "fixed",
             height: props.phoneHeight.body,
             // height: 660,
             marginTop: props.phoneHeight.beforeBody

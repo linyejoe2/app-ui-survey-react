@@ -62,6 +62,7 @@ export default function TopNavigationBar() {
           {/* <Link href='./#/survey' underline='none' color="unset">
             survey
           </Link> */}
+          {/* {isIOS() ? "isIOS" : "notIOS"} */}
           <IconButton
             size="large"
             title="change language"

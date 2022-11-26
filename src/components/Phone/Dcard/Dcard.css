@@ -74,6 +74,7 @@
 }
 
 .dc-content {
+  width: 320px !important;
   margin-top: 5px;
   padding: 10px;
   background-color: #ffffff;
