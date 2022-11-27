@@ -1,5 +1,5 @@
-import { ISurveyData } from "../interface"
-import { getTime } from "./services"
+import { ISurveyData } from '../interface'
+import { getTime } from './services'
 
 export default class {
   data: any[] = []
@@ -29,10 +29,10 @@ export default class {
     this.data.push(surveyData.defaultUI)
     this.data.push(surveyData.themeStyle)
     this.data.push(surveyData.themeMode)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === "titleBar")[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === "titleBar")[0].style)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === "functionBar")[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === "functionBar")[0].style)
+    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].position)
+    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].style)
+    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].position)
+    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].style)
     this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].position)
     this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].style)
     this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'content')[0].position)
@@ -47,10 +47,10 @@ export default class {
     this.defaultUI = surveyData.defaultUI
     this.theme = surveyData.themeStyle
     this.themeMode = surveyData.themeMode
-    this.titleBarPosition = surveyData.positionDatas.filter(ele => ele.name === "titleBar")[0].position
-    this.titleBarStyle = surveyData.positionDatas.filter(ele => ele.name === "titleBar")[0].style
-    this.functionBarPosition = surveyData.positionDatas.filter(ele => ele.name === "functionBar")[0].position
-    this.functionBarStyle = surveyData.positionDatas.filter(ele => ele.name === "functionBar")[0].style
+    this.titleBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].position
+    this.titleBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].style
+    this.functionBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].position
+    this.functionBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].style
     this.shortBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].position
     this.shortBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].style
     this.contentPosition = surveyData.positionDatas.filter(ele => ele.name === 'content')[0].position

@@ -56,7 +56,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
           key={ele.uid}
           sx={{
             maxWidth: '320px',
-            left: isIOS() ? "auto" : '10px',
+            left: isIOS() ? 'auto' : '10px',
             top: phoneHeight.beforeContent
               ? phoneHeight.beforeBody.toString() + 'px'
               : (660 - (phoneHeight.afterBody + BarSelector(ele)[1])).toString() + 'px',

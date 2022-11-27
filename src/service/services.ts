@@ -70,7 +70,7 @@ export function isIOS() {
     'iPod'
   ].includes(navigator.platform) ||
     // iPad on iOS 13 detection
-    (navigator.userAgent.includes("Mac") && "ontouchend" in document))
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document))
 }
 
 export function getTime(): string {
@@ -78,5 +78,8 @@ export function getTime(): string {
   const dd = String(today.getDate()).padStart(2, '0')
   const mm = String(today.getMonth() + 1).padStart(2, '0')
   const yyyy = today.getFullYear()
-  return (yyyy + "/" + mm + '/' + dd)
+  const hours = today.getHours()
+  const min = today.getMinutes()
+  const sec = today.getSeconds()
+  return (yyyy + '/' + mm + '/' + dd + ' ' + hours + ':' + min + ':' + sec)
 }

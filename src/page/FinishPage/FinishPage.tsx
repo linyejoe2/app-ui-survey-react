@@ -7,10 +7,11 @@ import { Box } from '@mui/system'
 import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 
 import { LoadingTP } from '../../components/LoadingTP'
 import { useTranslation } from 'react-i18next'
+import TransferSurveyData from '../../service/TransferSurveyData'
 
 const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 // import CustomPieChart from '../../components/FinishPage/CustomPieChart'
@@ -36,8 +37,8 @@ export const FinishPage = () => {
   // const gSurveyData2 = fakeData
   const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   if (gSurveyData2.defaultUI === '') {
-    window.document.location.href = "./"
-    return
+    window.document.location.href = './'
+    return <></>
   }
   // console.log(gSurveyData2)
   const { t } = useTranslation()
@@ -49,6 +50,28 @@ export const FinishPage = () => {
     { title: 'YouTube', value: surveyAnalyzer.barCount2.YouTube, color: '#FF0000' },
     { title: 'Dcard', value: surveyAnalyzer.barCount2.Dcard, color: '#006aa6' }
   ]
+
+  let wellcome = true
+  useEffect(() => {
+    if (!wellcome) return
+    wellcome = false;
+    (() => {
+      // eslint-disable-next-line no-undef
+      const requestOptions: RequestInit = {
+        redirect: 'follow',
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(new TransferSurveyData(gSurveyData2))
+      }
+      fetch('https://script.google.com/macros/s/AKfycbz72nXTClVVFzadkVjjvAk2Ci7ixF8xpFkZuZutm0bYra_GeS2SZMlp8ztcfGZC2nXqtg/exec', requestOptions)
+        .then(response => response.text())
+        .then(json => {
+          console.log(json)
+          // response.json()
+        })
+    })()
+  }, [])
+
   if (loading) {
     setTimeout(() => {
       setLoading(false)

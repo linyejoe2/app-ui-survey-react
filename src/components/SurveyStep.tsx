@@ -30,7 +30,7 @@ export const SurveyStep: FC<PostsProps> = ({ stepId, uid, survey, handleNext }) 
           // defaultValue='male'
           onKeyDown={(ev) => {
             if (ev.key === 'Enter') {
-              if (stepId === "9") {
+              if (stepId === '9') {
                 window.document.location.href = './#/finish'
                 return
               }
