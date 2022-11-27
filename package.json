@@ -1,14 +1,14 @@
 {
   "name": "app-ui-survey-react",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base=/app-ui-survey-react/",
     "build-on-local": "tsc && vite build",
     "preview": "vite preview",
-    "eslint": "eslint src --ext .ts,.tsx",
+    "eslint": "eslint src --ext .ts,.tsx && tsc",
     "eslint-fix": "eslint src --ext .ts,.tsx --fix",
     "deploy": "bash ./.github/deploy.sh"
   },

@@ -34,10 +34,6 @@
   cursor: pointer;
 }
 
-.yt-content-row {
-  /* padding: 0 10px !important; */
-}
-
 .yt-first-row {
   max-width: 320px !important;
   left: 10px !important;
