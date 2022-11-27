@@ -45,6 +45,26 @@ export interface ISurveyData {
   // }
 }
 
+export interface ISandSurveyData {
+  date: string,
+  user: string,
+  gender: string,
+  age: string,
+  defaultUI: string,
+  theme: string,
+  themeMode: string,
+  titleBarPosition: string,
+  titleBarStyle: string,
+  functionBarPosition: string,
+  functionBarStyle: string,
+  shortBarPosition: string,
+  shortBarStyle: string,
+  contentPosition: string,
+  contentStyle: string,
+  navigationBarPosition: string,
+  navigationBarStyle: string,
+}
+
 /**
  * props of Survey, can control state of Survey
  */
