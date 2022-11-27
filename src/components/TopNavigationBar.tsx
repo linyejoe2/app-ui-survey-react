@@ -84,7 +84,7 @@ export default function TopNavigationBar() {
             <MenuItem onClick={() => changeLanguage('en')}>en</MenuItem>
             <MenuItem onClick={() => changeLanguage('zh-TW')}>zh-TW</MenuItem>
           </Menu>
-          {themeState
+          {/* {themeState
             ? <IconButton
               size="large"
               title="change theme to dark"
@@ -101,7 +101,7 @@ export default function TopNavigationBar() {
               color="inherit">
               <Brightness7Icon />
             </IconButton>
-          }
+          } */}
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>

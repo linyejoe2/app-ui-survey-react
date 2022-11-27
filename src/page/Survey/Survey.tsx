@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Skeleton from '@mui/material/Skeleton'
-import { Alert, FormControl, FormControlLabel, FormLabel, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
+import { Alert, FormControl, FormControlLabel, FormLabel, LinearProgress, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -43,6 +43,7 @@ export default function Survey() {
   const dispatch = useDispatch()
   // const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   const [state, changeState] = useState(surveyDate)
+  const progress = useState(false)
   // const onMobile = useMediaQuery('(min-width:600px)')
   const changeSurveyData = (updateData: ISurveyData) => {
     dispatch(storeSurveyData2(updateData))
@@ -58,9 +59,10 @@ export default function Survey() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
         <Grid xs={12} sm={6} md={9}>
+          {progress[0] ? <LinearProgress variant='query' sx={{ display: "flex" }} /> : <></>}
           <Paper elevation={5}
             sx={{ textAlign: 'center' }}>
-            <MainStepper state={state} changeSurveyData={changeSurveyData}>
+            <MainStepper state={state} changeSurveyData={changeSurveyData} progress={progress}>
             </MainStepper>
           </Paper>
         </Grid>
@@ -99,6 +101,8 @@ const MainStepper = (props: ISurveyProps) => {
   const onMobile = useMediaQuery('(max-width:600px)')
   const [activeStep, setActiveStep] = React.useState(0)
   const [openAlert, setAlert] = React.useState(false)
+  // const [nextTran, setNextTran] = React.useState(true)
+  // const containerRef = React.useRef(null);
   const [skipped, setSkipped] = React.useState(new Set<number>())
 
   const isStepOptional = (step: number) => {
@@ -135,8 +139,12 @@ const MainStepper = (props: ISurveyProps) => {
       newSkipped.delete(activeStep)
     }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
-    setSkipped(newSkipped)
+    (props.progress![1])(true)
+    setTimeout(() => {
+      (props.progress![1])(false)
+      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+      setSkipped(newSkipped)
+    }, 600)
   }
 
   const handleDelayNext = () => {
@@ -344,9 +352,12 @@ const MainStepper = (props: ISurveyProps) => {
   return (
     <Box sx={{
       width: '100%',
-      height: onMobile ? '500px' : '650px',
-      p: 2
+      height: onMobile ? 500 : 650
     }}
+      style={{
+        padding: "16px",
+        paddingTop: props.progress![0] ? "12px" : "16px"
+      }}
       className='center-child'
     >
       {/* top stepper */}
