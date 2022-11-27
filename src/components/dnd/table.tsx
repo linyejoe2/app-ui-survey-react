@@ -11,6 +11,7 @@ import { Box, Checkbox, useMediaQuery } from '@mui/material'
 import { useSelector, RootState } from '../../service/store'
 import ReorderIcon from '@mui/icons-material/Reorder'
 import { IpositionData, ISurveyProps, TPosition } from '../../interface'
+import { useTranslation } from 'react-i18next'
 
 // a little function to help us with reordering the result
 const reorder = (
@@ -69,6 +70,7 @@ const getListStyle = (onMobile: boolean, themeState: boolean): React.CSSProperti
 export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
   // const [state, setState] = useState(positionDatas.sort((a, b) => parseInt(a.position) - parseInt(b.position)));
   const themeState = useSelector((state: RootState) => state.themeState)
+  const { t } = useTranslation()
   const onMobile = useMediaQuery('(max-width:600px)')
 
   const onDragEnd = (result: DropResult): void => {
@@ -145,7 +147,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                         verticalAlign: 'top'
                       }} checked /> */}
                     </Box>
-                    {item.name}
+                    {t(`p4.${item.name}`)}
                   </div>
                 )}
               </Draggable>

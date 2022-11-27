@@ -115,7 +115,7 @@ export const FinishPage = () => {
         </Box>
       </Suspense>
       <Typography className="finish-text" sx={{ mt: 4, mb: 2 }}>
-        Share this Test To Your Friend!
+        {t("f.res.share.t")}
       </Typography>
       <Box className="share-button-group">
         <Fab variant="extended" color="primary" aria-label="share-facebook"

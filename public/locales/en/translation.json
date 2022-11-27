@@ -1,6 +1,6 @@
 {
   "main": {
-    "title": "Chose the Best Social Media UI Design!",
+    "title": "Chose the Best Social Media UI Design in Your Mind!",
     "un": "Amber",
     "alert": "Choose a Answer First!"
   },
@@ -23,6 +23,9 @@
         "t6": "的元素！",
         "t7": "你是死忠的！"
       }
+    },
+    "share": {
+      "t": "Share this Test To Your Friend!"
     }
   },
   "p1": {
@@ -41,12 +44,12 @@
     "a4": "41 to 50",
     "a5": "51 to 60",
     "a6": "61 to 70",
-    "a7": "70 or Older"
+    "a7": "Over than 70"
   },
   "p3": {
-    "t": "Default UI Style",
-    "q1": "To which Social media UI Style do you prefer to use as default?",
-    "q2": "You can change style after this step.",
+    "t": "Social media",
+    "q1": "To Which social media do you use most often?",
+    "q2": "this step will set the default UI at this survey.",
     "a1": "Facebook",
     "a2": "YouTube",
     "a3": "Instagram",
@@ -57,11 +60,11 @@
     "t2": "Components Position",
     "q1": "Drag and Drop to Chose the perfect position of all Components.",
     "q2": "Real-Time Change will show at the right side.",
-    "a1": "Title bar",
-    "a2": "Function bar",
-    "a3": "Short bar",
-    "a4": "Content",
-    "a5": "Navigation bar"
+    "titleBar": "Title bar",
+    "functionBar": "Function bar",
+    "shortBar": "Short bar",
+    "content": "Content",
+    "navigationBar": "Navigation bar"
   },
   "p5": {
     "t": "Title bar Style",
@@ -134,7 +137,7 @@
       "visit": "Visit Website",
       "title": "That's right, Come join us at NTPU!",
       "text": "Lorem ipsum dolor, sit amet consectetur.",
-      "ads": "Ad ‧ LAMDO"
+      "ads": "Ad ‧ TPyoung"
     },
     "p2": {
       "title": "10 thing you NEED to know BERORE getting a cat/kitten!",
@@ -158,7 +161,7 @@
   },
   "dc": {
     "t": {
-      "text": "Dcard 聖誕美妝盒"
+      "text": "Dcard Christmas Makeup Set."
     },
     "s": {
       "recommend": "推薦",
