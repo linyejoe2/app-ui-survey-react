@@ -11,7 +11,8 @@ export class SurveyAnalyzer implements ISurveyAnalyze {
     Facebook: 0,
     Instagram: 0,
     YouTube: 0,
-    Dcard: 0
+    Dcard: 0,
+    unused: 0
   }
   // barCount: (TSocialMedia | number)[][] = [
   //   ["Facebook", 0],
@@ -24,6 +25,10 @@ export class SurveyAnalyzer implements ISurveyAnalyze {
     this.defaultUI = surveyData.defaultUI
 
     for (const ele of surveyData.positionDatas) {
+      if (!ele.enable) {
+        this.barCount2.unused += 1
+        continue
+      }
       switch (ele.style) {
         case 'Facebook':
           this.barCount2.Facebook += 1

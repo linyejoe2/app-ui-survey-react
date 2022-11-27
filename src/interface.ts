@@ -5,7 +5,7 @@ export type TSocialMedia = 'Facebook' | 'Instagram' | 'TikTok' | 'YouTube' | 'Dc
 export type TThemeMode = 'light' | 'dark' | 'system'
 
 export type TPosition2 = 0 | 1 | 2 | 3 | 4 | 5
-export type TPosition = '1' | '2' | '3' | '4' | '5'
+export type TPosition = '0' | '1' | '2' | '3' | '4' | '5'
 
 export type TBar = 'titleBar' | 'functionBar' | 'shortBar' | 'content' | 'navigationBar'
 
@@ -14,7 +14,7 @@ export interface IFCProps {
 }
 
 export interface IPhoneBar {
-  Position: TPosition2,
+  Position: TPosition,
   Style: TSocialMedia
 }
 

@@ -48,7 +48,8 @@ export const FinishPage = () => {
     { title: 'Facebook', value: surveyAnalyzer.barCount2.Facebook, color: '#1776ef' },
     { title: 'Instagram', value: surveyAnalyzer.barCount2.Instagram, color: 'url(#gradient1)' },
     { title: 'YouTube', value: surveyAnalyzer.barCount2.YouTube, color: '#FF0000' },
-    { title: 'Dcard', value: surveyAnalyzer.barCount2.Dcard, color: '#006aa6' }
+    { title: 'Dcard', value: surveyAnalyzer.barCount2.Dcard, color: '#006aa6' },
+    { title: "unused", value: surveyAnalyzer.barCount2.unused, color: "#777" }
   ]
 
   let wellcome = true

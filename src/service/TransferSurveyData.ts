@@ -1,3 +1,4 @@
+import { barSteteSelector } from '../components/Phone/BarSelector'
 import { ISurveyData } from '../interface'
 import { getTime } from './services'
 
@@ -23,22 +24,22 @@ export default class {
 
   constructor(surveyData: ISurveyData) {
     this.data.push(getTime())
-    this.data.push('Randy Lin')
+    this.data.push('')
     this.data.push(surveyData.gender)
     this.data.push(surveyData.age)
     this.data.push(surveyData.defaultUI)
     this.data.push(surveyData.themeStyle)
     this.data.push(surveyData.themeMode)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].style)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].style)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].style)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'content')[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'content')[0].style)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'navigationBar')[0].position)
-    this.data.push(surveyData.positionDatas.filter(ele => ele.name === 'navigationBar')[0].style)
+    this.data.push(barSteteSelector(surveyData, 'titleBar').Position)
+    this.data.push(barSteteSelector(surveyData, 'titleBar').Style)
+    this.data.push(barSteteSelector(surveyData, 'functionBar').Position)
+    this.data.push(barSteteSelector(surveyData, 'functionBar').Style)
+    this.data.push(barSteteSelector(surveyData, 'shortBar').Position)
+    this.data.push(barSteteSelector(surveyData, 'shortBar').Style)
+    this.data.push(barSteteSelector(surveyData, 'content').Position)
+    this.data.push(barSteteSelector(surveyData, 'content').Style)
+    this.data.push(barSteteSelector(surveyData, 'navigationBar').Position)
+    this.data.push(barSteteSelector(surveyData, 'navigationBar').Style)
 
     this.date = getTime()
     this.user = 'Randy Lin'
@@ -47,15 +48,15 @@ export default class {
     this.defaultUI = surveyData.defaultUI
     this.theme = surveyData.themeStyle
     this.themeMode = surveyData.themeMode
-    this.titleBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].position
-    this.titleBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'titleBar')[0].style
-    this.functionBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].position
-    this.functionBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'functionBar')[0].style
-    this.shortBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].position
-    this.shortBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'shortBar')[0].style
-    this.contentPosition = surveyData.positionDatas.filter(ele => ele.name === 'content')[0].position
-    this.contentStyle = surveyData.positionDatas.filter(ele => ele.name === 'content')[0].style
-    this.navigationBarPosition = surveyData.positionDatas.filter(ele => ele.name === 'navigationBar')[0].position
-    this.navigationBarStyle = surveyData.positionDatas.filter(ele => ele.name === 'navigationBar')[0].style
+    this.titleBarPosition = barSteteSelector(surveyData, 'titleBar').Position
+    this.titleBarStyle = barSteteSelector(surveyData, 'titleBar').Style
+    this.functionBarPosition = barSteteSelector(surveyData, 'functionBar').Position
+    this.functionBarStyle = barSteteSelector(surveyData, 'functionBar').Style
+    this.shortBarPosition = barSteteSelector(surveyData, 'shortBar').Position
+    this.shortBarStyle = barSteteSelector(surveyData, 'shortBar').Style
+    this.contentPosition = barSteteSelector(surveyData, 'content').Position
+    this.contentStyle = barSteteSelector(surveyData, 'content').Style
+    this.navigationBarPosition = barSteteSelector(surveyData, 'navigationBar').Position
+    this.navigationBarStyle = barSteteSelector(surveyData, 'navigationBar').Style
   }
 }

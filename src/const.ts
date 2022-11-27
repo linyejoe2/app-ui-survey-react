@@ -1,27 +1,27 @@
 import { TBar, IPhoneBar, IpositionData } from './interface'
 
 export const FbUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ['titleBar', { Position: 1, Style: 'Facebook' }],
-  ['functionBar', { Position: 2, Style: 'Facebook' }],
-  ['shortBar', { Position: 3, Style: 'Facebook' }],
-  ['content', { Position: 4, Style: 'Facebook' }],
-  ['navigationBar', { Position: 5, Style: 'Facebook' }]]
+  ['titleBar', { Position: '1', Style: 'Facebook' }],
+  ['functionBar', { Position: '2', Style: 'Facebook' }],
+  ['shortBar', { Position: '3', Style: 'Facebook' }],
+  ['content', { Position: '4', Style: 'Facebook' }],
+  ['navigationBar', { Position: '5', Style: 'Facebook' }]]
 )
 
 export const IgUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ['titleBar', { Position: 1, Style: 'Instagram' }],
-  ['functionBar', { Position: 0, Style: 'Instagram' }],
-  ['shortBar', { Position: 2, Style: 'Instagram' }],
-  ['content', { Position: 3, Style: 'Instagram' }],
-  ['navigationBar', { Position: 4, Style: 'Instagram' }]]
+  ['titleBar', { Position: '1', Style: 'Instagram' }],
+  ['functionBar', { Position: '0', Style: 'Instagram' }],
+  ['shortBar', { Position: '2', Style: 'Instagram' }],
+  ['content', { Position: '3', Style: 'Instagram' }],
+  ['navigationBar', { Position: '4', Style: 'Instagram' }]]
 )
 
 export const YTUIStyle: Map<TBar, IPhoneBar> = new Map([
-  ['titleBar', { Position: 1, Style: 'YouTube' }],
-  ['functionBar', { Position: 2, Style: 'YouTube' }],
-  ['shortBar', { Position: 4, Style: 'YouTube' }],
-  ['content', { Position: 3, Style: 'YouTube' }],
-  ['navigationBar', { Position: 5, Style: 'YouTube' }]]
+  ['titleBar', { Position: '1', Style: 'YouTube' }],
+  ['functionBar', { Position: '2', Style: 'YouTube' }],
+  ['shortBar', { Position: '4', Style: 'YouTube' }],
+  ['content', { Position: '3', Style: 'YouTube' }],
+  ['navigationBar', { Position: '5', Style: 'YouTube' }]]
 )
 
 export const FbPositionDatas: IpositionData[] = [

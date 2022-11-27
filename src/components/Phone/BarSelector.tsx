@@ -1,7 +1,7 @@
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent } from './Facebook/Facebook'
 import { YTContent, YTContentNavigationBar, YTNavigationBar, YTSearchBar, YTShortBar } from './YouTube/YouTube'
 import { IGContent, IGNavigationBar, IGShortBar, IGTitleBar } from './Instagram/Instagram'
-import { IpositionData } from '../../interface'
+import { IPhoneBar, IpositionData, ISurveyData, TBar, TPosition } from '../../interface'
 import { DcContent, DcFunctionBar, DcNavigationBar, DcTitleBar } from './Dcard/Dcard'
 
 export const BarSelector = (positionData: IpositionData):
@@ -22,7 +22,7 @@ export const BarSelector = (positionData: IpositionData):
     case 'functionBar':
       switch (positionData.style) {
         case 'Facebook':
-          return [<FbPostBar key="FbPostBar" />, 40, '']
+          return [<FbPostBar key="FbPostBar" />, 64, '']
         // case "Instagram":
         //   return <IG/>
         case 'YouTube':
@@ -69,4 +69,21 @@ export const BarSelector = (positionData: IpositionData):
       break
   }
   return ([<></>, 0, ''])
+}
+
+export const barSteteSelector = (surveyData: ISurveyData, barName: TBar): IPhoneBar => {
+  const ele = surveyData.positionDatas.filter(ele => ele.name === barName)[0]
+
+  if (!ele.enable) {
+    return { Position: '0', Style: '' }
+  }
+
+  let index = ele.position
+  for (const ele2 of surveyData.positionDatas) {
+    if (parseInt(ele2.position) < parseInt(ele.position) && !ele2.enable) {
+      index = (parseInt(index) - 1).toString() as TPosition
+    }
+  }
+
+  return { Position: index, Style: ele.style }
 }
