@@ -1,9 +1,9 @@
 import './FinishPage.css'
 import { Phone } from '../../components/Phone/Phone'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../service/store'
+// import { useSelector } from 'react-redux'
+// import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
-// import { ISurveyData } from '../../interface'
+import { ISurveyData } from '../../interface'
 import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
@@ -16,26 +16,26 @@ import TransferSurveyData from '../../service/TransferSurveyData'
 const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 // import CustomPieChart from '../../components/FinishPage/CustomPieChart'
 
-// const fakeData: ISurveyData = {
-//   user: '',
-//   gender: 'male',
-//   age: '0',
-//   defaultUI: 'Facebook',
-//   themeStyle: 'YouTube',
-//   themeMode: 'light',
-//   UIStyle: undefined,
-//   positionDatas: [
-//     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
-//     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
-//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
-//   ]
-// }
+const fakeData: ISurveyData = {
+  user: '',
+  gender: 'male',
+  age: '0',
+  defaultUI: 'Facebook',
+  themeStyle: 'YouTube',
+  themeMode: 'light',
+  UIStyle: undefined,
+  positionDatas: [
+    { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
+    { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
+    { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
+    { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
+    { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
+  ]
+}
 
 export const FinishPage = () => {
-  // const gSurveyData2 = fakeData
-  const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
+  const gSurveyData2 = fakeData
+  // const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   if (gSurveyData2.defaultUI === '') {
     window.document.location.href = './'
     return <></>

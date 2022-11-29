@@ -34,9 +34,9 @@ export const BarSelector = (positionData: IpositionData):
     case 'shortBar':
       switch (positionData.style) {
         case 'Facebook':
-          return [<FbShortBar key="FbShortBar" />, 330, '']
+          return [<FbShortBar key="FbShortBar" />, 200, '']
         case 'Instagram':
-          return [<IGShortBar key="IGShortBar" />, 330, '']
+          return [<IGShortBar key="IGShortBar" />, 96, '']
         case 'YouTube':
           return [<YTShortBar key="YTShortBar" />, 330, '']
         // case "Dcard":
@@ -85,5 +85,5 @@ export const barSteteSelector = (surveyData: ISurveyData, barName: TBar): IPhone
     }
   }
 
-  return { Position: index, Style: ele.style }
+  return { Position: index, Style: ele.style, Fixed: ele.fixed }
 }

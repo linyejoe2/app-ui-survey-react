@@ -4,11 +4,11 @@ import React from 'react'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import Brightness4Icon from '@mui/icons-material/Brightness4'
-import Brightness7Icon from '@mui/icons-material/Brightness7'
+// import Brightness4Icon from '@mui/icons-material/Brightness4'
+// import Brightness7Icon from '@mui/icons-material/Brightness7'
 import LanguageIcon from '@mui/icons-material/Language'
-import { useDispatch, useSelector, RootState } from '../service/store'
-import { toggleTheme } from '../service/services'
+// import { useDispatch, useSelector, RootState } from '../service/store'
+// import { toggleTheme } from '../service/services'
 import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
@@ -18,8 +18,8 @@ import { useMediaQuery } from '@mui/material'
 // const langOption = ['en', 'zh-TW']
 
 export default function TopNavigationBar() {
-  const dispatch = useDispatch()
-  const themeState = useSelector((state: RootState) => state.themeState)
+  // const dispatch = useDispatch()
+  // const themeState = useSelector((state: RootState) => state.themeState)
   const { t, i18n } = useTranslation()
   const onMobile = useMediaQuery('(max-width:600px)')
 

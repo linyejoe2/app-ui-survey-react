@@ -6,6 +6,7 @@
   },
   "f": {
     "res": {
+      "unused": "unused",
       "n-same": {
         "t1": "你最常用的是",
         "t2": "，但也許你更喜歡",
@@ -22,10 +23,10 @@
         "t5": "個",
         "t6": "的元素！",
         "t7": "你是死忠的！"
+      },
+      "share": {
+        "t": "Share this Test To Your Friend!"
       }
-    },
-    "share": {
-      "t": "Share this Test To Your Friend!"
     }
   },
   "p1": {

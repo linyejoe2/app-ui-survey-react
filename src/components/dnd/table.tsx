@@ -12,6 +12,8 @@ import { useSelector, RootState } from '../../service/store'
 import ReorderIcon from '@mui/icons-material/Reorder'
 import { IpositionData, ISurveyProps, TPosition } from '../../interface'
 import { useTranslation } from 'react-i18next'
+import PushPinIcon from '@mui/icons-material/PushPin'
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 
 // a little function to help us with reordering the result
 const reorder = (
@@ -121,25 +123,49 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                     }}>
                       <ReorderIcon />
                       {item.uid === '4'
-                        ? <Checkbox sx={{
-                          p: '0',
-                          pl: '2px',
-                          verticalAlign: 'top'
-                          // color: "gray"
-                        }} disabled checked />
-                        : <Checkbox sx={{
-                          p: '0',
-                          pl: '2px',
-                          verticalAlign: 'top'
-                        }} checked={props.state.positionDatas[index].enable}
-                          onChange={(event) => {
-                            if (!event.target.checked) {
-                              item.enable = false
-                            } else item.enable = true
-                            const temp = props.state
-                            temp.positionDatas[index] = item
-                            props.changeSurveyData(temp)
-                          }} />
+                        ? <>
+                          <Checkbox sx={{
+                            p: '0',
+                            pl: '2px',
+                            verticalAlign: 'top'
+                            // color: "gray"
+                          }} disabled checked />
+                          <Checkbox sx={{
+                            p: '0',
+                            pl: '2px',
+                            verticalAlign: 'top'
+                          }} icon={<PushPinOutlinedIcon />} checkedIcon={<PushPinIcon />} disabled />
+                        </>
+                        : <>
+                          <Checkbox sx={{
+                            p: '0',
+                            pl: '2px',
+                            verticalAlign: 'top'
+                          }} checked={props.state.positionDatas[index].enable}
+                            onChange={(event) => {
+                              if (!event.target.checked) {
+                                item.enable = false
+                              } else item.enable = true
+                              const temp = props.state
+                              temp.positionDatas[index] = item
+                              props.changeSurveyData(temp)
+                            }} />
+                          <Checkbox sx={{
+                            p: '0',
+                            pl: '2px',
+                            verticalAlign: 'top'
+                          }}
+                            checked={props.state.positionDatas[index].fixed}
+                            onChange={(event) => {
+                              if (!event.target.checked) {
+                                item.fixed = false
+                              } else item.fixed = true
+                              const temp = props.state
+                              temp.positionDatas[index] = item
+                              props.changeSurveyData(temp)
+                            }}
+                            icon={<PushPinOutlinedIcon />} checkedIcon={<PushPinIcon />} />
+                        </>
                       }
                       {/* <Checkbox sx={{
                         p: '0',

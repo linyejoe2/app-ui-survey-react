@@ -231,6 +231,7 @@
 
 .yt-nav-bar-button {
   min-width: 50px !important;
+  padding: 0 !important;
 }
 
 .yt-nav-bar .Mui-selected svg {
