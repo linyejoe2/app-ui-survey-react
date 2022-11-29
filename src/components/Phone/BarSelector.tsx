@@ -77,7 +77,7 @@ export const barSteteSelector = (surveyData: ISurveyData, barName: TBar): IPhone
   if (!ele.enable) {
     return { Position: '0', Style: '', Fixed: "" }
   }
-  
+
   return { Position: ele.position, Style: ele.style, Fixed: ele.fixed }
   // let index = ele.position
   // for (const ele2 of surveyData.positionDatas) {

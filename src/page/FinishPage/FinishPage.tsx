@@ -3,8 +3,8 @@ import { Phone } from '../../components/Phone/Phone'
 // import { useSelector } from 'react-redux'
 // import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
-// import { ISurveyData } from '../../interface'
-import { Fab, Typography } from '@mui/material'
+import { ISurveyData } from '../../interface'
+import { Fab, SvgIcon, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
 import React, { lazy, Suspense, useEffect } from 'react'
@@ -18,26 +18,26 @@ import { RootState } from '../../service/store'
 const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 // import CustomPieChart from '../../components/FinishPage/CustomPieChart'
 
-// const fakeData: ISurveyData = {
-//   user: '',
-//   gender: 'male',
-//   age: '0',
-//   defaultUI: 'Facebook',
-//   themeStyle: 'YouTube',
-//   themeMode: 'light',
-//   UIStyle: undefined,
-//   positionDatas: [
-//     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
-//     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
-//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
-//   ]
-// }
+const fakeData: ISurveyData = {
+  user: '',
+  gender: 'male',
+  age: '0',
+  defaultUI: 'Facebook',
+  themeStyle: 'YouTube',
+  themeMode: 'light',
+  UIStyle: undefined,
+  positionDatas: [
+    { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
+    { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
+    { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
+    { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
+    { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
+  ]
+}
 
 export const FinishPage = () => {
-  // const gSurveyData2 = fakeData
-  const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
+  const gSurveyData2 = fakeData
+  // const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   if (gSurveyData2.defaultUI === '') {
     window.document.location.href = './'
     return <></>
@@ -51,7 +51,7 @@ export const FinishPage = () => {
     { title: 'Instagram', value: surveyAnalyzer.barCount2.Instagram, color: 'url(#gradient1)' },
     { title: 'YouTube', value: surveyAnalyzer.barCount2.YouTube, color: '#FF0000' },
     { title: 'Dcard', value: surveyAnalyzer.barCount2.Dcard, color: '#006aa6' },
-    { title: 'unused', value: surveyAnalyzer.barCount2.unused, color: '#777' }
+    { title: t("f.res.unused"), value: surveyAnalyzer.barCount2.unused, color: '#777' }
   ]
 
   let wellcome = true
@@ -120,22 +120,32 @@ export const FinishPage = () => {
         {t("f.res.share.t")}
       </Typography>
       <Box className="share-button-group">
-        <Fab variant="extended" color="primary" aria-label="share-facebook"
-          sx={{
-            backgroundColor: '1776ef'
-          }}
+        <Fab variant="extended" aria-label="share-facebook"
           href="https://www.facebook.com/sharer.php?u=https://linyejoe2.github.io/app-ui-survey-react"
           target="fb"
         >
-          Facebook
+          <img src="./icon/facebook-black.svg" style={{ height: "48px" }} />
+          {/* Facebook */}
         </Fab>
-        <Fab variant="extended" aria-label="share-line" sx={{ ml: 2, backgroundColor: '#1fc32e' }}
+        <Fab variant="extended" aria-label="share-line" sx={{ ml: 2 }}
           href="http://line.naver.jp/R/msg/text/?https://linyejoe2.github.io/app-ui-survey-react?openExternalBrowser=1"
           target="line">
-          Line
+          <img src="./icon/line-black.svg" style={{ height: "48px" }} />
+          {/* Line */}
+        </Fab>
+        <Fab variant="extended" aria-label="share-telegram"
+          sx={{
+            ml: 2
+          }}
+          href="https://t.me/share/url?url={https://linyejoe2.github.io/app-ui-survey-react}&text={選擇你最喜歡的社群媒體外觀吧！}"
+          target="msg"
+        >
+          <img src="./icon/telegram-black.svg" style={{ height: "48px" }} />
+          {/* Telegram */}
         </Fab>
         <Fab variant="extended" sx={{ ml: 2 }}>
-          Link
+          <img src="./icon/link-black.svg" style={{ height: "48px" }} />
+          {/* Link */}
         </Fab>
         {/* <Fab disabled aria-label="like">
         </Fab> */}
