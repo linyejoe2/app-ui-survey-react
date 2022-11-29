@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import { PhonePadding } from './PhonePadding'
 import './Phone.css'
-import { IPhoneHeight, ISurveyProps } from '../../interface'
+import { IPhoneHeight, IpositionData, ISurveyProps } from '../../interface'
 import { BarSelector } from './BarSelector'
 import { isIOS } from '../../service/services'
 import { PhonePaddingOnFukIos } from './PhonePaddingOnFukIos'
@@ -14,67 +14,101 @@ import { PhonePaddingOnFukIos } from './PhonePaddingOnFukIos'
 // }
 
 export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
-  // const onIos = useMediaQuery("-webkit-touch-callout: none")
   const phoneHeight: IPhoneHeight = {
     beforeBody: isIOS() ? 0 : 44,
     body: 660,
     afterBody: isIOS() ? 109 : 29,
     beforeContent: true,
     firstBar: true
+    // lestBar: false
   }
 
   const phonePaddingProps = {
     notificationBarColor: '#ffffff',
+    bottomBarColor: "#ffffff",
     backgroundColor: '#ffffff',
     phoneHeight
   }
 
-  const bars: JSX.Element[] = []
-
-  // reverse after content
-  let positionDatas = props.state.positionDatas
-  let reverseIndex = 0
-  for (let i = 0; i < positionDatas.length; i++) {
-    if (positionDatas[i].name === 'content') {
-      reverseIndex = i + 1
-      break
-    }
-  }
-  positionDatas = positionDatas.slice(0, reverseIndex).concat(positionDatas.slice(reverseIndex).reverse())
+  const bars: JSX.Element[] = [] // store bars element
+  const positionDatas = props.state.positionDatas // store bars data
+  const positionDataWhenBeforeContent: IpositionData[] = []
 
   for (const ele of positionDatas) {
+    // 1. not enable
     if (!ele.enable) continue
 
+    // 2. check if is before content
     if (ele.name === 'content') {
       phoneHeight.beforeContent = false
     }
+
+    // 3. check if is fixed
     if (!ele.fixed) {
+      // if isn't fix, directory push it into arr
       bars.push(BarSelector(ele)[0])
     } else {
-      bars.push(
-        <AppBar position="absolute"
-          key={ele.uid}
-          sx={{
-            maxWidth: '320px',
-            left: isIOS() ? 'auto' : '10px',
-            top: phoneHeight.beforeContent
-              ? phoneHeight.beforeBody.toString() + 'px'
-              : (660 - (phoneHeight.afterBody + BarSelector(ele)[1])).toString() + 'px',
-            // phoneHeight.afterBody.toString() + "px",
-            boxShadow: 'none',
-            backgroundColor: '#00000000',
-            zIndex: 0
-          }} >
-          {BarSelector(ele)[0]}
-        </AppBar>
-      )
-      // console.log(phoneHeight.afterBody)
-      phoneHeight.beforeContent
-        ? phoneHeight.beforeBody += BarSelector(ele)[1]
-        : phoneHeight.afterBody += BarSelector(ele)[1]
+      // if is fix, check before content or not.
+      if (phoneHeight.beforeContent) {
+        bars.push(
+          <AppBar position="absolute"
+            key={ele.uid}
+            sx={{
+              maxWidth: '320px',
+              left: isIOS() ? 'auto' : '10px',
+              top: phoneHeight.beforeBody.toString() + 'px',
+              boxShadow: 'none',
+              backgroundColor: '#00000000',
+              zIndex: 0
+            }} >
+            {BarSelector(ele)[0]}
+          </AppBar>
+        )
+      } else {
+        // whan is before content, we need to reverse arr to render from bottom.
+        // store those ele to a array, insert then later.
+        positionDataWhenBeforeContent.unshift(ele)
+        continue
+      }
+
+      // 4. caculate the offset of content.
+      phoneHeight.beforeBody += BarSelector(ele)[1]
+      // phoneHeight.beforeContent
+      //   ? phoneHeight.beforeBody += BarSelector(ele)[1]
+      //   : phoneHeight.afterBody += BarSelector(ele)[1]
     }
 
-    // control Notification bar color
+    // 5. control Notification bar color
+    // if (phoneHeight.firstBar) {
+    //   phonePaddingProps.notificationBarColor = BarSelector(ele)[2] ? BarSelector(ele)[2] : '#ffffff'
+    //   phoneHeight.firstBar = false
+    // }
+  }
+
+  /**
+   * 6. add ele who are before content and is fixed,
+   * because then need to render from bottom.
+   */
+  for (const ele of positionDataWhenBeforeContent) {
+    bars.push(
+      <AppBar position="absolute"
+        key={ele.uid}
+        sx={{
+          maxWidth: '320px',
+          left: isIOS() ? 'auto' : '10px',
+          top: (660 - (phoneHeight.afterBody + BarSelector(ele)[1])).toString() + 'px',
+          boxShadow: 'none',
+          backgroundColor: '#00000000',
+          zIndex: 0
+        }} >
+        {BarSelector(ele)[0]}
+      </AppBar>
+    )
+
+    // 7. caculate the height of content.
+    phoneHeight.afterBody += BarSelector(ele)[1]
+
+    // 5. control Notification bar color
     if (phoneHeight.firstBar) {
       phonePaddingProps.notificationBarColor = BarSelector(ele)[2] ? BarSelector(ele)[2] : '#ffffff'
       phoneHeight.firstBar = false

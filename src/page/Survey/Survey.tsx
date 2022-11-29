@@ -176,8 +176,6 @@ const MainStepper = (props: ISurveyProps) => {
 
   const matches = useMediaQuery('(min-width:1200px)')
 
-  // const [value, setValue] = React.useState('female')
-
   const subTab = () => {
     switch (activeStep) {
       case 0: {
@@ -339,15 +337,6 @@ const MainStepper = (props: ISurveyProps) => {
       }
     }
   }
-  // handleAnswerChange
-  // React.useEffect(() => {
-  //   window.document.addEventListener("keydown", (e) => {
-  //     if (e.code === "Enter") {
-  //       console.log(e.code)
-  //       handleNext()
-  //     }
-  //   })
-  // })
 
   return (
     <Box sx={{
