@@ -10,24 +10,75 @@ import {
 import { Box, Checkbox, useMediaQuery } from '@mui/material'
 import { useSelector, RootState } from '../../service/store'
 import ReorderIcon from '@mui/icons-material/Reorder'
-import { IpositionData, ISurveyProps, TPosition } from '../../interface'
+import { IpositionData, ISurveyProps, TPosition, TPosition2 } from '../../interface'
 import { useTranslation } from 'react-i18next'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
 
 // a little function to help us with reordering the result
+// const reorder = (
+//   list: IpositionData[],
+//   startIndex: number,
+//   endIndex: number
+// ): IpositionData[] => {
+//   const result = Array.from(list)
+//   const [removed] = result.splice(startIndex, 1)
+//   result.splice(endIndex, 0, removed)
+//   result[endIndex].position = endIndex.toString() as TPosition
+//   return result
+// }
+const reStore = (list: IpositionData[]): IpositionData[] => {
+  const result = Array.from(list)
+  // 排序
+  let beforePointer = 0
+  for (let i = 0; i < result.length; i++) {
+    if (result[i].name === "content") {
+      break
+    }
+    if (result[i].fixed) {
+      const temp = result[beforePointer]
+      result[beforePointer] = result[i]
+      result[i] = temp
+      beforePointer += 1
+    }
+  }
+  let afterPointer = result.length - 1
+  for (let i = result.length - 1; i > -1; i--) {
+    if (result[i].name === "content") {
+      break
+    }
+    if (result[i].fixed) {
+      const temp = result[afterPointer]
+      result[afterPointer] = result[i]
+      result[i] = temp
+      afterPointer -= 1
+    }
+  }
+
+  // 修正 position
+  let index = 0
+  for (let i = 0; i < result.length; i++) {
+    index++
+    if (!result[i].enable) {
+      result[i].position = "0"
+      index -= 1
+      continue
+    }
+    result[i].position = (index).toString() as TPosition
+  }
+  return result
+}
+
 const reorder = (
   list: IpositionData[],
   startIndex: number,
   endIndex: number
 ): IpositionData[] => {
-  // console.log('s: ' + startIndex)
-  // console.log('e: ' + endIndex)
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
   result.splice(endIndex, 0, removed)
-  result[endIndex].position = endIndex.toString() as TPosition
-  return result
+
+  return reStore(result)
 }
 
 const grid = 8
@@ -92,6 +143,12 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
     props.changeSurveyData(temp)
   }
 
+  const updatePosition = (): void => {
+    const temp = props.state
+    temp.positionDatas = reStore(temp.positionDatas)
+    props.changeSurveyData(temp)
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
@@ -148,6 +205,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                               } else item.enable = true
                               const temp = props.state
                               temp.positionDatas[index] = item
+                              updatePosition()
                               props.changeSurveyData(temp)
                             }} />
                           <Checkbox sx={{
@@ -162,6 +220,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                               } else item.fixed = true
                               const temp = props.state
                               temp.positionDatas[index] = item
+                              updatePosition()
                               props.changeSurveyData(temp)
                             }}
                             icon={<PushPinOutlinedIcon />} checkedIcon={<PushPinIcon />} />

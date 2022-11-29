@@ -22,7 +22,19 @@ export default class {
   navigationBarPosition: string
   navigationBarStyle: string
 
-  constructor(surveyData: ISurveyData) {
+  constructor(src: ISurveyData) {
+    const surveyData: ISurveyData = JSON.parse(JSON.stringify(src))
+    // fix fixed index issue
+    // let arr = surveyData.positionDatas
+    // let beforeContents = []
+    // let beforeContent = true
+    // let afterContents = []
+    // for (const ele of arr) {
+    //   if (ele.fixed && beforeContent) beforeContents.push(ele)
+    //   if (ele.name === "content") beforeContent = false
+    //   if (ele.fixed && !beforeContent) afterContents.push(ele)
+    // }
+
     this.data.push(getTime())
     this.data.push('')
     this.data.push(surveyData.gender)

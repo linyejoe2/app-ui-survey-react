@@ -75,15 +75,16 @@ export const barSteteSelector = (surveyData: ISurveyData, barName: TBar): IPhone
   const ele = surveyData.positionDatas.filter(ele => ele.name === barName)[0]
 
   if (!ele.enable) {
-    return { Position: '0', Style: '' }
+    return { Position: '0', Style: '', Fixed: "" }
   }
+  
+  return { Position: ele.position, Style: ele.style, Fixed: ele.fixed }
+  // let index = ele.position
+  // for (const ele2 of surveyData.positionDatas) {
+  //   if (parseInt(ele2.position) < parseInt(ele.position) && !ele2.enable) {
+  //     index = (parseInt(index) - 1).toString() as TPosition
+  //   }
+  // }
 
-  let index = ele.position
-  for (const ele2 of surveyData.positionDatas) {
-    if (parseInt(ele2.position) < parseInt(ele.position) && !ele2.enable) {
-      index = (parseInt(index) - 1).toString() as TPosition
-    }
-  }
-
-  return { Position: index, Style: ele.style, Fixed: ele.fixed }
+  // return { Position: index, Style: ele.style, Fixed: ele.fixed }
 }
