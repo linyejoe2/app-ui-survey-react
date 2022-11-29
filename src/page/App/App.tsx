@@ -12,15 +12,15 @@ function App() {
   return (
     <div className="App">
       <div>
-        <a href="#">
-          <img src="./socialMedia.svg" className="logo" style={{
-            // height: {onMobile?'':'200px'},
-            width: onMobile ? onSmallMobile ? '200px' : '300px' : '300px',
-            padding: '0',
-            display: 'inline-block',
-            willChange: 'filter'
-          }} alt="TP logo" />
-        </a>
+        {/* <a href="#"> */}
+        <img src="./socialMedia.svg" className="logo" style={{
+          // height: {onMobile?'':'200px'},
+          width: onMobile ? onSmallMobile ? '200px' : '300px' : '300px',
+          padding: '0',
+          display: 'inline-block',
+          willChange: 'filter'
+        }} alt="TP logo" />
+        {/* </a> */}
       </div>
       <h1>{t('main.title')}</h1>
       {/* <div className="card">
