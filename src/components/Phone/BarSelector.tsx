@@ -1,7 +1,7 @@
 import { FbSearchBar, FbPostBar, FbShortBar, FbNavigationBar, FbContent } from './Facebook/Facebook'
 import { YTContent, YTContentNavigationBar, YTNavigationBar, YTSearchBar, YTShortBar } from './YouTube/YouTube'
 import { IGContent, IGNavigationBar, IGShortBar, IGTitleBar } from './Instagram/Instagram'
-import { IPhoneBar, IpositionData, ISurveyData, TBar, TPosition } from '../../interface'
+import { IPhoneBar, IpositionData, ISurveyData, TBar } from '../../interface'
 import { DcContent, DcFunctionBar, DcNavigationBar, DcTitleBar } from './Dcard/Dcard'
 
 export const BarSelector = (positionData: IpositionData):
@@ -75,7 +75,7 @@ export const barSteteSelector = (surveyData: ISurveyData, barName: TBar): IPhone
   const ele = surveyData.positionDatas.filter(ele => ele.name === barName)[0]
 
   if (!ele.enable) {
-    return { Position: '0', Style: '', Fixed: "" }
+    return { Position: '0', Style: '', Fixed: '' }
   }
 
   return { Position: ele.position, Style: ele.style, Fixed: ele.fixed }

@@ -4,7 +4,7 @@ import { Phone } from '../../components/Phone/Phone'
 // import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
 import { ISurveyData } from '../../interface'
-import { Fab, SvgIcon, Typography } from '@mui/material'
+import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
 import React, { lazy, Suspense, useEffect } from 'react'
@@ -12,8 +12,6 @@ import React, { lazy, Suspense, useEffect } from 'react'
 import { LoadingTP } from '../../components/LoadingTP'
 import { useTranslation } from 'react-i18next'
 import TransferSurveyData from '../../service/TransferSurveyData'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../service/store'
 
 const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 // import CustomPieChart from '../../components/FinishPage/CustomPieChart'
@@ -51,7 +49,7 @@ export const FinishPage = () => {
     { title: 'Instagram', value: surveyAnalyzer.barCount2.Instagram, color: 'url(#gradient1)' },
     { title: 'YouTube', value: surveyAnalyzer.barCount2.YouTube, color: '#FF0000' },
     { title: 'Dcard', value: surveyAnalyzer.barCount2.Dcard, color: '#006aa6' },
-    { title: t("f.res.unused"), value: surveyAnalyzer.barCount2.unused, color: '#777' }
+    { title: t('f.res.unused'), value: surveyAnalyzer.barCount2.unused, color: '#777' }
   ]
 
   let wellcome = true
@@ -117,20 +115,20 @@ export const FinishPage = () => {
         </Box>
       </Suspense>
       <Typography className="finish-text" sx={{ mt: 4, mb: 2 }}>
-        {t("f.res.share.t")}
+        {t('f.res.share.t')}
       </Typography>
       <Box className="share-button-group">
         <Fab variant="extended" aria-label="share-facebook"
           href="https://www.facebook.com/sharer.php?u=https://linyejoe2.github.io/app-ui-survey-react"
           target="fb"
         >
-          <img src="./icon/facebook-black.svg" style={{ height: "48px" }} />
+          <img src="./icon/facebook-black.svg" style={{ height: '48px' }} />
           {/* Facebook */}
         </Fab>
         <Fab variant="extended" aria-label="share-line" sx={{ ml: 2 }}
           href="http://line.naver.jp/R/msg/text/?https://linyejoe2.github.io/app-ui-survey-react?openExternalBrowser=1"
           target="line">
-          <img src="./icon/line-black.svg" style={{ height: "48px" }} />
+          <img src="./icon/line-black.svg" style={{ height: '48px' }} />
           {/* Line */}
         </Fab>
         <Fab variant="extended" aria-label="share-telegram"
@@ -140,11 +138,11 @@ export const FinishPage = () => {
           href="https://t.me/share/url?url={https://linyejoe2.github.io/app-ui-survey-react}&text={選擇你最喜歡的社群媒體外觀吧！}"
           target="msg"
         >
-          <img src="./icon/telegram-black.svg" style={{ height: "48px" }} />
+          <img src="./icon/telegram-black.svg" style={{ height: '48px' }} />
           {/* Telegram */}
         </Fab>
         <Fab variant="extended" sx={{ ml: 2 }}>
-          <img src="./icon/link-black.svg" style={{ height: "48px" }} />
+          <img src="./icon/link-black.svg" style={{ height: '48px' }} />
           {/* Link */}
         </Fab>
         {/* <Fab disabled aria-label="like">

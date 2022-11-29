@@ -25,7 +25,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
 
   const phonePaddingProps = {
     notificationBarColor: '#ffffff',
-    bottomBarColor: "#ffffff",
+    bottomBarColor: '#ffffff',
     backgroundColor: '#ffffff',
     phoneHeight
   }

@@ -16,7 +16,7 @@ export interface IFCProps {
 export interface IPhoneBar {
   Position: TPosition,
   Style: TSocialMedia,
-  Fixed?: boolean | ""
+  Fixed?: boolean | ''
 }
 
 export interface IpositionData {

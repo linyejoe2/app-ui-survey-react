@@ -10,7 +10,7 @@ import {
 import { Box, Checkbox, useMediaQuery } from '@mui/material'
 import { useSelector, RootState } from '../../service/store'
 import ReorderIcon from '@mui/icons-material/Reorder'
-import { IpositionData, ISurveyProps, TPosition, TPosition2 } from '../../interface'
+import { IpositionData, ISurveyProps, TPosition } from '../../interface'
 import { useTranslation } from 'react-i18next'
 import PushPinIcon from '@mui/icons-material/PushPin'
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined'
@@ -32,7 +32,7 @@ const reStore = (list: IpositionData[]): IpositionData[] => {
   // 排序
   let beforePointer = 0
   for (let i = 0; i < result.length; i++) {
-    if (result[i].name === "content") {
+    if (result[i].name === 'content') {
       break
     }
     if (result[i].fixed) {
@@ -44,7 +44,7 @@ const reStore = (list: IpositionData[]): IpositionData[] => {
   }
   let afterPointer = result.length - 1
   for (let i = result.length - 1; i > -1; i--) {
-    if (result[i].name === "content") {
+    if (result[i].name === 'content') {
       break
     }
     if (result[i].fixed) {
@@ -60,7 +60,7 @@ const reStore = (list: IpositionData[]): IpositionData[] => {
   for (let i = 0; i < result.length; i++) {
     index++
     if (!result[i].enable) {
-      result[i].position = "0"
+      result[i].position = '0'
       index -= 1
       continue
     }

@@ -59,7 +59,7 @@ export default function Survey() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
         <Grid xs={12} sm={6} md={9}>
-          {progress[0] ? <LinearProgress variant='query' sx={{ display: "flex" }} /> : <></>}
+          {progress[0] ? <LinearProgress variant='query' sx={{ display: 'flex' }} /> : <></>}
           <Paper elevation={5}
             sx={{ textAlign: 'center' }}>
             <MainStepper state={state} changeSurveyData={changeSurveyData} progress={progress}>
@@ -344,8 +344,8 @@ const MainStepper = (props: ISurveyProps) => {
       height: onMobile ? 500 : 650
     }}
       style={{
-        padding: "16px",
-        paddingTop: props.progress![0] ? "12px" : "16px"
+        padding: '16px',
+        paddingTop: props.progress![0] ? '12px' : '16px'
       }}
       className='center-child'
     >
