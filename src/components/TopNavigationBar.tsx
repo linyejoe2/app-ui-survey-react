@@ -13,7 +13,7 @@ import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { useMediaQuery } from '@mui/material'
+import { Button, useMediaQuery } from '@mui/material'
 
 // const langOption = ['en', 'zh-TW']
 
@@ -63,6 +63,14 @@ export default function TopNavigationBar() {
             survey
           </Link> */}
           {/* {isIOS() ? "isIOS" : "notIOS"} */}
+          <Button
+            key={t("main.about-us")}
+            // onClick={handleCloseNavMenu}
+            href="./#/about-us"
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            {t("main.about-us")}
+          </Button>
           <IconButton
             size="large"
             title="change language"

@@ -1,4 +1,5 @@
 import { createHashRouter } from 'react-router-dom'
+import { AboutPage } from './page/About/AboutPage'
 
 import App from './page/App/App'
 import ErrorPage from './page/ErrorPage'
@@ -23,6 +24,10 @@ export default createHashRouter([
   {
     path: '/finish',
     element: <FinishPage />
+  },
+  {
+    path: "/about-us",
+    element: <AboutPage />
   }
 ]
   // , {

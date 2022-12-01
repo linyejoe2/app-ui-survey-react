@@ -66,10 +66,10 @@ export default function Survey() {
             </MainStepper>
           </Paper>
         </Grid>
-        <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
+        {/* <Grid xs={12} sm={12} md={12} display="flex" justifyContent="center">
           {JSON.stringify(state)
           }
-        </Grid>
+        </Grid> */}
         <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
           {state.defaultUI
             ? <Phone state={state} changeSurveyData={changeSurveyData} />
