@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { IpositionData, ISurveyProps, TSocialMedia } from '../interface'
+import { IpositionData, ISurveyProps, TSocialMedia } from '../../interface'
 
 interface PostsProps {
   stepId: string,

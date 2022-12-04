@@ -9,18 +9,20 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Skeleton from '@mui/material/Skeleton'
-import { Alert, FormControl, FormControlLabel, FormLabel, LinearProgress, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
+import { Alert, Backdrop, CircularProgress, FormControl, FormControlLabel, FormLabel, LinearProgress, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { ISurveyData, ISurveyProps, TSocialMedia } from '../../interface'
-import { SurveyStep } from '../../components/SurveyStep'
+import { SurveyStep } from '../../components/Survey/SurveyStep'
 import { Phone } from '../../components/Phone/Phone'
 import { useState } from 'react'
 import { DcPositionDatas, FbPositionDatas, IgPositionDatas, YTPositionDatas } from '../../const'
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { storeSurveyData2 } from '../../service/services'
+import { TourProvider, useTour } from '@reactour/tour'
+import SurveyTourSteps from '../../components/Survey/SurveyTourStep'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -34,6 +36,7 @@ const surveyDate: ISurveyData = {
 }
 
 export default function Survey() {
+  const { setIsOpen } = useTour()
   React.useEffect(() => {
     window.onbeforeunload = function () {
       return confirm('Confirm refresh')
@@ -55,10 +58,11 @@ export default function Survey() {
 
   return (
     <Box sx={{ flexGrow: 1, m: '15px' }}>
+      <Button onClick={() => setIsOpen(true)}>dsagasd</Button>
       <Grid container rowSpacing={3}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
-        <Grid xs={12} sm={6} md={9}>
+        <Grid xs={12} sm={6} md={9} >
           {progress[0] ? <LinearProgress variant='query' sx={{ display: 'flex' }} /> : <></>}
           <Paper elevation={5}
             sx={{ textAlign: 'center' }}>
@@ -70,7 +74,7 @@ export default function Survey() {
           {JSON.stringify(state)
           }
         </Grid> */}
-        <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
+        <Grid xs={12} sm={6} md={3} data-tour='2' display="flex" justifyContent="center">
           {state.defaultUI
             ? <Phone state={state} changeSurveyData={changeSurveyData} />
             : <Skeleton variant="rounded" height='660px' width="340px" />
@@ -197,9 +201,9 @@ const MainStepper = (props: ISurveyProps) => {
                 }
               }}
             >
-              <FormControlLabel value="male" control={<Radio />} label={t('p1.a1')} />
+              <FormControlLabel value="male" data-tour='3' control={<Radio />} label={t('p1.a1')} />
               <FormControlLabel value="female" control={<Radio />} label={t('p1.a2')} />
-              <FormControlLabel value="other" control={<Radio />} label={t('p1.a3')} />
+              <FormControlLabel value="other" data-tour="1" control={<Radio />} label={t('p1.a3')} />
             </RadioGroup>
           </FormControl>
         </>

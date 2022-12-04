@@ -199,7 +199,7 @@ export const FbContent: FC = () => {
               {t('fb.p1.text')}
             </Typography>
           </Box>
-          <img width="320px" src="./amberAvatar.jpg" alt="picture" />
+          <img width="320px" src="./fb-content-cat.jpg" alt="picture" />
           <Box className="row-like">
             <Box className="col content-like">
               <RecommendIcon sx={{ fill: '#1976d2', verticalAlign: 'middle' }} />

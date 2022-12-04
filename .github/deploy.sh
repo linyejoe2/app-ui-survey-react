@@ -5,6 +5,7 @@ set -e # 顯示錯誤資訊
 npm run build # 生成靜態檔案
 
 cd ./dist # 進入生成的資料夾
+cp -R ./locales/zh-TW ./locales/zh # 複製中文翻譯出來
 
 # 設定 ssh-key 相關資訊
 mkdir -p ~/.ssh/

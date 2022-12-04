@@ -14,6 +14,9 @@ import { RouterProvider } from 'react-router-dom'
 import TopNavigationBar from './components/TopNavigationBar'
 
 import './i18n'
+import { TourProvider } from '@reactour/tour'
+import { SurveyTourSteps2, SurveyTourSteps } from './components/Survey/SurveyTourStep'
+import { useTranslation } from 'react-i18next'
 
 const ThemeProvid = (props: React.PropsWithChildren) => {
   // const dispatch = useDispatch()
@@ -47,17 +50,31 @@ const ThemeProvid = (props: React.PropsWithChildren) => {
 //   immediate: true
 // }, authResult => { })
 
-// gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4");
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+const MainPage = () => {
+  const { t } = useTranslation()
+  return (<React.StrictMode>
     {/* <App /> */}
     <Provider store={store}>
-      <ThemeProvid>
-        <CssBaseline />
-        <TopNavigationBar />
-        <RouterProvider router={router} />
-      </ThemeProvid>
+      <TourProvider steps={SurveyTourSteps(t)}
+        showNavigation={false}
+        onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
+        showBadge={false}
+        showDots={false}
+        showCloseButton={false}
+      // styles={
+      // }
+      >
+        <ThemeProvid>
+          <CssBaseline />
+          <TopNavigationBar />
+          <RouterProvider router={router} />
+        </ThemeProvid>
+      </TourProvider>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>)
+}
+
+// gapi.client.load("https://sheets.googleapis.com/$discovery/rest?version=v4");
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <MainPage />
 )
