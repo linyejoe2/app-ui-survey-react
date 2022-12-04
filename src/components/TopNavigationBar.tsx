@@ -64,12 +64,12 @@ export default function TopNavigationBar() {
           </Link> */}
           {/* {isIOS() ? "isIOS" : "notIOS"} */}
           <Button
-            key={t("about-us.title")}
+            key={t('about-us.title')}
             // onClick={handleCloseNavMenu}
             href="./#/about-us"
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
-            {t("about-us.title")}
+            {t('about-us.title')}
           </Button>
           <IconButton
             size="large"

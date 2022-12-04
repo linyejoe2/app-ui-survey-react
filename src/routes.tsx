@@ -26,7 +26,7 @@ export default createHashRouter([
     element: <FinishPage />
   },
   {
-    path: "/about-us",
+    path: '/about-us',
     element: <AboutPage />
   }
 ]

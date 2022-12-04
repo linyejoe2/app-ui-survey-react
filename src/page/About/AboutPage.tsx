@@ -1,6 +1,6 @@
-import "./AboutPage.css"
+import './AboutPage.css'
 import { useTranslation } from 'react-i18next'
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material"
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
 
 export const AboutPage = () => {
   const { t } = useTranslation()
@@ -18,7 +18,7 @@ export const AboutPage = () => {
         <Grid item lg={6} md={12} xs={12}>
           <img src="./TP.svg" alt="img"
             style={{
-              width: onLaptop ? "200px" : '400px'
+              width: onLaptop ? '200px' : '400px'
               // margin: 20
             }}
           />
@@ -38,7 +38,7 @@ export const AboutPage = () => {
             sx={{
               width: onMobile ? 300 : onLaptop ? 500 : undefined,
               margin: onLaptop ? 'auto' : undefined,
-              textAlign: !onLaptop ? "left" : undefined
+              textAlign: !onLaptop ? 'left' : undefined
             }}>
             {/* {t('about-us.t')} */}
             躺平少年團 TP young 創立於 2022 年 10 月，由台北大學數位行銷學程的兩位學生領導，
