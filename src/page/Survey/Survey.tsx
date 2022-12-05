@@ -110,7 +110,7 @@ const MainStepper = (props: ISurveyProps) => {
   const [tourDnd, setTourDnd] = React.useState(false)
   React.useEffect(() => {
     if (tourDnd === true) {
-      setSteps(SurveyTourSteps(t).slice(4, 10))
+      setSteps(SurveyTourSteps(t).slice(4, 11))
       setCurrentStep(0)
       setIsOpen(true)
     }
@@ -317,7 +317,7 @@ const MainStepper = (props: ISurveyProps) => {
         </>
       }
       case 3: {
-        console.log('dsf')
+        // console.log('dsf')
         if (!tourDnd) setTourDnd(true)
         return <>
           <FormControl

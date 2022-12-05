@@ -38,6 +38,10 @@ export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
       content: '想釘選的組件，就直接釘起來！\n\n[*釘選的組件不會隨著內容滾動]\n[*釘選的組件必須位於最上方或最下方]'
     },
     {
+      selector: "[data-tour='7-1']",
+      content: '對組件有疑問嗎？點擊問號按鈕吧！'
+    },
+    {
       selector: "[data-tour='8']",
       content: '您的變更都會顯示在畫面上\n嘗試跟畫面互動看看！'
     },

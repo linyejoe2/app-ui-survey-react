@@ -2,11 +2,37 @@
   "main": {
     "title": "Chose the Best Social Media UI Design in Your Mind!",
     "un": "Amber",
-    "alert": "Choose a Answer First!"
+    "alert": "Choose a Answer First!",
+    "t" : "If you had Elon Musk Money,\nAnd you suddenly want to buy\nYouTube, FaceBook, Instagram and Dcard,\nwhitch is the four most commonly used social media in Taiwan,\nThen put them all together\nand make a social media that is just for you!",
+    "t2" : "Next, you will pass a few simple quizzes to determine\nwhat the best-looking social media style\nlooks like in your mind.\nAt the same time,\nthese data will be returned to our database\nto help us calculate\nthe most popular social media styles in Taiwan in 2022",
+    "t3" : "[*All data is for academic use]"
   },
   "about-us": {
     "title": "Auout us",
-    "tp-young": "TP young"
+    "tp-young": "TP young",
+    "t": "躺平少年團 TP young 創立於 2022 年 10 月，由台北大學數位行銷學程的兩位學生領導，致力於研究社群、行銷以及網際網路。\n\n雖然在這個嚴峻的時代，經濟壓的每個年輕人都喘不過氣，導致大家都想要躺平，但躺平之餘，我們也想做出一些事情來證明我們，為社會做出微薄的貢獻，並將我們的足跡留在網路上。\n\n我們的使命就是讓世界可以因為有我們，而有一點小小的變化。"
+  },
+  "help": {
+    "title": {
+      "m": "Title bar",
+      "t": "Contains title and some function buttons."
+    },
+    "function": {
+      "m": "Function bar",
+      "t": ""
+    },
+    "short": {
+      "m": "Short bar",
+      "t": ""
+    },
+    "content": {
+      "m": "Content",
+      "t": "Contains the content of this app."
+    },
+    "nav" : {
+      "m": "Navigation bar",
+      "t": "Contains some buttons to help user go to the page whitch thay want to go."
+    }
   },
   "f": {
     "res": {
@@ -19,7 +45,7 @@
         "t5": "個",
         "t6": "的元素！"
       },
-      "same": {
+      "same": { 
         "t1": "你最常用的是",
         "t2": "你最喜歡的也是",
         "t3": "的設計！",

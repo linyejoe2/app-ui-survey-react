@@ -117,8 +117,9 @@ export default function TopNavigationBar() {
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
-      <Toolbar sx={{
-        minHeight: onMobile ? 20 : 60
+      <Box sx={{
+        height: onMobile ? 10 : 20,
+        minHeight: onMobile ? 10 : 20
       }} />
     </Box>
   )
