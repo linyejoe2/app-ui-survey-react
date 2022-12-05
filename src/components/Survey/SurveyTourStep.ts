@@ -5,6 +5,8 @@ export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
     {
       selector: '[data-tour="0"]',
       content: '歡迎測驗！這是一個簡單的導覽！\n\n在空白處點擊繼續導覽\n或是按左上角叉叉自己探索~'
+      // action(elem) {
+      // }
     },
     {
       selector: "[data-tour='2']",
@@ -43,7 +45,8 @@ export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
     },
     {
       selector: "[data-tour='8']",
-      content: '您的變更都會顯示在畫面上\n嘗試跟畫面互動看看！'
+      content: () => { return '您的變更都會顯示在畫面上\n嘗試跟畫面互動看看！' },
+      stepInteraction: true
     },
     {
       selector: "[data-tour='9']",

@@ -57,6 +57,8 @@ const MainPage = () => {
     <Provider store={store}>
       <TourProvider steps={SurveyTourSteps(t)}
         showNavigation={false}
+        disableInteraction={true}
+        // onClickHighlighted={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
         onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
         showBadge={false}
         showDots={false}
