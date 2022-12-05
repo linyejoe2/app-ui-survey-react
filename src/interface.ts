@@ -89,7 +89,7 @@ export interface ISurveyAnalyze {
   mostLikeUI: {
     UIName: TSocialMedia,
     count: number
-  }
+  }[]
   barCount?: (TSocialMedia | number)[][]
 
   barCount2: {

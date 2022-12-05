@@ -14,26 +14,25 @@ import TransferSurveyData from '../../service/TransferSurveyData'
 
 // const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 import CustomPieChart from '../../components/FinishPage/CustomPieChart'
-
-// const fakeData: ISurveyData = {
-//   user: '',
-//   gender: 'male',
-//   age: '0',
-//   defaultUI: 'Facebook',
-//   themeStyle: 'YouTube',
-//   themeMode: 'light',
-//   UIStyle: undefined,
-//   positionDatas: [
-//     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
-//     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
-//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'YouTube', fixed: false },
-//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Dcard', fixed: false },
-//     { uid: '5', name: 'navigationBar', position: '5', enable: false, style: 'Instagram', fixed: true }
-//   ]
-// }
+// import { ISurveyData } from '../../interface'
 
 export const FinishPage = () => {
-  // const gSurveyData2 = fakeData
+  // const gSurveyData2: ISurveyData = {
+  //   user: '',
+  //   gender: 'male',
+  //   age: '0',
+  //   defaultUI: 'Facebook',
+  //   themeStyle: 'YouTube',
+  //   themeMode: 'light',
+  //   UIStyle: undefined,
+  //   positionDatas: [
+  //     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
+  //     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
+  //     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Facebook', fixed: false },
+  //     { uid: '4', name: 'content', position: '4', enable: true, style: 'Facebook', fixed: false },
+  //     { uid: '5', name: 'navigationBar', position: '5', enable: false, style: 'Instagram', fixed: true }
+  //   ]
+  // }
   const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
   if (gSurveyData2.defaultUI === '') {
     window.document.location.href = './'
@@ -78,27 +77,36 @@ export const FinishPage = () => {
     }, 3000)
     return <LoadingTP />
   }
-
+  console.log(surveyAnalyzer.mostLikeUI.length)
   return (
     <Box className="finish-page">
-      {gSurveyData2.defaultUI === surveyAnalyzer.mostLikeUI.UIName
-        ? <Box className='resource-box '>
-          <Typography className="finish-text">
-            {t('f.res.same.t1') + ' ' + gSurveyData2.defaultUI + ' '} <br /> {t('f.res.same.t2') + ' ' + surveyAnalyzer.mostLikeUI.UIName + t('f.res.same.t3')}
-          </Typography>
-          <Typography className="finish-text">
-            {t('f.res.same.t4') + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t('f.res.same.t5') + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t('f.res.same.t6')}
-          </Typography>
-          <Typography className="finish-text">
-            {t('f.res.same.t7')}
-          </Typography>
-        </Box>
+      {surveyAnalyzer.mostLikeUI.length === 1
+        ? gSurveyData2.defaultUI === surveyAnalyzer.mostLikeUI[0].UIName
+          ? <Box className='resource-box '>
+            <Typography className="finish-text">
+              {t('f.res.same.t1') + ' ' + gSurveyData2.defaultUI + ' '} <br /> {t('f.res.same.t2') + ' ' + surveyAnalyzer.mostLikeUI[0].UIName + t('f.res.same.t3')}
+            </Typography>
+            <Typography className="finish-text">
+              {t('f.res.same.t4') + ' ' + surveyAnalyzer.mostLikeUI[0].count + ' ' + t('f.res.same.t5') + ' ' + surveyAnalyzer.mostLikeUI[0].UIName + ' ' + t('f.res.same.t6')}
+            </Typography>
+            <Typography className="finish-text">
+              {t('f.res.same.t7')}
+            </Typography>
+          </Box>
+          : <Box className='resource-box '>
+            <Typography className="finish-text">
+              {t('f.res.n-same.t1') + ' ' + gSurveyData2.defaultUI + ' ' + t('f.res.n-same.t2') + ' ' + surveyAnalyzer.mostLikeUI[0].UIName + t('f.res.n-same.t3')}
+            </Typography>
+            <Typography className="finish-text">
+              {t('f.res.n-same.t4') + ' ' + surveyAnalyzer.mostLikeUI[0].count + ' ' + t('f.res.n-same.t5') + ' ' + surveyAnalyzer.mostLikeUI[0].UIName + ' ' + t('f.res.n-same.t6')}
+            </Typography>
+          </Box>
         : <Box className='resource-box '>
           <Typography className="finish-text">
-            {t('f.res.n-same.t1') + ' ' + gSurveyData2.defaultUI + ' ' + t('f.res.n-same.t2') + ' ' + surveyAnalyzer.mostLikeUI.UIName + t('f.res.n-same.t3')}
+            {t('f.res.lot.t1') + ' ' + gSurveyData2.defaultUI + ' ' + t('f.res.lot.t2') + ' ' + t('f.res.lot.t3')}
           </Typography>
           <Typography className="finish-text">
-            {t('f.res.n-same.t4') + ' ' + surveyAnalyzer.mostLikeUI.count + ' ' + t('f.res.n-same.t5') + ' ' + surveyAnalyzer.mostLikeUI.UIName + ' ' + t('f.res.n-same.t6')}
+            {t('f.res.lot.t4')}
           </Typography>
         </Box>
       }
