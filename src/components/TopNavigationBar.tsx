@@ -40,9 +40,12 @@ export default function TopNavigationBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar className='top-bar'>
-          <Box sx={{
-            height: '35px'
-          }}>
+          <Box
+            data-tour="0"
+            sx={{
+              height: '35px',
+              width: 35
+            }}>
             <a href="#" style={{ height: 'inherit' }}>
               <img src="./TP.svg" style={{
                 height: 'inherit',
@@ -53,7 +56,7 @@ export default function TopNavigationBar() {
               }} alt="TP logo" />
             </a>
           </Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
             <Link href='./' underline='none' color="unset">
               {/* {TITLE} */}
               {onMobile ? '' : t('main.title')}
@@ -72,6 +75,7 @@ export default function TopNavigationBar() {
             {t('about-us.title')}
           </Button>
           <IconButton
+            data-tour='2-1'
             size="large"
             title="change language"
             onClick={handleClick}
@@ -113,7 +117,9 @@ export default function TopNavigationBar() {
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      <Toolbar sx={{
+        minHeight: onMobile ? 20 : 60
+      }} />
     </Box>
   )
 }

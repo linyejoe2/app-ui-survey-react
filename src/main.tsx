@@ -15,7 +15,7 @@ import TopNavigationBar from './components/TopNavigationBar'
 
 import './i18n'
 import { TourProvider } from '@reactour/tour'
-import { SurveyTourSteps2, SurveyTourSteps } from './components/Survey/SurveyTourStep'
+import { SurveyTourSteps } from './components/Survey/SurveyTourStep'
 import { useTranslation } from 'react-i18next'
 
 const ThemeProvid = (props: React.PropsWithChildren) => {
@@ -60,7 +60,7 @@ const MainPage = () => {
         onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
         showBadge={false}
         showDots={false}
-        showCloseButton={false}
+        showCloseButton={true}
       // styles={
       // }
       >

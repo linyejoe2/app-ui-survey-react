@@ -154,6 +154,8 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
       <Droppable droppableId="droppable">
         {(provided, snapshot): JSX.Element => (
           <div
+
+            data-tour='4'
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={getListStyle(onMobile, themeState)}
@@ -162,6 +164,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
               <Draggable key={item.uid} draggableId={item.uid} index={index}>
                 {(provided, snapshot): JSX.Element => (
                   <div
+                    data-tour='5'
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -172,12 +175,13 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                       themeState
                     )}
                   >
-                    <Box sx={{
-                      display: 'inline-block',
-                      float: 'left',
-                      verticalAlign: 'top',
-                      cursor: 'grab'
-                    }}>
+                    <Box
+                      sx={{
+                        display: 'inline-block',
+                        float: 'left',
+                        verticalAlign: 'top',
+                        cursor: 'grab'
+                      }}>
                       <ReorderIcon />
                       {item.uid === '4'
                         ? <>
@@ -194,11 +198,13 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                           }} icon={<PushPinOutlinedIcon />} checkedIcon={<PushPinIcon />} disabled />
                         </>
                         : <>
-                          <Checkbox sx={{
-                            p: '0',
-                            pl: '2px',
-                            verticalAlign: 'top'
-                          }} checked={props.state.positionDatas[index].enable}
+                          <Checkbox
+                            data-tour="6"
+                            sx={{
+                              p: '0',
+                              pl: '2px',
+                              verticalAlign: 'top'
+                            }} checked={props.state.positionDatas[index].enable}
                             onChange={(event) => {
                               if (!event.target.checked) {
                                 item.enable = false
@@ -208,11 +214,13 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                               updatePosition()
                               props.changeSurveyData(temp)
                             }} />
-                          <Checkbox sx={{
-                            p: '0',
-                            pl: '2px',
-                            verticalAlign: 'top'
-                          }}
+                          <Checkbox
+                            data-tour="7"
+                            sx={{
+                              p: '0',
+                              pl: '2px',
+                              verticalAlign: 'top'
+                            }}
                             checked={props.state.positionDatas[index].fixed}
                             onChange={(event) => {
                               if (!event.target.checked) {

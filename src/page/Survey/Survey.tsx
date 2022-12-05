@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Skeleton from '@mui/material/Skeleton'
-import { Alert, Backdrop, CircularProgress, FormControl, FormControlLabel, FormLabel, LinearProgress, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
+import { Alert, FormControl, FormControlLabel, FormLabel, LinearProgress, MobileStepper, Radio, RadioGroup, Zoom } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { TableDnD } from '../../components/dnd/table'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -21,8 +21,8 @@ import { DcPositionDatas, FbPositionDatas, IgPositionDatas, YTPositionDatas } fr
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { storeSurveyData2 } from '../../service/services'
-import { TourProvider, useTour } from '@reactour/tour'
-import SurveyTourSteps from '../../components/Survey/SurveyTourStep'
+import { useTour } from '@reactour/tour'
+import { SurveyTourSteps } from '../../components/Survey/SurveyTourStep'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -36,12 +36,20 @@ const surveyDate: ISurveyData = {
 }
 
 export default function Survey() {
-  const { setIsOpen } = useTour()
+  const { setIsOpen, setSteps } = useTour()
+  const { t } = useTranslation()
+
+  let wellcome = true
   React.useEffect(() => {
+    if (!wellcome) return
+    wellcome = false
     window.onbeforeunload = function () {
       return confirm('Confirm refresh')
     }
-  })
+    setSteps(SurveyTourSteps(t).slice(0, 4))
+    setIsOpen(true)
+    // setSteps(SurveyTourSteps(t).slice(4, 10))
+  }, [])
 
   const dispatch = useDispatch()
   // const gSurveyData2 = useSelector((state: RootState) => state.gSurveyData2)
@@ -58,11 +66,15 @@ export default function Survey() {
 
   return (
     <Box sx={{ flexGrow: 1, m: '15px' }}>
-      <Button onClick={() => setIsOpen(true)}>dsagasd</Button>
       <Grid container rowSpacing={3}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         className='survey-container'>
         <Grid xs={12} sm={6} md={9} >
+          {/* <Button onClick={() => {
+            setCurrentStep(0)
+            setSteps(SurveyTourSteps(t).slice(0, 4))
+            setIsOpen(true)
+          }}>dsagasd</Button> */}
           {progress[0] ? <LinearProgress variant='query' sx={{ display: 'flex' }} /> : <></>}
           <Paper elevation={5}
             sx={{ textAlign: 'center' }}>
@@ -74,10 +86,10 @@ export default function Survey() {
           {JSON.stringify(state)
           }
         </Grid> */}
-        <Grid xs={12} sm={6} md={3} data-tour='2' display="flex" justifyContent="center">
+        <Grid xs={12} sm={6} md={3} display="flex" justifyContent="center">
           {state.defaultUI
             ? <Phone state={state} changeSurveyData={changeSurveyData} />
-            : <Skeleton variant="rounded" height='660px' width="340px" />
+            : <Skeleton data-tour='2' variant="rounded" height='660px' width="340px" />
           }
         </Grid>
       </Grid>
@@ -87,6 +99,7 @@ export default function Survey() {
 
 const MainStepper = (props: ISurveyProps) => {
   // const [sd, changeSurveyData] = useState(surveyDate);
+  const { setIsOpen, setSteps, setCurrentStep } = useTour()
   React.useEffect(() => {
     window.onbeforeunload = function () {
       console.log(window.location.href)
@@ -94,6 +107,15 @@ const MainStepper = (props: ISurveyProps) => {
       return confirm('Confirm refresh')
     }
   })
+  const [tourDnd, setTourDnd] = React.useState(false)
+  React.useEffect(() => {
+    if (tourDnd === true) {
+      setSteps(SurveyTourSteps(t).slice(4, 10))
+      setCurrentStep(0)
+      setIsOpen(true)
+    }
+    console.log('steps: ' + tourDnd)
+  }, [tourDnd])
   const { t } = useTranslation()
   // const steps = [t('p1.t'), t('p2.t'), t('p3.t'), t('p4.t')];
   const steps: string[] = []
@@ -179,12 +201,14 @@ const MainStepper = (props: ISurveyProps) => {
   }
 
   const matches = useMediaQuery('(min-width:1200px)')
-
+  // tourDnd = false
   const subTab = () => {
     switch (activeStep) {
       case 0: {
         return <>
-          <FormControl key={'step0'} className={'survey-step-form'}>
+          {/* <Button onClick={() => setIsOpen(true)}>dsagasd</Button> */}
+          <FormControl key={'step0'} className={'survey-step-form'}
+            data-tour="1">
             <FormLabel className={'survey-step-label'} id='gender'>{t('p1.q1')}</FormLabel>
             <RadioGroup
               name="gender-button-group"
@@ -201,9 +225,9 @@ const MainStepper = (props: ISurveyProps) => {
                 }
               }}
             >
-              <FormControlLabel value="male" data-tour='3' control={<Radio />} label={t('p1.a1')} />
+              <FormControlLabel value="male" control={<Radio />} label={t('p1.a1')} />
               <FormControlLabel value="female" control={<Radio />} label={t('p1.a2')} />
-              <FormControlLabel value="other" data-tour="1" control={<Radio />} label={t('p1.a3')} />
+              <FormControlLabel value="other" control={<Radio />} label={t('p1.a3')} />
             </RadioGroup>
           </FormControl>
         </>
@@ -293,8 +317,11 @@ const MainStepper = (props: ISurveyProps) => {
         </>
       }
       case 3: {
+        console.log('dsf')
+        if (!tourDnd) setTourDnd(true)
         return <>
           <FormControl
+            data-tour="9"
             key={'step3'} className={'survey-step-form'}>
             <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
             <FormLabel className={'survey-step-sub-label'} >{t('p4.q2')}</FormLabel>

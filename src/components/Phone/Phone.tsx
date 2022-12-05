@@ -1,4 +1,4 @@
-import { AppBar } from '@mui/material'
+import { AppBar, Box } from '@mui/material'
 import { FC } from 'react'
 // import { Search } from "react-router-dom";
 
@@ -122,6 +122,7 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
 
   return (
     <>
+      <Box data-tour='8'>
       {/* {phoneHeight.body} */}
       {isIOS()
         ? <PhonePaddingOnFukIos {...phonePaddingProps}>
@@ -131,5 +132,6 @@ export const Phone: FC<ISurveyProps> = (props: ISurveyProps) => {
           {bars}
         </PhonePadding>
       }
+      </Box>
     </>)
 }
