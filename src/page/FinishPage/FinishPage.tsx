@@ -6,14 +6,14 @@ import { Box } from '@mui/system'
 import { Fab, Typography } from '@mui/material'
 import { SurveyAnalyzer } from '../../service/SurveyAnalyzer'
 
-import React, { lazy, Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 
 import { LoadingTP } from '../../components/LoadingTP'
 import { useTranslation } from 'react-i18next'
 import TransferSurveyData from '../../service/TransferSurveyData'
 
-const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
-// import CustomPieChart from '../../components/FinishPage/CustomPieChart'
+// const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
+import CustomPieChart from '../../components/FinishPage/CustomPieChart'
 
 // const fakeData: ISurveyData = {
 //   user: '',
@@ -26,9 +26,9 @@ const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieC
 //   positionDatas: [
 //     { uid: '1', name: 'titleBar', position: '1', enable: true, style: 'Instagram', fixed: true },
 //     { uid: '2', name: 'functionBar', position: '2', enable: false, style: 'Facebook', fixed: false },
-//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Instagram', fixed: false },
-//     { uid: '5', name: 'navigationBar', position: '5', enable: true, style: 'Instagram', fixed: true }
+//     { uid: '3', name: 'shortBar', position: '3', enable: true, style: 'YouTube', fixed: false },
+//     { uid: '4', name: 'content', position: '4', enable: true, style: 'Dcard', fixed: false },
+//     { uid: '5', name: 'navigationBar', position: '5', enable: false, style: 'Instagram', fixed: true }
 //   ]
 // }
 
