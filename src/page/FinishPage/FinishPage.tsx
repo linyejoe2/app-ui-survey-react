@@ -126,29 +126,28 @@ export const FinishPage = () => {
       </Typography>
       <Box className="share-button-group">
         <Fab variant="extended" aria-label="share-facebook"
+          style={{ height: '48px', width: "48px" }}
           href="https://www.facebook.com/sharer.php?u=https://linyejoe2.github.io/app-ui-survey-react"
           target="fb"
         >
-          <img src="./icon/facebook-black.svg" style={{ height: '48px' }} />
+          <img src="./icon/facebook-black.svg" style={{ height: '48px', width: "48px" }} />
           {/* Facebook */}
         </Fab>
-        <Fab variant="extended" aria-label="share-line" sx={{ ml: 2 }}
+        <Fab variant="extended" aria-label="share-line" sx={{ ml: 2, height: '48px', width: "48px" }}
           href="http://line.naver.jp/R/msg/text/?https://linyejoe2.github.io/app-ui-survey-react?openExternalBrowser=1"
           target="line">
           <img src="./icon/line-black.svg" style={{ height: '48px' }} />
           {/* Line */}
         </Fab>
         <Fab variant="extended" aria-label="share-telegram"
-          sx={{
-            ml: 2
-          }}
+          sx={{ ml: 2, height: '48px', width: "48px" }}
           href="https://t.me/share/url?url={https://linyejoe2.github.io/app-ui-survey-react}&text={選擇你最喜歡的社群媒體外觀吧！}"
           target="msg"
         >
           <img src="./icon/telegram-black.svg" style={{ height: '48px' }} />
           {/* Telegram */}
         </Fab>
-        <Fab variant="extended" sx={{ ml: 2 }}>
+        <Fab variant="extended" sx={{ ml: 2, height: '48px', width: "48px" }}>
           <img src="./icon/link-black.svg" style={{ height: '48px' }} />
           {/* Link */}
         </Fab>
