@@ -13,7 +13,7 @@ import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { Button, useMediaQuery } from '@mui/material'
+import { Button, Collapse, useMediaQuery } from '@mui/material'
 
 // const langOption = ['en', 'zh-TW']
 
@@ -83,20 +83,24 @@ export default function TopNavigationBar() {
             <LanguageIcon />
           </IconButton>
           <Menu
-            id="lock-menu"
+            id='lock-menu'
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
             MenuListProps={{
               // 'aria-labelledby': 'lock-button',
               // role: 'listbox',
+              id: "data2-1"
             }}
           >
             {/* {langOption} */}
-            <MenuItem onClick={() => changeLanguage('en')}>en</MenuItem>
-            <MenuItem onClick={() => changeLanguage('zh-TW')}>zh-TW</MenuItem>
-            <MenuItem onClick={() => changeLanguage('zh')}>zh</MenuItem>
-            <MenuItem onClick={() => changeLanguage('ja')}>jp</MenuItem>
+            <Box
+            >
+              <MenuItem data-tour='2-1-2' onClick={() => changeLanguage('en')}>en</MenuItem>
+              <MenuItem onClick={() => changeLanguage('zh-TW')}>zh-TW</MenuItem>
+              <MenuItem onClick={() => changeLanguage('zh')}>zh</MenuItem>
+              <MenuItem onClick={() => changeLanguage('ja')}>jp</MenuItem>
+            </Box>
           </Menu>
           {/* {themeState
             ? <IconButton

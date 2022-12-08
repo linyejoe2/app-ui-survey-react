@@ -174,7 +174,7 @@ const MainStepper = (props: ISurveyProps) => {
   }
 
   const handleDelayNext = () => {
-    setTimeout(() => { handleNext() }, 300)
+    // setTimeout(() => { handleNext() }, 300)
   }
 
   const handleBack = () => {

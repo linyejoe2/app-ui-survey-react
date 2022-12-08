@@ -1,10 +1,17 @@
+import { Button } from '@mui/material'
 import { StepType } from '@reactour/tour'
 
 export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
   return [
     {
       selector: '[data-tour="0"]',
-      content: '歡迎測驗！這是一個簡單的導覽！\n\n在空白處點擊繼續導覽\n或是按左上角叉叉自己探索~'
+      content: '歡迎測驗！這是一個簡單的導覽！\n\n點擊箭頭繼續導覽。',
+      // stepInteraction: true
+      // content: (props) => (
+      //   <div>
+      //     <div>歡迎測驗！這是一個簡單的導覽！<br /><br />點擊箭頭繼續導覽</div>
+      //     <button onClick={() => props.setIsOpen(false)}>go back logo</button>
+      //   </div>),
       // action(elem) {
       // }
     },
@@ -14,11 +21,26 @@ export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
     },
     {
       selector: "[data-tour='2-1']",
-      content: '點擊地球切換你想要看的語言！'
+      // highlightedSelectors: ["[id='data2-1']"],
+      // mutationObservables: ["[id='lock-menu']"],
+      // highlightedSelectors: ["[id='lock-menu']"],
+      content: '點擊地球可以切換你想要看的語言！'
+      // stepInteraction: true
     },
     {
       selector: '[data-tour="1"]',
-      content: '電腦版按 Enter 可以下一步\n手機板選擇選項後會自動下一步！'
+      // content: '電腦版按 Enter 可以下一步\n手機板選擇選項後會自動下一步！'
+      content: (props) => (
+        <div>
+          <div>電腦版按 Enter 可以下一步</div>
+          <Button variant="contained"
+            sx={{
+              m: "auto",
+              mt: 2,
+              display: 'block'
+            }}
+            onClick={() => props.setIsOpen(false)}>開始測驗！</Button>
+        </div>)
       // actionAfter: (elem) => {
       //   elem.
       // }

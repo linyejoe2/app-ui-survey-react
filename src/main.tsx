@@ -56,15 +56,15 @@ const MainPage = () => {
     {/* <App /> */}
     <Provider store={store}>
       <TourProvider steps={SurveyTourSteps(t)}
-        showNavigation={false}
+        // showNavigation={false}
         disableInteraction={true}
-        // onClickHighlighted={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
-        onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
+        showCloseButton={false}
+        onClickHighlighted={prop => { }}
+        onClickMask={prop => { }}
         showBadge={false}
-        showDots={false}
-        showCloseButton={true}
-      // styles={
-      // }
+      // showDots={false}
+      // showCloseButton={false}
+      // components={{}}
       >
         <ThemeProvid>
           <CssBaseline />
