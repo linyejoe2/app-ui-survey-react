@@ -95,6 +95,8 @@ export default function TopNavigationBar() {
             {/* {langOption} */}
             <MenuItem onClick={() => changeLanguage('en')}>en</MenuItem>
             <MenuItem onClick={() => changeLanguage('zh-TW')}>zh-TW</MenuItem>
+            <MenuItem onClick={() => changeLanguage('zh')}>zh</MenuItem>
+            <MenuItem onClick={() => changeLanguage('ja')}>jp</MenuItem>
           </Menu>
           {/* {themeState
             ? <IconButton
