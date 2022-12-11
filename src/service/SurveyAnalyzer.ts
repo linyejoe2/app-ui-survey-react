@@ -24,8 +24,17 @@ export class SurveyAnalyzer implements ISurveyAnalyze {
   constructor(surveyData: ISurveyData) {
     this.defaultUI = surveyData.defaultUI
 
+    // 把本來就沒有的組件設為未使用
+    // for (const ele of surveyData.positionDatas) {
+    //   if (ele.uid === "2" && ele.style === "Instagram") ele.enable = false
+    //   if (ele.uid === "4" && ele.style === "Dcard") ele.enable = false
+    // }
+
+    // 計算他用最多的組件
     for (const ele of surveyData.positionDatas) {
-      if (!ele.enable) {
+      if (!ele.enable ||
+        (ele.uid === "2" && ele.style === "Instagram") ||
+        (ele.uid === "3" && ele.style === "Dcard")) {
         this.barCount2.unused += 1
         continue
       }
@@ -61,6 +70,7 @@ export class SurveyAnalyzer implements ISurveyAnalyze {
       }
     }
 
+    // 如果有重複選擇數量的，將會在這次迴圈計算
     for (const ele of surveyData.positionDatas) {
       if (!ele.enable) {
         continue

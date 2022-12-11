@@ -86,7 +86,7 @@
     "a3": "Instagram",
     "a4": "Dcard"
   },
-  "p4": {
+  "p9": {
     "t": "Position",
     "t2": "Components Position",
     "q1": "Drag and Drop to Chose the perfect position of all Components.",
@@ -97,7 +97,7 @@
     "content": "Content",
     "navigationBar": "Navigation bar"
   },
-  "p5": {
+  "p4": {
     "t": "Title bar Style",
     "s1": "You don't chose the Title bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
@@ -107,7 +107,7 @@
     "a3": "Instagram",
     "a4": "Dcard"
   },
-  "p6": {
+  "p5": {
     "t": "Function bar Style",
     "s1": "You don't chose the Function bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
@@ -117,7 +117,7 @@
     "a3": "",
     "a4": "Dcard"
   },
-  "p7": {
+  "p6": {
     "t": "Short bar Style",
     "s1": "You don't chose the Short bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
@@ -127,7 +127,7 @@
     "a3": "Instagram",
     "a4": ""
   },
-  "p8": {
+  "p7": {
     "t": "Content Style",
     "s1": "You don't chose the Short on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",
@@ -137,7 +137,7 @@
     "a3": "Instagram",
     "a4": "Dcard"
   },
-  "p9": {
+  "p8": {
     "t": "Navigation bar Style",
     "s1": "You don't chose the Navigation bar on your UI model!",
     "s2": "You can skip this step if your just don't want to use it!",

@@ -1,6 +1,6 @@
 import './FinishPage.css'
 import { Phone } from '../../components/Phone/Phone'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../service/store'
 import { Box } from '@mui/system'
 import { Fab, Typography } from '@mui/material'
@@ -14,6 +14,8 @@ import TransferSurveyData from '../../service/TransferSurveyData'
 
 // const CustomPieChart = lazy(() => import('../../components/FinishPage/CustomPieChart'))
 import CustomPieChart from '../../components/FinishPage/CustomPieChart'
+import { storeSurveyData2 } from '../../service/services'
+import { ISurveyData } from '../../interface'
 // import { ISurveyData } from '../../interface'
 
 export const FinishPage = () => {
@@ -38,6 +40,18 @@ export const FinishPage = () => {
     window.document.location.href = './'
     return <></>
   }
+
+  // const dispatch = useDispatch();
+  // ((updateData: ISurveyData) => {
+  //   const temp = JSON.parse(JSON.stringify(updateData)) as ISurveyData
+
+  //   for (const ele of temp.positionDatas) {
+  //     if (ele.uid === "2" && ele.style === "Instagram") ele.enable = false
+  //     if (ele.uid === "4" && ele.style === "Dcard") ele.enable = false
+  //   }
+  //   dispatch(storeSurveyData2(temp))
+  // })(gSurveyData2)
+
   // console.log(gSurveyData2)
   const { t } = useTranslation()
   const [loading, setLoading] = React.useState(true)

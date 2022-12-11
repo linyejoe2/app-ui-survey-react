@@ -22,7 +22,8 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { storeSurveyData2 } from '../../service/services'
 import { useTour } from '@reactour/tour'
-import { SurveyTourSteps } from '../../components/Survey/SurveyTourStep'
+import { SurveyTourSteps, SurveyTourSteps2, SurveyTourSteps3, SurveyTourSteps4 } from '../../components/Survey/SurveyTourStep'
+import { CustomBackdrop } from '../../components/Survey/HelpBackdrop'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -46,7 +47,7 @@ export default function Survey() {
     window.onbeforeunload = function () {
       return confirm('Confirm refresh')
     }
-    setSteps(SurveyTourSteps(t).slice(0, 4))
+    setSteps(SurveyTourSteps(t))
     setIsOpen(true)
     // setSteps(SurveyTourSteps(t).slice(4, 10))
   }, [])
@@ -107,10 +108,20 @@ const MainStepper = (props: ISurveyProps) => {
       return confirm('Confirm refresh')
     }
   })
+
+  const [step2Tour, setStep2Tour] = useState(false)
+  React.useEffect(() => {
+    if (!step2Tour) return
+    setSteps(SurveyTourSteps4(t))
+    setCurrentStep(0)
+    setIsOpen(true)
+    // setSteps(SurveyTourSteps(t).slice(4, 10))
+  }, [step2Tour])
+
   const [tourDnd, setTourDnd] = React.useState(false)
   React.useEffect(() => {
     if (tourDnd === true) {
-      setSteps(SurveyTourSteps(t).slice(4, 11))
+      setSteps(SurveyTourSteps2(t))
       setCurrentStep(0)
       setIsOpen(true)
     }
@@ -126,6 +137,29 @@ const MainStepper = (props: ISurveyProps) => {
   const onLaptop = useMediaQuery('(max-width:1000px)')
   const onMobile = useMediaQuery('(max-width:600px)')
   const [activeStep, setActiveStep] = React.useState(0)
+  React.useEffect(() => {
+    setHelpStep(activeStep)
+    // if (activeStep === 3) {
+    //   setSteps(SurveyTourSteps3(t))
+    //   setCurrentStep(0)
+    //   setIsOpen(true)
+    // }
+    // switch (activeStep) {
+    //   case 3:
+    //     break
+    //   default:
+    //     setHelpStep(activeStep)
+    // }
+    // console.log('steps: ' + tourDnd)
+  }, [activeStep])
+  const [helpStep, setHelpStep] = React.useState(0)
+  // React.useEffect(() => {
+  //   if (isOpen === false) {
+  //     if (activeStep === 3) {
+  //       setHelpStep(3)
+  //     }
+  //   }
+  // }, [isOpen])
   const [openAlert, setAlert] = React.useState(false)
   // const [nextTran, setNextTran] = React.useState(true)
   // const containerRef = React.useRef(null);
@@ -151,6 +185,9 @@ const MainStepper = (props: ISurveyProps) => {
         case 2:
           if (!props.state.defaultUI) throw new Error('')
           break
+        // case 2:
+        //   setActiveStep((prevActiveStep) => 21)
+        //   return
         default:
         // throw new Error("")
       }
@@ -174,7 +211,7 @@ const MainStepper = (props: ISurveyProps) => {
   }
 
   const handleDelayNext = () => {
-    setTimeout(() => { handleNext() }, 300)
+    // setTimeout(() => { handleNext() }, 300)
   }
 
   const handleBack = () => {
@@ -277,8 +314,12 @@ const MainStepper = (props: ISurveyProps) => {
             <RadioGroup name="dafault-ui-button-group"
               // value={surveyDate.age}
               // defaultValue={props.state.defaultUI}
+              sx={{
+                mt: 2
+              }}
               value={props.state.defaultUI}
               onChange={(ev, val) => {
+                setStep2Tour(true)
                 const temp = props.state
                 temp.defaultUI = val as TSocialMedia
                 switch (val) {
@@ -317,14 +358,65 @@ const MainStepper = (props: ISurveyProps) => {
         </>
       }
       case 3: {
+        // console.log(positionDatas)
+        return <>
+          {
+            helpStep === 3
+              ? <CustomBackdrop helpStep={helpStep} setHelpStep={setHelpStep}></CustomBackdrop>
+              : <></>
+          }
+          <SurveyStep stepId='4' uid='1' survey={props} handleNext={handleDelayNext} />
+        </>
+      }
+      case 4: {
+        return <>
+          {
+            helpStep === 4
+              ? <CustomBackdrop helpStep={helpStep} setHelpStep={setHelpStep}></CustomBackdrop>
+              : <></>
+          }
+          <SurveyStep stepId='5' uid='2' survey={props} handleNext={handleDelayNext} />
+        </>
+      }
+      case 5: {
+        return <>
+          {
+            helpStep === 5
+              ? <CustomBackdrop helpStep={helpStep} setHelpStep={setHelpStep}></CustomBackdrop>
+              : <></>
+          }
+          <SurveyStep stepId='6' uid='3' survey={props} handleNext={handleDelayNext} />
+        </>
+      }
+      case 6: {
+        return <>
+          {
+            helpStep === 6
+              ? <CustomBackdrop helpStep={helpStep} setHelpStep={setHelpStep}></CustomBackdrop>
+              : <></>
+          }
+          <SurveyStep stepId='7' uid='4' survey={props} handleNext={handleDelayNext} />
+        </>
+      }
+      case 7: {
+        return <>
+          {
+            helpStep === 7
+              ? <CustomBackdrop helpStep={helpStep} setHelpStep={setHelpStep}></CustomBackdrop>
+              : <></>
+          }
+          <SurveyStep stepId='8' uid='5' survey={props} handleNext={handleDelayNext} />
+        </>
+      }
+      case 8: {
         // console.log('dsf')
         if (!tourDnd) setTourDnd(true)
         return <>
           <FormControl
             data-tour="9"
             key={'step3'} className={'survey-step-form'}>
-            <FormLabel className={'survey-step-label'} >{t('p4.q1')}</FormLabel>
-            <FormLabel className={'survey-step-sub-label'} >{t('p4.q2')}</FormLabel>
+            <FormLabel className={'survey-step-label'} >{t('p9.q1')}</FormLabel>
+            <FormLabel className={'survey-step-sub-label'} >{t('p9.q2')}</FormLabel>
             <Box sx={{
               display: 'flex',
               justifyContent: 'center'
@@ -332,32 +424,6 @@ const MainStepper = (props: ISurveyProps) => {
               <TableDnD state={props.state} changeSurveyData={props.changeSurveyData}></TableDnD>
             </Box>
           </FormControl>
-        </>
-      }
-      case 4: {
-        // console.log(positionDatas)
-        return <>
-          <SurveyStep stepId='5' uid='1' survey={props} handleNext={handleDelayNext} />
-        </>
-      }
-      case 5: {
-        return <>
-          <SurveyStep stepId='6' uid='2' survey={props} handleNext={handleDelayNext} />
-        </>
-      }
-      case 6: {
-        return <>
-          <SurveyStep stepId='7' uid='3' survey={props} handleNext={handleDelayNext} />
-        </>
-      }
-      case 7: {
-        return <>
-          <SurveyStep stepId='8' uid='4' survey={props} handleNext={handleDelayNext} />
-        </>
-      }
-      case 8: {
-        return <>
-          <SurveyStep stepId='9' uid='5' survey={props} handleNext={handleDelayNext} />
         </>
       }
       default: {
@@ -446,10 +512,12 @@ const MainStepper = (props: ISurveyProps) => {
             </Button>
           }
           backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-              <KeyboardArrowLeft />
-              Back
-            </Button>
+            <>
+              <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                <KeyboardArrowLeft />
+                Back
+              </Button>
+            </>
           } />
         // onDesktop
         : activeStep === steps.length
@@ -471,6 +539,15 @@ const MainStepper = (props: ISurveyProps) => {
             >
               Back
             </Button>
+            {/* <Button
+              // color="inherit"
+              variant="outlined"
+              onClick={() => setHelpStep(activeStep)}
+              sx={{ mr: 1, ml: 2 }}
+              size="large"
+            >
+              help
+            </Button> */}
             <Box sx={{ flex: '1 1 auto' }} />
             {isStepOptional(activeStep) && (
               <Button

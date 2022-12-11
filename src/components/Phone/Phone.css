@@ -1,5 +1,5 @@
 #PhoneBody {
-  /* margin: 105px 10px 0 10px; fb */ 
+  /* margin: 105px 10px 0 10px; fb */
   /* margin: 145px 10px 0 10px; yt */
   margin: 130px 10px 0 10px;
   /* margin: 130px 0; */
@@ -9,6 +9,7 @@
   height: 490px;
   overflow: auto;
   overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 #PhoneBody::-webkit-scrollbar {

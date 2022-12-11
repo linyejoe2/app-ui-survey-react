@@ -30,6 +30,7 @@
         "unused-imports"
     ],
     "rules": {
+        "no-unreachable": "warn",
         "space-before-function-paren": [ "error", { // function 命名風格
                 "anonymous": "always",
                 "named": "never",

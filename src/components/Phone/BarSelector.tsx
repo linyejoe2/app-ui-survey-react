@@ -23,8 +23,8 @@ export const BarSelector = (positionData: IpositionData):
       switch (positionData.style) {
         case 'Facebook':
           return [<FbPostBar key="FbPostBar" />, 64, '']
-        // case "Instagram":
-        //   return <IG/>
+        case "Instagram":
+          return [<></>, 0, '']
         case 'YouTube':
           return [<YTContentNavigationBar key="YTContentNavigationBar" />, 40, '']
         case 'Dcard':
@@ -39,8 +39,8 @@ export const BarSelector = (positionData: IpositionData):
           return [<IGShortBar key="IGShortBar" />, 96, '']
         case 'YouTube':
           return [<YTShortBar key="YTShortBar" />, 330, '']
-        // case "Dcard":
-        //   return [<FbShortBar key="FbShortBar" />, 330, ""]
+        case "Dcard":
+          return [<></>, 0, ""]
       }
       break
     case 'content':

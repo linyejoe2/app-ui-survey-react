@@ -27,6 +27,7 @@ const ThemeProvid = (props: React.PropsWithChildren) => {
     if (!wellcome) return
     wellcome = false
     // console.log('URL: ' + import.meta.env.BASE_URL)
+    console.log(window.location.hash)
     console.log('%c恭喜你來到了秘密樂園。\n你知道嗎？在非洲，每六十秒，就有一分鐘過去。', 'color: red; font-size: 30px')
     console.log('%c想看更多，歡迎來我的 Blog 看。\nhttps://linyejoe2.github.io/', 'color: red; font-size: 30px')
   }, [])
@@ -56,13 +57,14 @@ const MainPage = () => {
     {/* <App /> */}
     <Provider store={store}>
       <TourProvider steps={SurveyTourSteps(t)}
-        showNavigation={false}
+        showNavigation={true}
         disableInteraction={true}
-        // onClickHighlighted={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
-        onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
+        onClickHighlighted={prop => { }}
+        onClickMask={prop => { }}
+        // onClickMask={prop => { prop.setCurrentStep(prop.currentStep + 1) }}
         showBadge={false}
-        showDots={false}
-        showCloseButton={true}
+        showDots={true}
+        showCloseButton={false}
       // styles={
       // }
       >

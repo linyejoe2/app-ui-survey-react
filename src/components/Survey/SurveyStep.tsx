@@ -21,44 +21,80 @@ export const SurveyStep: FC<PostsProps> = ({ stepId, uid, survey, handleNext }) 
   }
   const { t } = useTranslation()
   return <>
-    {pickBar(uid, survey.state.positionDatas).enable
-      ? <FormControl key={'step' + stepId} className={'survey-step-form'}>
-        <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.q1`)}</FormLabel>
-        {/* <FormLabel sx={{ fontSize: '20px' }} >{t({`p${stepId}.q2')}</FormLabel> */}
-        <RadioGroup name={`style-${stepId}-button-group`}
-          // value={value}
-          // defaultValue='male'
-          onKeyDown={(ev) => {
-            if (ev.key === 'Enter') {
-              if (stepId === '9') {
-                window.document.location.href = './#/finish'
-                return
-              }
-              handleNext()
-            }
-            // if (onLaptop) handleNext()
-          }}
-          onChange={(ev, val) => {
-            const temp = survey.state
-            pickBar(uid, temp.positionDatas).style = val as TSocialMedia
-            survey.changeSurveyData(temp)
-            // const temp: IpositionData = JSON.parse(JSON.stringify(state))
-            // temp.style = val as TSocialMedia
-            // setState(temp)
-          }}
-          value={pickBar(uid, survey.state.positionDatas).style}
-        // defaultValue={pickBar(uid, survey.state.positionDatas).style}
-        >
-          <FormControlLabel value={t(`p${stepId}.a1`)} control={<Radio />} label={t(`p${stepId}.a1`)} sx={{ display: t(`p${stepId}.a1`) !== '' ? 'inline-flex' : 'none' }} />
-          <FormControlLabel value={t(`p${stepId}.a2`)} control={<Radio />} label={t(`p${stepId}.a2`)} sx={{ display: t(`p${stepId}.a2`) !== '' ? 'inline-flex' : 'none' }} />
-          <FormControlLabel value={t(`p${stepId}.a3`)} control={<Radio />} label={t(`p${stepId}.a3`)} sx={{ display: t(`p${stepId}.a3`) !== '' ? 'inline-flex' : 'none' }} />
-          <FormControlLabel value={t(`p${stepId}.a4`)} control={<Radio />} label={t(`p${stepId}.a4`)} sx={{ display: t(`p${stepId}.a4`) !== '' ? 'inline-flex' : 'none' }} />
-        </RadioGroup>
-      </FormControl>
-      : <FormControl className={'survey-step-form'}>
-        <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.s1`)}</FormLabel>
-        <FormLabel sx={{ fontSize: '20px' }} >{t(`p${stepId}.s2`)}</FormLabel>
-      </FormControl>
-    }
+    <FormControl key={'step' + stepId} className={'survey-step-form'}>
+      <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.q1`)}</FormLabel>
+      {/* <FormLabel sx={{ fontSize: '20px' }} >{t({`p${stepId}.q2')}</FormLabel> */}
+      <RadioGroup name={`style-${stepId}-button-group`}
+        // value={value}
+        // defaultValue='male'
+        onKeyDown={(ev) => {
+          if (ev.key === 'Enter') {
+            // if (stepId === '9') {
+            //   window.document.location.href = './#/finish'
+            //   return
+            // }
+            handleNext()
+          }
+          // if (onLaptop) handleNext()
+        }}
+        onChange={(ev, val) => {
+          const temp = survey.state
+          pickBar(uid, temp.positionDatas).style = val as TSocialMedia
+          survey.changeSurveyData(temp)
+          // const temp: IpositionData = JSON.parse(JSON.stringify(state))
+          // temp.style = val as TSocialMedia
+          // setState(temp)
+        }}
+        value={pickBar(uid, survey.state.positionDatas).style}
+      // defaultValue={pickBar(uid, survey.state.positionDatas).style}
+      >
+        <FormControlLabel value={'Facebook'} control={<Radio />} label={t(`p${stepId}.a1`)} sx={{ display: t(`p${stepId}.a1`) !== '' ? 'inline-flex' : 'none' }} />
+        <FormControlLabel value={'YouTube'} control={<Radio />} label={t(`p${stepId}.a2`)} sx={{ display: t(`p${stepId}.a2`) !== '' ? 'inline-flex' : 'none' }} />
+        <FormControlLabel value={'Instagram'} control={<Radio />} label={t(`p${stepId}.a3`)} sx={{ display: t(`p${stepId}.a3`) !== '' ? 'inline-flex' : 'none' }} />
+        <FormControlLabel value={'Dcard'} control={<Radio />} label={t(`p${stepId}.a4`)} sx={{ display: t(`p${stepId}.a4`) !== '' ? 'inline-flex' : 'none' }} />
+      </RadioGroup>
+    </FormControl>
+
   </>
+  // return <>
+  //   {pickBar(uid, survey.state.positionDatas).enable
+  //     ? <FormControl key={'step' + stepId} className={'survey-step-form'}>
+  //       <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.q1`)}</FormLabel>
+  //       {/* <FormLabel sx={{ fontSize: '20px' }} >{t({`p${stepId}.q2')}</FormLabel> */}
+  //       <RadioGroup name={`style-${stepId}-button-group`}
+  //         // value={value}
+  //         // defaultValue='male'
+  //         onKeyDown={(ev) => {
+  //           if (ev.key === 'Enter') {
+  //             // if (stepId === '9') {
+  //             //   window.document.location.href = './#/finish'
+  //             //   return
+  //             // }
+  //             handleNext()
+  //           }
+  //           // if (onLaptop) handleNext()
+  //         }}
+  //         onChange={(ev, val) => {
+  //           const temp = survey.state
+  //           pickBar(uid, temp.positionDatas).style = val as TSocialMedia
+  //           survey.changeSurveyData(temp)
+  //           // const temp: IpositionData = JSON.parse(JSON.stringify(state))
+  //           // temp.style = val as TSocialMedia
+  //           // setState(temp)
+  //         }}
+  //         value={pickBar(uid, survey.state.positionDatas).style}
+  //       // defaultValue={pickBar(uid, survey.state.positionDatas).style}
+  //       >
+  //         <FormControlLabel value={t(`p${stepId}.a1`)} control={<Radio />} label={t(`p${stepId}.a1`)} sx={{ display: t(`p${stepId}.a1`) !== '' ? 'inline-flex' : 'none' }} />
+  //         <FormControlLabel value={t(`p${stepId}.a2`)} control={<Radio />} label={t(`p${stepId}.a2`)} sx={{ display: t(`p${stepId}.a2`) !== '' ? 'inline-flex' : 'none' }} />
+  //         <FormControlLabel value={t(`p${stepId}.a3`)} control={<Radio />} label={t(`p${stepId}.a3`)} sx={{ display: t(`p${stepId}.a3`) !== '' ? 'inline-flex' : 'none' }} />
+  //         <FormControlLabel value={t(`p${stepId}.a4`)} control={<Radio />} label={t(`p${stepId}.a4`)} sx={{ display: t(`p${stepId}.a4`) !== '' ? 'inline-flex' : 'none' }} />
+  //       </RadioGroup>
+  //     </FormControl>
+  //     : <FormControl className={'survey-step-form'}>
+  //       <FormLabel className={'survey-step-label'} id={`style-${stepId}-label`}>{t(`p${stepId}.s1`)}</FormLabel>
+  //       <FormLabel sx={{ fontSize: '20px' }} >{t(`p${stepId}.s2`)}</FormLabel>
+  //     </FormControl>
+  //   }
+  // </>
 }

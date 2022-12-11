@@ -401,7 +401,7 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
                         verticalAlign: 'top'
                       }} checked /> */}
                       </Box>
-                      {t(`p4.${item.name}`)}
+                      {t(`p9.${item.name}`)}
                       <Box
                         sx={{
                           display: 'inline-block',
