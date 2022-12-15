@@ -13,7 +13,7 @@ import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { Button, Collapse, Divider, Slide, useMediaQuery, useScrollTrigger } from '@mui/material'
+import { Button, Divider, Slide, useMediaQuery, useScrollTrigger } from '@mui/material'
 import { HelpBackdrop } from './Survey/HelpBackdrop'
 
 // const langOption = ['en', 'zh-TW']

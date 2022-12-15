@@ -7,7 +7,7 @@ import { Box, Typography, useMediaQuery } from '@mui/material'
 function App() {
   const { t } = useTranslation()
   const onMobile = useMediaQuery('(max-width:600px)')
-  const onLaptop = useMediaQuery('(max-width:1000px)')
+  // const onLaptop = useMediaQuery('(max-width:1000px)')
   const onSmallMobile = useMediaQuery('(max-width:400px)')
 
   return (

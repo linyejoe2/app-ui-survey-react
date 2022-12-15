@@ -1,13 +1,12 @@
 import { Box, Button } from '@mui/material'
 import { StepType } from '@reactour/tour'
 import React from 'react'
-import { HelpBackdrop } from './HelpBackdrop'
 
 export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
   return [
     {
       selector: '[data-tour="0"]',
-      content: '歡迎測驗！這是一個簡單的導覽！\n\n點擊箭頭繼續導覽。',
+      content: '歡迎測驗！這是一個簡單的導覽！\n\n點擊箭頭繼續導覽。'
       // stepInteraction: true
       // content: (props) => (
       //   <div>
@@ -37,7 +36,7 @@ export const SurveyTourSteps = (t: (s: string) => string): StepType[] => {
           <div>電腦版按 Enter 可以下一步</div>
           <Button variant="contained"
             sx={{
-              m: "auto",
+              m: 'auto',
               mt: 2,
               display: 'block'
             }}
@@ -90,8 +89,8 @@ export const SurveyTourSteps2 = (t: (s: string) => string, setHelpBackdropStep?:
             這邊是所有的可操控的組件。
           </Box>
           <Button variant="contained" sx={{
-            display: "block",
-            m: "auto",
+            display: 'block',
+            m: 'auto',
             mt: 2
           }}
             onClick={() => setHelpBackdropStep!(1)}>什麼是組件?</Button>
@@ -114,11 +113,11 @@ export const SurveyTourSteps2 = (t: (s: string) => string, setHelpBackdropStep?:
       return (
         <>
           <Box>
-          想釘選的組件，就直接釘起來！\n\n[*釘選的組件不會隨著內容滾動]\n[*釘選的組件必須位於最上方或最下方]
+              想釘選的組件，就直接釘起來！<br/><br/>[*釘選的組件不會隨著內容滾動]<br/>[*釘選的組件必須位於最上方或最下方]
           </Box>
           <Button variant="contained" sx={{
-            display: "block",
-            m: "auto",
+            display: 'block',
+            m: 'auto',
             mt: 2
           }}
             onClick={() => setHelpBackdropStep!(2)}>什麼是釘選?</Button>
@@ -135,26 +134,41 @@ export const SurveyTourSteps2 = (t: (s: string) => string, setHelpBackdropStep?:
   },
   {
     selector: "[data-tour='8']",
-    content: () => { return '您的變更都會顯示在畫面上\n嘗試跟畫面互動看看！' },
-    stepInteraction: true
-  },
-  {
-    selector: "[data-tour='9']",
-    // content: '您可以在後面的步驟調整組件的樣式！'
+    // content: () => { return '您的變更都會顯示在畫面上\n嘗試跟畫面互動看看！' },
     content: (prop) => {
       return (
         <>
           <Box>
-            開始調整吧！
+          您的變更都會顯示在畫面上<br/>
+            嘗試跟畫面互動看看！
           </Box>
-          <Button variant="contained" sx={{
+          <Button variant="text" sx={{
             display: "block",
             m: "auto",
             mt: 2
           }}
             onClick={() => prop.setIsOpen(false)}>結束導覽～</Button>
         </>)
-    }
+    },
+    stepInteraction: true
   }
+  // {
+  //   selector: "[data-tour='9']",
+  //   // content: '您可以在後面的步驟調整組件的樣式！'
+  //   content: (prop) => {
+  //     return (
+  //       <>
+  //         <Box>
+  //           開始調整吧！
+  //         </Box>
+  //         <Button variant="contained" sx={{
+  //           display: 'block',
+  //           m: 'auto',
+  //           mt: 2
+  //         }}
+  //           onClick={() => prop.setIsOpen(false)}>結束導覽～</Button>
+  //       </>)
+  //   }
+  // }
   ]
 }

@@ -1,6 +1,6 @@
-import { Backdrop, Box, Typography, useMediaQuery } from "@mui/material"
-import { FC } from "react"
-import { useTranslation } from "react-i18next"
+import { Backdrop, Box, Typography, useMediaQuery } from '@mui/material'
+import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const HelpBackdrop: FC<{
   helpStep: number,
@@ -26,7 +26,7 @@ export const HelpBackdrop: FC<{
             {t('help.component.m')}
           </Typography>
         </Box>
-        <Box sx={{ pt: 4, display: "flex" }}>
+        <Box sx={{ pt: 4, display: 'flex' }}>
           <Box sx={{ pr: 2, width: 300 }}>
             <Typography variant='h5'>
               {t('help.component.t')}
@@ -62,8 +62,8 @@ export const HelpBackdrop: FC<{
             {t('help.fixed.m')}
           </Typography>
         </Box>
-        <Box sx={{ pt: 4, display: "flex" }}>
-          <Box sx={{ pr: 2 , width: 300}}>
+        <Box sx={{ pt: 4, display: 'flex' }}>
+          <Box sx={{ pr: 2, width: 300 }}>
             <Typography variant='h5'>
               {t('help.fixed.t')}
             </Typography>
