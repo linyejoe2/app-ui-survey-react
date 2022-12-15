@@ -9,6 +9,7 @@
   height: 490px;
   overflow: auto;
   overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 #PhoneBody::-webkit-scrollbar {

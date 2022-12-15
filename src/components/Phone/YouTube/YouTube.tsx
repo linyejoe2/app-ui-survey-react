@@ -80,7 +80,7 @@ export const YTSearchBar: FC = () => {
           <IconButton className="yt-search-bar-button" size="small" color="inherit">
             <SearchIcon />
           </IconButton>
-          <Avatar className="yt-search-bar-avatar" alt={t('main.un')} src="./randy.jpg" />
+          <Avatar className="yt-search-bar-avatar" alt={t('main.un')} src="./randy2.jpg" />
         </Box>
       </Toolbar>
     </>
