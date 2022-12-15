@@ -22,7 +22,8 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { storeSurveyData2 } from '../../service/services'
 import { useTour } from '@reactour/tour'
-import { SurveyTourSteps } from '../../components/Survey/SurveyTourStep'
+import { SurveyTourSteps, SurveyTourSteps2 } from '../../components/Survey/SurveyTourStep'
+import { HelpBackdrop } from '../../components/Survey/HelpBackdrop'
 
 const surveyDate: ISurveyData = {
   user: '',
@@ -47,7 +48,7 @@ export default function Survey() {
       return confirm('Confirm refresh')
     }
     setSteps(SurveyTourSteps(t).slice(0, 4))
-    setIsOpen(true)
+    setIsOpen(false)
     // setSteps(SurveyTourSteps(t).slice(4, 10))
   }, [])
 
@@ -100,6 +101,7 @@ export default function Survey() {
 const MainStepper = (props: ISurveyProps) => {
   // const [sd, changeSurveyData] = useState(surveyDate);
   const { setIsOpen, setSteps, setCurrentStep } = useTour()
+  const [helpBackdropStep, setHelpBackdropStep] = React.useState(0)
   React.useEffect(() => {
     window.onbeforeunload = function () {
       console.log(window.location.href)
@@ -110,7 +112,7 @@ const MainStepper = (props: ISurveyProps) => {
   const [tourDnd, setTourDnd] = React.useState(false)
   React.useEffect(() => {
     if (tourDnd === true) {
-      setSteps(SurveyTourSteps(t).slice(4, 11))
+      setSteps(SurveyTourSteps2(t, setHelpBackdropStep))
       setCurrentStep(0)
       setIsOpen(true)
     }
@@ -277,6 +279,9 @@ const MainStepper = (props: ISurveyProps) => {
             <RadioGroup name="dafault-ui-button-group"
               // value={surveyDate.age}
               // defaultValue={props.state.defaultUI}
+              sx={{
+                mt: 2
+              }}
               value={props.state.defaultUI}
               onChange={(ev, val) => {
                 const temp = props.state
@@ -329,7 +334,7 @@ const MainStepper = (props: ISurveyProps) => {
               display: 'flex',
               justifyContent: 'center'
             }}>
-              <TableDnD state={props.state} changeSurveyData={props.changeSurveyData}></TableDnD>
+              <TableDnD state={props.state} changeSurveyData={props.changeSurveyData} setHelpBackdropStep={setHelpBackdropStep} helpBackdropStep={helpBackdropStep}></TableDnD>
             </Box>
           </FormControl>
         </>
@@ -380,6 +385,7 @@ const MainStepper = (props: ISurveyProps) => {
       }}
       className='center-child'
     >
+      {helpBackdropStep === 0 ? <></> : <HelpBackdrop helpStep={helpBackdropStep} setHelpStep={setHelpBackdropStep} />}
       {/* top stepper */}
       <Box>
         {!onLaptop

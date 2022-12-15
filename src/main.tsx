@@ -62,6 +62,7 @@ const MainPage = () => {
         onClickHighlighted={prop => { }}
         onClickMask={prop => { }}
         showBadge={false}
+        maskClassName={'mask'}
       // showDots={false}
       // showCloseButton={false}
       // components={{}}

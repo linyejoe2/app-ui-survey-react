@@ -73,7 +73,9 @@ export interface ISurveyProps {
   children?: React.ReactNode
   state: ISurveyData,
   changeSurveyData: (updateData: ISurveyData) => void,
-  progress?: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+  progress?: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
+  helpBackdropStep?: number,
+  setHelpBackdropStep?: (num: number) => void
 }
 
 export interface IPhoneHeight {

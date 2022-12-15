@@ -4,6 +4,14 @@
   margin: 0 auto !important;
 }
 
+.mask {
+  z-index: 997 !important;
+}
+
+.reactour__popover {
+  z-index: 998 !important;
+}
+
 
 :root {
   white-space: pre-line;

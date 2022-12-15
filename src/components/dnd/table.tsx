@@ -130,7 +130,8 @@ export const TableDnD: FC<ISurveyProps> = (props: ISurveyProps) => {
   const [helpOpen, setHelpOpen] = React.useState('0')
 
   const handleHelp = (uid: string) => {
-    setHelpOpen(uid)
+    // setHelpOpen(uid)
+    props.setHelpBackdropStep!(parseInt(uid) + 2)
   }
 
   const onDragEnd = (result: DropResult): void => {

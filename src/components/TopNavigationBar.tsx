@@ -13,9 +13,23 @@ import Link from '@mui/material/Link'
 import { useTranslation } from 'react-i18next'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { Button, Collapse, useMediaQuery } from '@mui/material'
+import { Button, Collapse, Divider, Slide, useMediaQuery, useScrollTrigger } from '@mui/material'
+import { HelpBackdrop } from './Survey/HelpBackdrop'
 
 // const langOption = ['en', 'zh-TW']
+
+function HideOnScroll(props: { children: React.ReactElement }) {
+  const { children } = props
+  const trigger = useScrollTrigger({
+    target: window
+  })
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
 
 export default function TopNavigationBar() {
   // const dispatch = useDispatch()
@@ -36,73 +50,117 @@ export default function TopNavigationBar() {
     handleClose()
   }
 
+  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null)
+  const helpListOpen = Boolean(anchorEl2)
+  const handleHelpListClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl2(event.currentTarget)
+  }
+  const handleHelpListClose = () => {
+    setAnchorEl2(null)
+  }
+
+  const [helpBackdropStep, setHelpBackdropStep] = React.useState(0)
+  const setHelpBackdropStepFromNav = (step: number) => {
+    handleHelpListClose()
+    setHelpBackdropStep(step)
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
-        <Toolbar className='top-bar'>
-          <Box
-            data-tour="0"
-            sx={{
-              height: '35px',
-              width: 35
-            }}>
-            <a href="#" style={{ height: 'inherit' }}>
-              <img src="./TP.svg" style={{
-                height: 'inherit',
-                padding: '0',
-                marginRight: '10px',
-                display: 'inline-block',
-                willChange: 'filter'
-              }} alt="TP logo" />
-            </a>
-          </Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
-            <Link href='./' underline='none' color="unset">
-              {/* {TITLE} */}
-              {onMobile ? '' : t('main.title')}
-            </Link>
-          </Typography>
-          {/* <Link href='./#/survey' underline='none' color="unset">
+      {helpBackdropStep === 0 ? <></> : <HelpBackdrop helpStep={helpBackdropStep} setHelpStep={setHelpBackdropStep} />}
+      <HideOnScroll>
+        <AppBar position="fixed" sx={{ zIndex: 990 }}>
+          <Toolbar className='top-bar'>
+            <Box
+              data-tour="0"
+              sx={{
+                height: '35px',
+                width: 35
+              }}>
+              <a href="#" style={{ height: 'inherit' }}>
+                <img src="./TP.svg" style={{
+                  height: 'inherit',
+                  padding: '0',
+                  marginRight: '10px',
+                  display: 'inline-block',
+                  willChange: 'filter'
+                }} alt="TP logo" />
+              </a>
+            </Box>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
+              <Link href='./' underline='none' color="unset">
+                {/* {TITLE} */}
+                {onMobile ? '' : t('main.title')}
+              </Link>
+            </Typography>
+            {/* <Link href='./#/survey' underline='none' color="unset">
             survey
           </Link> */}
-          {/* {isIOS() ? "isIOS" : "notIOS"} */}
-          <Button
-            key={t('about-us.title')}
-            // onClick={handleCloseNavMenu}
-            href="./#/about-us"
-            sx={{ my: 2, color: 'white', display: 'block' }}
-          >
-            {t('about-us.title')}
-          </Button>
-          <IconButton
-            data-tour='2-1'
-            size="large"
-            title="change language"
-            onClick={handleClick}
-            color="inherit">
-            <LanguageIcon />
-          </IconButton>
-          <Menu
-            id='lock-menu'
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              // 'aria-labelledby': 'lock-button',
-              // role: 'listbox',
-              id: "data2-1"
-            }}
-          >
-            {/* {langOption} */}
-            <Box
+            {/* {isIOS() ? "isIOS" : "notIOS"} */}
+            <Button
+              key={t('about-us.title')}
+              // onClick={handleCloseNavMenu}
+              href="./#/about-us"
+              target="about"
+              sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              <MenuItem data-tour='2-1-2' onClick={() => changeLanguage('en')}>en</MenuItem>
+              {t('about-us.title')}
+            </Button>
+            <Button
+              key={t('main.hl.0')}
+              data-tour='7-2'
+              onClick={handleHelpListClick}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              {t('main.hl.0')}
+            </Button>
+            <Menu
+              id='helpMenu'
+              anchorEl={anchorEl2}
+              open={helpListOpen}
+              onClose={handleHelpListClose}
+            >
+              {/* {langOption} */}
+              <Box>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(1) }}>{t('main.hl.2')}</MenuItem>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(2) }}>{t('main.hl.3')}</MenuItem>
+                <Divider sx={{ my: 0.5 }} />
+                {/* <Typography component="div" variant='h6' sx={{ textAlign: "center" }}>{t('main.hl.1')}</Typography> */}
+                {/* <MenuItem sx={{ textAlign: "center", fontSize: 20 }} onClick={() => { }}>{t('main.hl.1')}</MenuItem> */}
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(3) }}>{t('main.hl.1-1')}</MenuItem>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(4) }}>{t('main.hl.1-2')}</MenuItem>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(5) }}>{t('main.hl.1-3')}</MenuItem>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(6) }}>{t('main.hl.1-4')}</MenuItem>
+                <MenuItem onClick={() => { setHelpBackdropStepFromNav(7) }}>{t('main.hl.1-5')}</MenuItem>
+                {/* <MenuItem onClick={()=>{}}>{t('main.hl.1')}</MenuItem>
+              <MenuItem onClick={}>{t('main.hl.1')}</MenuItem> */}
+              </Box>
+            </Menu>
+            <IconButton
+              data-tour='2-1'
+              size="large"
+              title="change language"
+              onClick={handleClick}
+              color="inherit">
+              <LanguageIcon />
+            </IconButton>
+            <Menu
+              id='lock-menu'
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                // 'aria-labelledby': 'lock-button',
+                // role: 'listbox',
+              }}
+            >
+              {/* {langOption} */}
+              <MenuItem onClick={() => changeLanguage('en')}>en</MenuItem>
               <MenuItem onClick={() => changeLanguage('zh-TW')}>zh-TW</MenuItem>
               <MenuItem onClick={() => changeLanguage('zh')}>zh</MenuItem>
               <MenuItem onClick={() => changeLanguage('ja')}>jp</MenuItem>
-            </Box>
-          </Menu>
-          {/* {themeState
+            </Menu>
+            {/* {themeState
             ? <IconButton
               size="large"
               title="change theme to dark"
@@ -120,9 +178,10 @@ export default function TopNavigationBar() {
               <Brightness7Icon />
             </IconButton>
           } */}
-          {/* <Button color="inherit">Login</Button> */}
-        </Toolbar>
-      </AppBar>
+            {/* <Button color="inherit">Login</Button> */}
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
       <Box sx={{
         height: onMobile ? 10 : 20,
         minHeight: onMobile ? 10 : 20
