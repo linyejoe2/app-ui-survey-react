@@ -21,67 +21,123 @@ export const HelpBackdrop: FC<{
         open={true}
         onClick={() => setHelpStep(0)}
       >
-        <Box>
-          <Typography variant='h2'>
-            {t('help.component.m')}
-          </Typography>
-        </Box>
-        <Box sx={{ pt: 4, display: 'flex' }}>
-          <Box sx={{ pr: 2, width: 300 }}>
-            <Typography variant='h5'>
-              {t('help.component.t')}
+        {onMobile
+          ? <>  <Box>
+            <Typography variant='h4'>
+              {t('help.component.m')}
             </Typography>
           </Box>
-          <Box >
-            <img src="./help/component.jpg" alt="img"
-              style={{
-                width: 500
-                // margin: 20
-              }}
-            />
+            <Box sx={{ pt: 2, pr: 2, width: 300 }}>
+              <Typography variant="h6">
+                {t('help.component.t')}
+              </Typography>
+            </Box>
+            <Box sx={{ pt: 2 }}>
+              <img src="./help/component.jpg" alt="img"
+                style={{
+                  width: 300
+                  // margin: 20
+                }}
+              />
+            </Box>
+            <Box sx={{ pt: 2 }}>
+              <Typography variant="body1">
+                {t('help.component.t2')}
+              </Typography>
+            </Box>
+          </>
+          : <> <Box>
+            <Typography variant='h2'>
+              {t('help.component.m')}
+            </Typography>
           </Box>
-        </Box>
-        <Box sx={{ pt: 2 }}>
-          <Typography variant='h6'>
-            {t('help.component.t2')}
-          </Typography>
-        </Box>
+            <Box sx={{ pt: 4, display: 'flex' }}>
+              <Box sx={{ pr: 2, width: 300 }}>
+                <Typography variant='h5'>
+                  {t('help.component.t')}
+                </Typography>
+              </Box>
+              <Box >
+                <img src="./help/component.jpg" alt="img"
+                  style={{
+                    width: 500
+                    // margin: 20
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box sx={{ pt: 2 }}>
+              <Typography variant='h6'>
+                {t('help.component.t2')}
+              </Typography>
+            </Box>
+          </>}
       </Backdrop>)
     case 2:
       return (<Backdrop
         sx={{
           color: '#fff',
           zIndex: 999,
-          flexDirection: 'column'
+          flexDirection: 'column',
+          overflow: "auto",
+          overscrollBehavior: "none"
         }}
         open={true}
         onClick={() => setHelpStep(0)}
       >
-        <Box>
-          <Typography variant='h2'>
-            {t('help.fixed.m')}
-          </Typography>
-        </Box>
-        <Box sx={{ pt: 4, display: 'flex' }}>
-          <Box sx={{ pr: 2, width: 300 }}>
-            <Typography variant='h5'>
-              {t('help.fixed.t')}
-            </Typography>
-          </Box>
-          <Box >
-            <img src="./help/fixed.jpg" alt="img"
-              style={{
-                width: 300
-                // margin: 20
-              }}
-            />
-          </Box>
-        </Box>
-        <Box sx={{ pt: 2 }}>
-          <Typography variant='h6'>
-            {t('help.fixed.t2')}
-          </Typography>
-        </Box>
+        {onMobile
+          ? <>
+            <Box sx={{ pt: 20 }}>
+              <Typography variant='h4'>
+                {t('help.fixed.m')}
+              </Typography>
+            </Box>
+            <Box sx={{ pr: 2, width: 300 }}>
+              <Typography variant="body1">
+                {t('help.fixed.t')}
+              </Typography>
+            </Box>
+            <Box >
+              <img src="./help/fixed.jpg" alt="img"
+                style={{
+                  width: 300
+                  // margin: 20
+                }}
+              />
+            </Box>
+            <Box sx={{ pt: 2, pb: 2 }}>
+              <Typography variant='h6'>
+                {t('help.fixed.t2')}
+              </Typography>
+            </Box>
+          </>
+          : <>
+            <Box>
+              <Typography variant='h2'>
+                {t('help.fixed.m')}
+              </Typography>
+            </Box>
+            <Box sx={{ pt: 4, display: 'flex' }}>
+              <Box sx={{ pr: 2, width: 300 }}>
+                <Typography variant='h5'>
+                  {t('help.fixed.t')}
+                </Typography>
+              </Box>
+              <Box >
+                <img src="./help/fixed.jpg" alt="img"
+                  style={{
+                    width: 300
+                    // margin: 20
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box sx={{ pt: 2 }}>
+              <Typography variant='h6'>
+                {t('help.fixed.t2')}
+              </Typography>
+            </Box>
+          </>}
       </Backdrop>)
     case 3:
       return (<Backdrop
@@ -106,7 +162,7 @@ export const HelpBackdrop: FC<{
         <Box sx={{ pt: 2 }}>
           <img src="./help/title.svg" alt="img"
             style={{
-              width: onMobile ? '250px' : '600px'
+              width: onMobile ? '350px' : '600px'
               // margin: 20
             }}
           />
@@ -140,7 +196,7 @@ export const HelpBackdrop: FC<{
         <Box sx={{ pt: 2 }}>
           <img src="./help/function.svg" alt="img"
             style={{
-              width: onMobile ? '250px' : '600px'
+              width: onMobile ? '350px' : '600px'
               // margin: 20
             }}
           />
@@ -237,7 +293,7 @@ export const HelpBackdrop: FC<{
         <Box sx={{ pt: 2 }}>
           <img src="./help/nav.svg" alt="img"
             style={{
-              width: onMobile ? '250px' : '800px'
+              width: onMobile ? '350px' : '800px'
               // margin: 20
             }}
           />

@@ -67,7 +67,9 @@ export default function TopNavigationBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {helpBackdropStep === 0 ? <></> : <HelpBackdrop helpStep={helpBackdropStep} setHelpStep={setHelpBackdropStep} />}
+      <Box sx={{ textAlign: "center" }}>
+        {helpBackdropStep === 0 ? <></> : <HelpBackdrop helpStep={helpBackdropStep} setHelpStep={setHelpBackdropStep} />}
+      </Box>
       <HideOnScroll>
         <AppBar position="fixed" sx={{ zIndex: 990 }}>
           <Toolbar className='top-bar'>
