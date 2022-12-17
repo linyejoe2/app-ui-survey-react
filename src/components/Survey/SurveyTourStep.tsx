@@ -143,8 +143,8 @@ export const SurveyTourSteps2 = (t: (s: string) => string, setHelpBackdropStep?:
             嘗試跟畫面互動看看！
           </Box>
           <Button variant="text" sx={{
-            display: "block",
-            m: "auto",
+            display: 'block',
+            m: 'auto',
             mt: 2
           }}
             onClick={() => prop.setIsOpen(false)}>結束導覽～</Button>
