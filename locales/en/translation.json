@@ -1,0 +1,241 @@
+{
+  "main": {
+    "title": "Chose the Best Social Media UI Design in Your Mind!",
+    "un": "Amber",
+    "alert": "Choose a Answer First!",
+    "t" : "If you had Elon Musk Money,\nAnd you suddenly want to buy\nYouTube, FaceBook, Instagram and Dcard,\nwhitch is the four most commonly used social media in Taiwan,\nThen put them all together\nand make a social media that is just for you!",
+    "t1": "Thank you for taking the time to take this fun quiz!",
+    "t2" : "Next, you will pass a few simple quizzes to determine\nwhat the best-looking social media style\nlooks like in your mind.\nAt the same time,\nthese data will be returned to our database\nto help us calculate\nthe most popular social media styles in Taiwan in 2022",
+    "t3" : "[*All data is for academic use]",
+    "hl": {
+      "0": "Help",
+      "1": "Component",
+      "1-1": "Title column?",
+      "1-2": "Function column?",
+      "1-3": "Time-limited dynamic column?",
+      "1-4": "Content?",
+      "1-5": "Navigation bar?",
+      "2": "What is a component?",
+      "3": "What is pinning?"
+    }
+  },
+  "about-us": {
+    "title": "About Us",
+    "tp-young": "TP young",
+    "t": "TP young was founded in October 2022. It is led by two students of Taipei University's digital marketing program and is dedicated to researching communities, marketing and the Internet.\n\nAlthough in this In severe times, every young person under economic pressure is out of breath, causing everyone to want to lie flat, but besides lying flat, we also want to do something to prove ourselves, make a modest contribution to society, and Leave our footprints online.\n\nOur mission is to make a small difference in the world because of us."
+  },
+  "help": {
+    "component": {
+      "m": "What is a component?",
+      "t": "In this study, we divided the interface into five different components:\nThe title bar, the function bar, the dynamic bar, the content and the navigation bar.\n\nYou can combine them yourself The positions and styles of these five components,\nYou can also close or pin them!",
+      "t2": "[In the picture above, I hide the function column, drag the time-limited dynamic column to the second row and pin it, and keep the others unchanged.]"
+    },
+    "fixed": {
+      "m": "What is pinning?",
+      "t": "Pin a component, and it will be at the top or bottom of your screen,\nand will not scroll with the content.\nYou can think of pin selection as Excel's freeze first column function. \n\nUsually the title bar, function bar and navigation bar are pinned,\nOf course you can also create your own design!",
+      "t2": "[In the figure above, the top title bar and the bottom navigation bar are pinned and will not scroll with the content scrolling.]"
+    },
+    "title": {
+      "m": "Title bar",
+      "t": "Contains title and some function buttons.",
+      "t2": "[Pinned components will not move as content moves up or down]"
+    },
+    "function": {
+      "m": "Function bar",
+      "t": "",
+      "t2": "The function bar is also pinned.\nIt should be noted that Instagram itself does not have a function bar,\nbut you can still apply the function bar of other social media!"
+    },
+    "short": {
+      "m": "Short bar",
+      "t": "",
+      "t2": "Dcard does not have a native timed feed column, you can choose to use other social media's timed feed list."
+    },
+    "content": {
+      "m": "Content",
+      "t": "Contains the content of this app."
+    },
+    "nav" : {
+      "m": "Navigation bar",
+      "t": "Contains some buttons to help user go to the page whitch thay want to go."
+    }
+  },
+  "f": {
+    "res": {
+      "unused": "Unused component",
+      "n-same": {
+        "t1": "Your most frequently used is",
+        "t2": ", but maybe you prefer",
+        "t3": "!",
+        "t4": "You spent a total of",
+        "t5": "unit",
+        "t6": "Elements of!"
+      },
+      "same": { 
+        "t1": "Your most frequently used is",
+        "t2": "Your favorite too",
+        "t3": "Design!",
+        "t4": "You spent a total of",
+        "t5": "unit",
+        "t6": "The element!",
+        "t7": "You are loyal!"
+      },
+      "lot": {
+        "t1": "Your most frequently used is",
+        "t2": "Design!",
+        "t3": "But you have no clear preferred design!",
+        "t4": "You are a very rich person!"
+      },
+      "share": {
+        "t": "Share this Test To Your Friend!"
+      }
+    }
+  },
+  "p1": {
+    "t": "gender",
+    "q1": "What is your gender?",
+    "a1": "Male",
+    "a2": "Female",
+    "a3": "Not Listed"
+  },
+  "p2": {
+    "t": "age",
+    "q1": "What is your age?",
+    "a1": "Under 20",
+    "a2": "21 to 30",
+    "a3": "31 to 40",
+    "a4": "41 to 50",
+    "a5": "51 to 60",
+    "a6": "61 to 70",
+    "a7": "Over than 70"
+  },
+  "p3": {
+    "t": "Social media",
+    "q1": "To Which social media do you use most often?",
+    "q2": "this step will set the default UI at this survey.",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
+  },
+  "p4": {
+    "t": "Position",
+    "t2": "Components Position",
+    "q1": "Drag and Drop to Chose the perfect position of all Components.",
+    "q2": "Real-Time Change will show at the right side.",
+    "titleBar": "Title bar",
+    "functionBar": "Function bar",
+    "shortBar": "Short bar",
+    "content": "Content",
+    "navigationBar": "Navigation bar"
+  },
+  "p5": {
+    "t": "Title bar Style",
+    "s1": "You don't chose the Title bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Title bar?",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
+  },
+  "p6": {
+    "t": "Function bar Style",
+    "s1": "You don't chose the Function bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Function bar?",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "",
+    "a4": "Dcard"
+  },
+  "p7": {
+    "t": "Short bar Style",
+    "s1": "You don't chose the Short bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Short bar?",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": ""
+  },
+  "p8": {
+    "t": "Content Style",
+    "s1": "You don't chose the Short on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Content?",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
+  },
+  "p9": {
+    "t": "Navigation bar Style",
+    "s1": "You don't chose the Navigation bar on your UI model!",
+    "s2": "You can skip this step if your just don't want to use it!",
+    "q1": "To which Style do you prefer to use on Navigation bar?",
+    "a1": "Facebook",
+    "a2": "YouTube",
+    "a3": "Instagram",
+    "a4": "Dcard"
+  },
+  "fb": {
+    "t1": "What's on your mind, Amber?",
+    "p1": {
+      "name": "Amber",
+      "sub-title": "28 min ‧ Taipei ‧",
+      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "like-text": "88 comments ‧ 4 shares",
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share"
+    },
+    "s": {
+      "create": "Create story",
+      "s1": "Randy Lin"
+    }
+  },
+  "yt": {
+    "p1": {
+      "visit": "Visit Website",
+      "title": "That's right, Come join us at NTPU!",
+      "text": "Lorem ipsum dolor, sit amet consectetur.",
+      "ads": "Ad ‧ TPyoung"
+    },
+    "p2": {
+      "title": "10 thing you NEED to know BERORE getting a cat/kitten!",
+      "user": "Amber ‧ 5.5M views ‧ 11, 2022",
+      "text": "I’m getting a kitten on Wednesday, for the first time ever. This has been the best and..."
+    },
+    "n": {
+      "home": "Home",
+      "shorts": "Shorts",
+      "subscription": "Subscription",
+      "library": "Library"
+    }
+  },
+  "ig": {
+    "p1": {
+      "name": "Amber",
+      "likes": "999 Likes",
+      "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      "time": "18 minutes age ‧ See translation"
+    }
+  },
+  "dc": {
+    "t": {
+      "text": "Dcard Christmas Makeup Set."
+    },
+    "s": {
+      "recommend": "推薦",
+      "all": "全部",
+      "follow": "追蹤",
+      "topic": "主題"
+    },
+    "c1": {
+      "topic": "女孩 ‧ 追蹤中",
+      "title": "求解！！這是什麼貓",
+      "text": "有一隻好可愛的貓貓！！",
+      "store": "收藏"
+    }
+  }
+}
